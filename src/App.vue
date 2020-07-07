@@ -1,24 +1,30 @@
 <template>
   <div id="app">
     <Header />
+    <component :is="currentPage"></component>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 import Header from "./components/Header/Header.vue";
+import Contacts from "./components/Contacts/Contacts.vue";
 
 export default {
   name: "App",
+  data(){
+    return {
+      // currentPage: 'Contacts'
+    }
+  },
   components: {
-    Header
+    Header, Contacts
   }
 };
 </script>
 
 <style>
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "PT Sans","Helvetica","Arial",sans-serif;
   font-size: 15px;
   color: #333;
   line-height: 1.6;
@@ -52,7 +58,7 @@ h6 {
 /* Container */
 .container {
   width: 100%;
-  max-width: 1230px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 15px;
 }
