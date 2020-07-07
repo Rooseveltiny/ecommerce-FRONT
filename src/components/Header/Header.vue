@@ -8,8 +8,8 @@
               <div class="nav-left-part">
                 <span class="nav_link">Череповец</span>
                 <span class="nav_link">8(8202)265-265</span>
-                <span class="nav_link">Информация</span>
-                <span class="nav_link">Контакты</span>
+                <span @click="changeCurrentPage('Main')" class="nav_link">Информация</span>
+                <span @click="changeCurrentPage('Contacts')" class="nav_link">Контакты</span>
               </div>
               <div class="nav-right-part">Вход/Регистрация</div>
             </div>
@@ -38,7 +38,16 @@
 </template>
 
 <script>
-export default {};
+
+import { mapMutations } from 'vuex'
+
+export default {
+
+methods: {
+    ...mapMutations(['changeCurrentPage'])
+}
+
+};
 </script>
 
 <style>

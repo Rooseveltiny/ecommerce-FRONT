@@ -1,23 +1,22 @@
 <template>
   <div id="app">
     <Header />
-    <component :is="currentPage"></component>
+    <component :is="getCurrentPage"></component>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header/Header.vue";
 import Contacts from "./components/Contacts/Contacts.vue";
+import { mapGetters } from 'vuex'
 
 export default {
   name: "App",
-  data(){
-    return {
-      // currentPage: 'Contacts'
-    }
-  },
   components: {
     Header, Contacts
+  },
+  computed: {
+    ...mapGetters(['getCurrentPage'])
   }
 };
 </script>
