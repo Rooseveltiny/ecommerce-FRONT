@@ -4,9 +4,10 @@
         <div class="container">
             <div class="about_company_inner main_block_style">
                 <div class="main_title">
-                    О Компании
+                    О компании
                 </div>
-                <p>О компании</p>
+                <div class="text_content"><p>
+                    Компания была основана в 2005 году уцуацуацуацуауццццццццццц</p></div>
             </div>
         </div>
     </div>

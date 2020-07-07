@@ -21,14 +21,15 @@
       <div class="container">
         <div class="bottom_header_inner">
           <div class="bottom_header_left">
-            <div class="logo">
+            <div @click="changeCurrentPage('Main')" class="logo">
               <img height="40px" :src="require('../../assets/logo/logo.svg')" alt />
             </div>
+            <div @click="changeCurrentPage('Catalog')" class="catalog">Каталог</div>
           </div>
           <div class="bottom_header_right">
             <div class="search">
-              <input type="text" />
-              <button>Найти</button>
+              <div class="search_input_block"><input placeholder="Найти товар" class="search_input" type="text" /></div>
+              <button class="find_btn">Найти</button>
             </div>
           </div>
         </div>
@@ -95,6 +96,11 @@ export default {
 }
 
 .bottom_header_left {
+  display: flex;
+}
+
+.catalog{
+  cursor: pointer;
 }
 
 .bottom_header_right {
@@ -104,5 +110,40 @@ export default {
 
 .logo {
   padding: 15px 0 10px 0;
+}
+
+
+/* SEARCH temporary BLOCK */
+
+.search_input_block{
+    width: 100%;
+}
+
+.search_input {
+    height: 30px;
+    width: 100%;
+    border-width: .1px;
+    border-radius: 3px;
+    padding-left: 7px;
+}
+
+.search_input:focus, .search_input:active {
+    outline: none;
+    outline-offset: none;
+    border: 1px solid #fc0;
+}
+
+.search{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.find_btn {
+  margin-left: 20px;
+  height: 30px;
+  background-color: #fc0;
+  border:none;
+  padding: 0 20px;
+  border-radius: 3px;
 }
 </style>

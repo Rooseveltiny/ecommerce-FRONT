@@ -6,7 +6,7 @@ export default {
         }
     },
     state: {
-        currentPage: 'Contacts'
+        currentPage: 'Catalog'
     },
     getters: {
         getCurrentPage(state){

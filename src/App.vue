@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Header />
+     <!-- <transition name="component-fade" mode="out-in"> -->
     <component :is="getCurrentPage"></component>
+     <!-- </transition> -->
   </div>
 </template>
 
@@ -9,6 +11,7 @@
 import Header from "./components/Header/Header.vue";
 import Contacts from "./components/Contacts/Contacts.vue";
 import AboutCompany from "./components/Information/AboutCompany";
+import Catalog from "./components/Catalog/Catalog";
 
 import { mapGetters } from "vuex";
 
@@ -17,7 +20,8 @@ export default {
   components: {
     Header,
     Contacts,
-    AboutCompany
+    AboutCompany,
+    Catalog
   },
   computed: {
     ...mapGetters(["getCurrentPage"])
@@ -58,13 +62,31 @@ h5,
 h6 {
   margin: 0;
 }
+
+/* ANIMATION */
+
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity .3s ease;
+}
+.component-fade-enter, .component-fade-leave-to
+/* .component-fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
+}
+
 /* Container */
+
 .container {
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 15px;
 }
+
+.text_content{
+  width: 100%;
+  overflow-wrap: break-word;
+}
+
 .main_title {
   margin: 0 auto 30px auto;
   font-size: 20px;
@@ -82,4 +104,14 @@ h6 {
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
 }
+
+.main_block_style-less {
+  margin: 15px 0;
+  padding: 15px;
+}
+
+.main_block_style-right_margin{
+  margin-right: 15px;
+}
+
 </style>
