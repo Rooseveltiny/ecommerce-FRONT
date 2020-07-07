@@ -8,7 +8,7 @@
               <div class="nav-left-part">
                 <span class="nav_link">Череповец</span>
                 <span class="nav_link">8(8202)265-265</span>
-                <span @click="changeCurrentPage('Main')" class="nav_link">Информация</span>
+                <span @click="changeCurrentPage('AboutCompany')" class="nav_link">Информация</span>
                 <span @click="changeCurrentPage('Contacts')" class="nav_link">Контакты</span>
               </div>
               <div class="nav-right-part">Вход/Регистрация</div>
@@ -22,7 +22,7 @@
         <div class="bottom_header_inner">
           <div class="bottom_header_left">
             <div class="logo">
-                <img height="40px" :src="require('../../assets/logo/logo.svg')" alt="">
+              <img height="40px" :src="require('../../assets/logo/logo.svg')" alt />
             </div>
           </div>
           <div class="bottom_header_right">
@@ -38,15 +38,12 @@
 </template>
 
 <script>
-
-import { mapMutations } from 'vuex'
+import { mapMutations } from "vuex";
 
 export default {
-
-methods: {
-    ...mapMutations(['changeCurrentPage'])
-}
-
+  methods: {
+    ...mapMutations(["changeCurrentPage"])
+  }
 };
 </script>
 
@@ -62,9 +59,7 @@ methods: {
 
 .nav_link {
   cursor: pointer;
-  margin-right: 15px;
-  /* font-weight: bold; */
-  /* color: #fff; */
+  margin-right: 30px;
 }
 
 .nav_inner {
@@ -86,20 +81,20 @@ methods: {
 
 /* BOTTOM HEADER */
 .bottom_header {
-  -webkit-box-shadow: 0px 8px 10px -11px rgba(0, 0, 0, 0.55);
-  -moz-box-shadow: 0px 8px 10px -11px rgba(0, 0, 0, 0.55);
-  box-shadow: 0px 8px 10px -11px rgba(0, 0, 0, 0.55);
+  -webkit-box-shadow: 0px 8px 10px -11px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 8px 10px -11px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 8px 10px -11px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
 }
 
 .bottom_header_inner {
-    align-items: center;
-  /* padding: 15px 0 15px 0; */
+  align-items: center;
   background-color: #fff;
   display: flex;
   justify-content: space-between;
 }
 
-.bottom_header_left{
+.bottom_header_left {
 }
 
 .bottom_header_right {
@@ -107,10 +102,7 @@ methods: {
   text-align: right;
 }
 
-.logo{
-    padding: 15px 0 10px 0;
+.logo {
+  padding: 15px 0 10px 0;
 }
-
-
-
 </style>

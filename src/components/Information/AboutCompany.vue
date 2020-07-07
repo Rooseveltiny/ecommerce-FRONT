@@ -1,15 +1,16 @@
 <template>
   
-    <div class="contacts_main">
+    <div class="about_company">
         <div class="container">
-            <div class="contacts_inner main_block_style">
+            <div class="about_company_inner main_block_style">
                 <div class="main_title">
-                    Контакты
+                    О Компании
                 </div>
-                <p>Компания была основана...</p>
+                <p>О компании</p>
             </div>
         </div>
     </div>
+
 
 </template>
 
