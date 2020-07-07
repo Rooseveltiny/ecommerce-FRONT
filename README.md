@@ -1,2 +1,2 @@
 # ecommerce
- Fronend for eCommerce platform based on VueJS
+ Frontend for eCommerce platform based on VueJS
