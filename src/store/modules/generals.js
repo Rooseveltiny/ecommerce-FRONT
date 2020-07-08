@@ -5,8 +5,8 @@ export default {
             state.currentPage = page;
         }
     },
-    state: {
-        currentPage: 'Catalog'
+    state() {
+        return {currentPage: 'Catalog'}
     },
     getters: {
         getCurrentPage(state){

@@ -1,9 +1,13 @@
 
 export default {
     actions: {},
-    mutation: {},
-    state: {
-        catalog: {
+    mutations: {
+        updateSortingCatalog(state, sorting) {
+            state.sorting.currentSorting = sorting;
+        }
+    },
+    state() {
+        return {
             sorting: {
                 sortingTypes: ['по возрастанию цены', "по убыванию цены", "по наименованию", "по рейтингу"],
                 currentSorting: 'по возрастанию цены'
@@ -12,7 +16,10 @@ export default {
     },
     getters: {
         getCurrentSortingType(state) {
-            return state.catalog.sorting.currentSorting
+            return state.sorting.currentSorting
+        },
+        getAllSortingTypes(state) {
+            return state.sorting.sortingTypes;
         }
     }
 }

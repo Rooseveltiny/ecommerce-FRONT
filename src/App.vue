@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <Header />
-     <!-- <transition name="component-fade" mode="out-in"> -->
+    <!-- <transition name="component-fade" mode="out-in"> -->
     <component :is="getCurrentPage"></component>
-     <!-- </transition> -->
+    <!-- </transition> -->
   </div>
 </template>
 
@@ -65,8 +65,9 @@ h6 {
 
 /* ANIMATION */
 
-.component-fade-enter-active, .component-fade-leave-active {
-  transition: opacity .3s ease;
+.component-fade-enter-active,
+.component-fade-leave-active {
+  transition: opacity 0.3s ease;
 }
 .component-fade-enter, .component-fade-leave-to
 /* .component-fade-leave-active до версии 2.1.8 */ {
@@ -82,7 +83,7 @@ h6 {
   padding: 0 15px;
 }
 
-.text_content{
+.text_content {
   width: 100%;
   overflow-wrap: break-word;
 }
@@ -110,8 +111,14 @@ h6 {
   padding: 15px;
 }
 
-.main_block_style-right_margin{
+.main_block_style-right_margin {
   margin-right: 15px;
 }
 
+.non-select {
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+}
 </style>
