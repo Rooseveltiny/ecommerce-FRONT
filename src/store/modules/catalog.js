@@ -2,7 +2,7 @@
 export default {
     actions: {
         async fetchProducts({ commit }) {
-            const res = await fetch(`http://localhost:3000/products`);
+            const res = await fetch(`http://localhost:3000/products/`);
             const products = await res.json();
             commit('updateProducts', products);
         }
@@ -32,6 +32,12 @@ export default {
         },
         getAllSortingTypes(state) {
             return state.sorting.sortingTypes;
+        },
+        getProducts(state){
+            return state.productsList.products
+        },
+        catalogLoadingBlock(state){
+            return state.productsList.products.lenght;
         }
     }
 }

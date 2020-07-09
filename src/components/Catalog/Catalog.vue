@@ -13,10 +13,13 @@
             <div class="sorting main_block_style main_block_style-less">
               <CatalogSorting />
             </div>
-            <div class="catalog_items main_block_style main_block_style-less">
-              <CatalogItems />
+            <div class="catalog_items">
+              <div v-show="!catalogLoadingBlock" class="loading_block"><div class="loading">
+                <img width="100px" height="100px" :src="require('../../assets/logo/loadingBlock.gif')" alt="">
+                </div></div>
+              <CatalogItems v-show="catalogLoadingBlock" />
             </div>
-            <div class="pagination main_block_style main_block_style-less">
+            <div v-show="catalogLoadingBlock" class="pagination main_block_style main_block_style-less">
               <CatalogPagination />
             </div>
           </div>
@@ -32,8 +35,12 @@ import CatalogPagination from "./CatalogPagination";
 import CatalogSorting from "./CatalogSorting";
 import CatalogFilter from "./CatalogFilter";
 import NavigationChain from "./NavigationChain";
+import { mapGetters } from 'vuex';
 
 export default {
+  computed:{
+    ...mapGetters(['catalogLoadingBlock'])
+  },
   components: {
     CatalogItems,
     CatalogPagination,
@@ -56,14 +63,23 @@ export default {
 }
 
 .filter {
-  width: 30%;
+  width: 25%;
 }
 
 .sorting_and_items {
-  width: 70%;
+  width: 75%;
 }
 
 .pagination {
   margin: 0 auto;
+}
+
+.catalog_main{
+  padding-bottom: 50px;
+}
+
+.loading_block{
+  text-align: center;
+  padding-top: 40px;
 }
 </style>
