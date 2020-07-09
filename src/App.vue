@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <Header />
-    <transition name="component-fade" mode="out-in">
-      <component :is="getCurrentPage"></component>
-    </transition>
+    <!-- <transition name="component-fade" mode="out-in"> -->
+    <component :is="getCurrentPage"></component>
+    <!-- </transition> -->
   </div>
 </template>
 

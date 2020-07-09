@@ -34,7 +34,7 @@ export default {
 
 .product_info {
   padding: 0 50px;
-  display: grid;
+    display: grid;    
 }
 
 .product_price {
@@ -48,22 +48,24 @@ export default {
   color: #666;
 }
 
-.product_info_inner {
+.product_info_inner{
 }
 
-.buy_btn {
-  background-color: #fc0;
-  outline: none;
-  border: none;
-  border-radius: 7px;
-  font-size: 20px;
-  width: 100%;
-  height: 50px;
-  transition-duration: 0.5s;
-  color: #333;
+.buy_btn{
+    background-color: #fc0;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    font-size: 20px;
+    width: 100%;
+    height: 50px;
+    transition-duration: .5s;
+    color: #333;
 }
 
-.buy_btn:hover {
-  background-color: #ffe373;
+.buy_btn:hover{
+    background-color: #ffe373;
 }
+
+
 </style>
