@@ -3,34 +3,36 @@
     <div class="sections main_block_style main_block_style-less main_block_style-right_margin">
       <div class="sections_inner">
         <div
-          v-for="section in getAllSections"
+          v-for="section in allSections"
           :key="section"
           class="section_item non-select"
-          :class="{'section_item-selected': section == getCurrentSection}"
-          @click="changeSection(section)"
+          :class="{'section_item-selected': section == currentSection}"
+          @click="currentSection = section"
         >{{section}}</div>
       </div>
     </div>
-    <transition name="component-fade" mode="out-in">
-      <div class="section main_block_style main_block_style-less">
-        <ProductInfoInner />
-      </div>
-    </transition>
+    <div class="section main_block_style main_block_style-less">
+      <div class="section_inner" v-if="currentSection === 'Описание'">{{product.discription}}</div>
+      <div
+        class="section_inner"
+        v-if="currentSection === 'Характеристики'"
+      >{{product.characteristics}}</div>
+      <div class="section_inner" v-if="currentSection === 'Файлы'">{{product.category}}</div>
+    </div>
   </div>
 </template>
 
 <script>
-import ProductInfoInner from "./ProductInfoInner";
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters } from "vuex";
 export default {
-  components: {
-    ProductInfoInner
+  data() {
+    return {
+      allSections: ["Описание", "Характеристики", "Файлы"],
+      currentSection: "Описание"
+    };
   },
   computed: {
-    ...mapGetters(["product", "getAllSections", "getCurrentSection"])
-  },
-  methods: {
-    ...mapMutations(["changeSection"])
+    ...mapGetters(["product"])
   }
 };
 </script>
@@ -45,10 +47,9 @@ export default {
   display: flex;
 }
 
-.section{
+.section {
   width: 80%;
 }
-
 
 .sections_inner {
   padding: 0 10px;

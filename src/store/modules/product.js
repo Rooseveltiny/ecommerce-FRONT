@@ -16,9 +16,7 @@ export default {
     },
     state() {
         return {
-            product: {},
-            currentSection: 'Описание',
-            allSections: ["Описание", "Характеристики", "Файлы"]
+            product: {}
         }
     },
     getters: {
