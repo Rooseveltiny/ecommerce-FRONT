@@ -12,6 +12,7 @@ import Header from "./components/Header/Header.vue";
 import Contacts from "./components/Contacts/Contacts.vue";
 import AboutCompany from "./components/Information/AboutCompany";
 import Catalog from "./components/Catalog/Catalog";
+import ProductPage from "./components/Product/ProductPage";
 
 import { mapGetters } from "vuex";
 
@@ -21,7 +22,8 @@ export default {
     Header,
     Contacts,
     AboutCompany,
-    Catalog
+    Catalog,
+    ProductPage
   },
   computed: {
     ...mapGetters(["getCurrentPage"])

@@ -34,7 +34,7 @@ import CatalogItems from "./CatalogItems";
 import CatalogPagination from "./CatalogPagination";
 import CatalogSorting from "./CatalogSorting";
 import CatalogFilter from "./CatalogFilter";
-import NavigationChain from "./NavigationChain";
+import NavigationChain from "../Generals/NavigationChain";
 import { mapGetters } from 'vuex';
 
 export default {
