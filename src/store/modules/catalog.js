@@ -37,7 +37,7 @@ export default {
             return state.productsList.products
         },
         catalogLoadingBlock(state){
-            return state.productsList.products.lenght;
+            return state.productsList.products.length;
         }
     }
 }
