@@ -9,16 +9,27 @@ export default {
     mutations: {
         updateProduct(state, product){
             state.product = product;
+        },
+        changeSection(state, section){
+            state.currentSection = section;
         }
     },
     state() {
         return {
-            product: {}
+            product: {},
+            currentSection: 'Описание',
+            allSections: ["Описание", "Характеристики", "Файлы"]
         }
     },
     getters: {
         product(state){
             return state.product
+        },
+        getCurrentSection(state){
+            return state.currentSection;
+        },
+        getAllSections(state){
+            return state.allSections
         }
     }
 }

@@ -6,4 +6,4 @@ import product from './modules/product'
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({modules: { generals, catalog, product }})
+export default new Vuex.Store({ modules: { generals, catalog, product } })
