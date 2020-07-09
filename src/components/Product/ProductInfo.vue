@@ -11,11 +11,11 @@
         >{{section}}</div>
       </div>
     </div>
-    <!-- <transition name="component-fade" mode="out-in"> -->
-      <!-- <div class="section main_block_style main_block_style-less"> -->
+    <transition name="component-fade" mode="out-in">
+      <div class="section main_block_style main_block_style-less">
         <ProductInfoInner />
-      <!-- </div> -->
-    <!-- </transition> -->
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -45,6 +45,9 @@ export default {
   display: flex;
 }
 
+.section{
+  width: 80%;
+}
 
 
 .sections_inner {

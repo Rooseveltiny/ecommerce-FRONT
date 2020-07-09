@@ -1,17 +1,11 @@
 <template>
   <div>
-    <div class="section main_block_style main_block_style-less">
-      <div class="section_inner" v-if="getCurrentSection === 'Описание'">{{product.discription}}</div>
-    </div>
-    <div class="section main_block_style main_block_style-less">
-      <div
-        class="section_inner"
-        v-if="getCurrentSection === 'Характеристики'"
-      >{{product.characteristics}}</div>
-    </div>
-    <div class="section main_block_style main_block_style-less">
-      <div class="section_inner" v-if="getCurrentSection === 'Файлы'">{{product.category}}</div>
-    </div>
+    <div class="section_inner" v-if="getCurrentSection === 'Описание'">{{product.discription}}</div>
+    <div
+      class="section_inner"
+      v-if="getCurrentSection === 'Характеристики'"
+    >{{product.characteristics}}</div>
+    <div class="section_inner" v-if="getCurrentSection === 'Файлы'">{{product.category}}</div>
   </div>
 </template>
 
