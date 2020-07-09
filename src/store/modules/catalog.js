@@ -1,9 +1,18 @@
 
 export default {
-    actions: {},
+    actions: {
+        async fetchProducts({ commit }) {
+            const res = await fetch(`http://localhost:3000/products`);
+            const products = await res.json();
+            commit('updateProducts', products);
+        }
+    },
     mutations: {
         updateSortingCatalog(state, sorting) {
             state.sorting.currentSorting = sorting;
+        },
+        updateProducts(state, products){
+            state.productsList.products = products;
         }
     },
     state() {
@@ -11,6 +20,9 @@ export default {
             sorting: {
                 sortingTypes: ['по возрастанию цены', "по убыванию цены", "по наименованию", "по рейтингу"],
                 currentSorting: 'по возрастанию цены'
+            },
+            productsList: {
+                products: []
             }
         }
     },
