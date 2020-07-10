@@ -64,6 +64,7 @@ export default {
 
 .filter {
   width: 25%;
+  height: 0%;
 }
 
 .sorting_and_items {
