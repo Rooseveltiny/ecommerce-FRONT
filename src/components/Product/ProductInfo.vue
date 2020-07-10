@@ -16,7 +16,22 @@
       <div
         class="section_inner"
         v-if="currentSection === 'Характеристики'"
-      >{{product.characteristics}}</div>
+      >
+      
+      <div class="chars_block">
+
+        <div v-for="char in product.characteristics" :key="char" class="char_item">
+          <div class="char_name">
+            {{Object.keys(char)[0]}}
+          <span class="dots"></span></div>
+          <div class="char_value">
+            {{Object.values(char)[0]}}
+          </div>
+        </div>
+
+      </div>
+      
+      </div>
       <div class="section_inner" v-if="currentSection === 'Файлы'">{{product.category}}</div>
     </div>
   </div>
@@ -64,4 +79,33 @@ export default {
 .section_item-selected {
   background-color: #ffe373;
 }
+
+
+/* chars */
+.chars_block{
+  width: 100%;
+}
+
+.char_item{
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.dots{
+  border-bottom: 1px dotted rgb(145, 145, 145);
+  width: 100%;
+  margin: 7px;
+}
+
+.char_name{
+  width: 50%;
+  display: flex;
+  white-space: nowrap;
+}
+
+.char_value{
+  width: 50%;
+}
+
 </style>
