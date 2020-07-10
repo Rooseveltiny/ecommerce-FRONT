@@ -69,7 +69,7 @@ h6 {
 
 .component-fade-enter-active,
 .component-fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.1s ease;
 }
 .component-fade-enter, .component-fade-leave-to
 /* .component-fade-leave-active до версии 2.1.8 */ {
