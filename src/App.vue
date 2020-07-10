@@ -39,6 +39,7 @@ body {
   line-height: 1.6;
   margin: 0;
   background-color: #f6f6f6;
+  overflow-y: scroll;
 }
 .page {
   overflow: hidden;
@@ -122,5 +123,20 @@ h6 {
   -moz-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
+}
+
+/* scroll */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f7efef;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a5a2a2;
+  border-radius: 5px;
 }
 </style>
