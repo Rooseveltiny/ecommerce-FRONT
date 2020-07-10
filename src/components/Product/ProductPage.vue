@@ -5,7 +5,7 @@
         <div class="title">{{product.title}}</div>
         <div class="article">Артикул: {{product.id}}</div>
       </div>
-      <div class="product main_block_style main_block_style-less" style="margin-bottom: 0px">
+      <div class="product main_block_style main_block_style-less">
         <Product />
       </div>
       <div class="product_info">
