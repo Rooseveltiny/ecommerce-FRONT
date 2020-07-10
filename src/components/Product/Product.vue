@@ -1,7 +1,7 @@
 <template>
   <div class="product">
     <div class="product_image">
-      <img src="http://via.placeholder.com/400" alt />
+      <img src="http://via.placeholder.com/300" alt />
     </div>
     <div class="product_info">
       <div class="product_info_inner">

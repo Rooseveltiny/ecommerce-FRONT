@@ -56,6 +56,7 @@ export default {
 .sections {
   display: grid;
   width: 20%;
+  height: 0%;
 }
 
 .product_info_inner {
@@ -71,15 +72,26 @@ export default {
 }
 
 .section_item {
-  padding: 5px;
+  padding: 5px 5px 5px 15px;
   font-size: 16px;
   cursor: pointer;
 }
 
 .section_item-selected {
   background-color: #ffe373;
+  position: relative;
 }
 
+.section_item-selected:after{
+  position: absolute;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 3px;
+  top: 0;
+  left: -3px;
+  background-color: rgb(255, 103, 103);
+}
 
 /* chars */
 .chars_block{
