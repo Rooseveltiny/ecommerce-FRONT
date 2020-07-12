@@ -26,7 +26,7 @@
             </div>
             <div class="catalog">
               <div
-                @click="showCatalogStructure; changeCurrentPage('Catalog')"
+                @click="showCatalogStructureComponentMethod(); changeCurrentPage('Catalog')"
                 class="catalog_inner non-select"
                 :class="{active: getCatalogStructureVision}"
                 id="CatalogStructure"
@@ -54,7 +54,10 @@ import CatalogStructure from "../CatalogStructure/CatalogStructure";
 
 export default {
   methods: {
-    ...mapMutations(["changeCurrentPage", "showCatalogStructure"])
+    ...mapMutations(["changeCurrentPage", "showCatalogStructure"]),
+    showCatalogStructureComponentMethod: function(){
+      this.showCatalogStructure();
+    }
   },
   computed: {
     ...mapGetters(["getCatalogStructureVision"])

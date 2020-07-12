@@ -14,10 +14,11 @@ export default {
         updateProducts(state, products) {
             state.productsList.products = products;
         },
-        showCatalogStructure(state) {
+        showCatalogStructure(state, event) {
+            console.log(event);
             state.CatalogStructureVisible = !state.CatalogStructureVisible;
         },       
-        closeCatalogStructureGeneral(state, event) {
+        closeCatalogStructureGeneral(state) {
             let el = event.srcElement.id;
             state.CatalogStructureVisible = (
                 el == 'CatalogStructure' ||

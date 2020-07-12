@@ -74,9 +74,13 @@ export default {};
   visibility: hidden;
   position: absolute;
   top: -14px;
+  /* min-width: calc(100% * 2); */
   left: calc(100% + 10px);
   transition: visibility 0.2s;
   z-index: 1000;
+}
+
+.catalog_items_side{
 }
 
 .catalog_side_block:hover {
@@ -85,5 +89,16 @@ export default {};
 
 .catalog_item_side_title {
   font-weight: bold;
+  text-align: center;
 }
+
+.catalog_item_side{
+    padding: 0 15px;
+}
+
+.catalog_item_side:hover{
+    background-color: #fc0;
+}
+
+
 </style>
