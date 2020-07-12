@@ -11,8 +11,17 @@ export default {
         updateSortingCatalog(state, sorting) {
             state.sorting.currentSorting = sorting;
         },
-        updateProducts(state, products){
+        updateProducts(state, products) {
             state.productsList.products = products;
+        },
+        showCatalogStructure(state) {
+            state.CatalogStructureVisible = !state.CatalogStructureVisible;
+        },
+        closeCatalogStructure(state, event) {
+            let el = event.srcElement.id;
+            state.CatalogStructureVisible = (el == 'CatalogStructure' ||
+            el == "CatalogStructureInner" ||
+            el == "CatalogStructureInnerBlock") ? true : false;
         }
     },
     state() {
@@ -23,7 +32,8 @@ export default {
             },
             productsList: {
                 products: []
-            }
+            },
+            CatalogStructureVisible: false
         }
     },
     getters: {
@@ -33,11 +43,14 @@ export default {
         getAllSortingTypes(state) {
             return state.sorting.sortingTypes;
         },
-        getProducts(state){
+        getProducts(state) {
             return state.productsList.products
         },
-        catalogLoadingBlock(state){
+        catalogLoadingBlock(state) {
             return state.productsList.products.length;
+        },
+        getCatalogStructureVision(state) {
+            return state.CatalogStructureVisible;
         }
     }
 }

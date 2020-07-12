@@ -24,11 +24,21 @@
             <div @click="changeCurrentPage('Main')" class="logo">
               <img height="40px" :src="require('../../assets/logo/logo.svg')" alt />
             </div>
-            <div @click="changeCurrentPage('Catalog')" class="catalog">Каталог</div>
+            <div class="catalog">
+              <div
+                @click="changeCurrentPage('Catalog'); showCatalogStructure()"
+                class="catalog_inner non-select"
+                :class="{active: getCatalogStructureVision}"
+                id="CatalogStructure"
+              >Каталог</div>
+              <CatalogStructure v-show="getCatalogStructureVision" />
+            </div>
           </div>
           <div class="bottom_header_right">
             <div class="search">
-              <div class="search_input_block"><input placeholder="Найти товар" class="search_input" type="text" /></div>
+              <div class="search_input_block">
+                <input placeholder="Найти товар" class="search_input" type="text" />
+              </div>
               <button class="find_btn">Найти</button>
             </div>
           </div>
@@ -39,16 +49,21 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapGetters } from "vuex";
+import CatalogStructure from "../CatalogStructure/CatalogStructure";
 
 export default {
   methods: {
-    ...mapMutations(["changeCurrentPage"])
-  }
+    ...mapMutations(["changeCurrentPage", "showCatalogStructure"])
+  },
+  computed: {
+    ...mapGetters(["getCatalogStructureVision"])
+  },
+  components: { CatalogStructure }
 };
 </script>
 
-<style>
+<style scoped>
 .header {
   background-color: #fc0;
 }
@@ -99,8 +114,43 @@ export default {
   display: flex;
 }
 
-.catalog{
+.catalog {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+  position: relative;
+}
+
+.catalog_inner {
+  background-color: #fc0;
+  padding: 5px 10px;
+  padding-right: 30px;
+  font-size: 18px;
+  border-radius: 7px;
+  transition-duration: 0.5s;
+}
+
+.catalog_inner:hover {
+  background-color: #ffe373;
+}
+
+.catalog_inner:after {
+  position: absolute;
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid rgb(0, 0, 0);
+  border-right: 1.5px solid rgb(0, 0, 0);
+  top: 48%;
+  right: 12%;
+  transform: rotate(-45deg);
+  transition-duration: .3s;
+}
+
+.catalog_inner.active:after {
+  transform: rotate(135deg);
+  top: 44%;
 }
 
 .bottom_header_right {
@@ -112,37 +162,37 @@ export default {
   padding: 15px 0 10px 0;
 }
 
-
 /* SEARCH temporary BLOCK */
 
-.search_input_block{
-    width: 100%;
+.search_input_block {
+  width: 100%;
 }
 
 .search_input {
-    height: 30px;
-    width: 100%;
-    border-width: .1px;
-    border-radius: 3px;
-    padding-left: 7px;
+  height: 30px;
+  width: 100%;
+  border-width: 0.1px;
+  border-radius: 3px;
+  padding-left: 7px;
 }
 
-.search_input:focus, .search_input:active {
-    outline: none;
-    outline-offset: none;
-    border: 1px solid #fc0;
+.search_input:focus,
+.search_input:active {
+  outline: none;
+  outline-offset: none;
+  border: 1px solid #fc0;
 }
 
-.search{
-    display: flex;
-    justify-content: flex-end;
+.search {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .find_btn {
   margin-left: 20px;
   height: 30px;
   background-color: #fc0;
-  border:none;
+  border: none;
   padding: 0 20px;
   border-radius: 3px;
 }

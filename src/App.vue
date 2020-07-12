@@ -14,7 +14,7 @@ import AboutCompany from "./components/Information/AboutCompany";
 import Catalog from "./components/Catalog/Catalog";
 import ProductPage from "./components/Product/ProductPage";
 
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "App",
@@ -27,6 +27,12 @@ export default {
   },
   computed: {
     ...mapGetters(["getCurrentPage"])
+  },
+  methods:{
+    ...mapMutations(['closeCatalogStructure'])
+  },
+  created(){
+    document.addEventListener('click', (event) => this.closeCatalogStructure(event));
   }
 };
 </script>
