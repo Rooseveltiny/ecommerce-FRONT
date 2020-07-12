@@ -29,10 +29,10 @@ export default {
     ...mapGetters(["getCurrentPage"])
   },
   methods:{
-    ...mapMutations(['closeCatalogStructure'])
+    ...mapMutations(['closeCatalogStructureGeneral'])
   },
   created(){
-    document.addEventListener('click', (event) => this.closeCatalogStructure(event));
+    document.addEventListener('click', (event) => this.closeCatalogStructureGeneral(event));
   }
 };
 </script>

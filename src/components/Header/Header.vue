@@ -26,7 +26,7 @@
             </div>
             <div class="catalog">
               <div
-                @click="changeCurrentPage('Catalog'); showCatalogStructure()"
+                @click="showCatalogStructure; changeCurrentPage('Catalog')"
                 class="catalog_inner non-select"
                 :class="{active: getCatalogStructureVision}"
                 id="CatalogStructure"

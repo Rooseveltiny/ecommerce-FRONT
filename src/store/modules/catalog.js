@@ -16,12 +16,13 @@ export default {
         },
         showCatalogStructure(state) {
             state.CatalogStructureVisible = !state.CatalogStructureVisible;
-        },
-        closeCatalogStructure(state, event) {
+        },       
+        closeCatalogStructureGeneral(state, event) {
             let el = event.srcElement.id;
-            state.CatalogStructureVisible = (el == 'CatalogStructure' ||
-            el == "CatalogStructureInner" ||
-            el == "CatalogStructureInnerBlock") ? true : false;
+            state.CatalogStructureVisible = (
+                el == 'CatalogStructure' ||
+                el == "CatalogStructureInner" ||
+                el == "CatalogStructureInnerBlock") ? true : false;
         }
     },
     state() {

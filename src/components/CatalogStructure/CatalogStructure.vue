@@ -43,6 +43,7 @@ export default {};
   border-radius: 0 0 7px 7px;
   padding-right: 0;
   width: calc(100% * 2.5);
+  z-index: 1000;
 }
 
 .catalog_shadow_box {
@@ -53,6 +54,7 @@ export default {};
 
 .catalog_item {
   padding: 10px 5px;
+  padding-left: 15px;
   padding-right: 20px;
 }
 
