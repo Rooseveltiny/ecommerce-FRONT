@@ -37,7 +37,7 @@ import { mapActions, mapGetters, mapMutations } from "vuex";
 
 export default {
   methods: {
-    ...mapMutations(['changeCurrentPage']),
+    ...mapMutations(["changeCurrentPage"]),
     ...mapActions(["fetchProducts"])
   },
   async mounted() {
