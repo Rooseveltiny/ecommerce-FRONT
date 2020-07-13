@@ -1,9 +1,16 @@
 <template>
-  <div id="CatalogStructureInner" class="catalog_structure catalog_shadow_box main_block_style main_block_style-less">
+  <div
+    id="CatalogStructureInner"
+    class="catalog_structure-main_page catalog_shadow_box main_block_style main_block_style-less"
+    :class="{'catalog_structure-main': getCurrentPage == 'MainPage', 'catalog_structure-mini': getCurrentPage != 'MainPage'}">
     <div class="catalog_structure_inner">
+      <div class="catalog_main_title">Каталог</div>
       <div class="catalog_item">
         Профнастил
-        <div id="CatalogStructureInnerBlock" class="catalog_side_block main_block_style main_block_style-less">
+        <div
+          id="CatalogStructureInnerBlock"
+          class="catalog_side_block main_block_style main_block_style-less"
+        >
           <div class="catalog_items_side">
             <div class="catalog_item_side_title">Профнастилы</div>
             <div class="catalog_item_side">Профанстил С-8</div>
@@ -32,11 +39,16 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters } from 'vuex';
+export default {
+  computed: {
+    ...mapGetters(['getCurrentPage'])
+  }
+};
 </script>
 
 <style scoped>
-.catalog_structure {
+.catalog_structure-mini {
   position: absolute;
   top: 57px;
   left: -150px;
@@ -44,6 +56,16 @@ export default {};
   padding-right: 0;
   width: calc(100% * 2.5);
   z-index: 1000;
+}
+
+.catalog_structure-main {
+  width: 25%;
+  padding-right: 0;
+}
+
+.catalog_main_title{
+  font-size: 20px;
+  text-align: center;
 }
 
 .catalog_shadow_box {
@@ -74,13 +96,13 @@ export default {};
   visibility: hidden;
   position: absolute;
   top: -14px;
-  /* min-width: calc(100% * 2); */
+  min-width: calc(100% * 2);
   left: calc(100% + 10px);
   transition: visibility 0.2s;
   z-index: 1000;
 }
 
-.catalog_items_side{
+.catalog_items_side {
 }
 
 .catalog_side_block:hover {
@@ -92,13 +114,11 @@ export default {};
   text-align: center;
 }
 
-.catalog_item_side{
-    padding: 0 15px;
+.catalog_item_side {
+  padding: 0 15px;
 }
 
-.catalog_item_side:hover{
-    background-color: #fc0;
+.catalog_item_side:hover {
+  background-color: #fc0;
 }
-
-
 </style>

@@ -24,7 +24,7 @@
             <div @click="changeCurrentPage('MainPage')" class="logo">
               <img height="40px" :src="require('../../assets/logo/logo.svg')" alt />
             </div>
-            <div class="catalog">
+            <div class="catalog" v-if="getCurrentPage != 'MainPage'">
               <div
                 @click="showCatalogStructureComponentMethod(); changeCurrentPage('Catalog')"
                 class="catalog_inner non-select"
@@ -50,7 +50,7 @@
 
 <script>
 import { mapMutations, mapGetters } from "vuex";
-import CatalogStructure from "../CatalogStructure/CatalogStructureMini";
+import CatalogStructure from "../CatalogStructure/CatalogStructure";
 
 export default {
   methods: {
@@ -60,7 +60,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["getCatalogStructureVision"])
+    ...mapGetters(["getCatalogStructureVision", "getCurrentPage"])
   },
   components: { CatalogStructure }
 };
@@ -74,6 +74,7 @@ export default {
 /* NAV */
 
 .nav {
+
 }
 
 .nav_link {

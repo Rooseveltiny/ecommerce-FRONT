@@ -1,20 +1,17 @@
 <template>
-  
-<div>
-    <CatalogStructureMain />
-</div>
-
+  <div>
+    <div class="container">
+      <CatalogStructure />
+    </div>
+  </div>
 </template>
 
 <script>
-
-import CatalogStructureMain from '../CatalogStructure/CatalogStructureMain'
+import CatalogStructure from "../CatalogStructure/CatalogStructure";
 export default {
-    components: { CatalogStructureMain }
-}
-
+  components: { CatalogStructure }
+};
 </script>
 
 <style scoped>
-
 </style>
