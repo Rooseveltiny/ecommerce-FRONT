@@ -21,7 +21,7 @@
       <div class="container">
         <div class="bottom_header_inner">
           <div class="bottom_header_left">
-            <div @click="changeCurrentPage('Main')" class="logo">
+            <div @click="changeCurrentPage('MainPage')" class="logo">
               <img height="40px" :src="require('../../assets/logo/logo.svg')" alt />
             </div>
             <div class="catalog">
@@ -50,7 +50,7 @@
 
 <script>
 import { mapMutations, mapGetters } from "vuex";
-import CatalogStructure from "../CatalogStructure/CatalogStructure";
+import CatalogStructure from "../CatalogStructure/CatalogStructureMini";
 
 export default {
   methods: {

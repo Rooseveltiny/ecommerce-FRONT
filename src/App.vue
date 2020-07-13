@@ -13,6 +13,7 @@ import Contacts from "./components/Contacts/Contacts.vue";
 import AboutCompany from "./components/Information/AboutCompany";
 import Catalog from "./components/Catalog/Catalog";
 import ProductPage from "./components/Product/ProductPage";
+import MainPage from "./components/MainPage/MainPage";
 
 import { mapGetters, mapMutations } from "vuex";
 
@@ -23,16 +24,19 @@ export default {
     Contacts,
     AboutCompany,
     Catalog,
-    ProductPage
+    ProductPage,
+    MainPage
   },
   computed: {
     ...mapGetters(["getCurrentPage"])
   },
-  methods:{
-    ...mapMutations(['closeCatalogStructureGeneral'])
+  methods: {
+    ...mapMutations(["closeCatalogStructureGeneral"])
   },
-  created(){
-    document.addEventListener('click', (event) => this.closeCatalogStructureGeneral(event));
+  created() {
+    document.addEventListener("click", event =>
+      this.closeCatalogStructureGeneral(event)
+    );
   }
 };
 </script>
@@ -76,7 +80,7 @@ h6 {
 
 .component-fade-enter-active,
 .component-fade-leave-active {
-  transition: opacity .2s ease;
+  transition: opacity 0.2s ease;
 }
 .component-fade-enter, .component-fade-leave-to
 /* .component-fade-leave-active до версии 2.1.8 */ {
