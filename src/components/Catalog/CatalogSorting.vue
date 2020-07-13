@@ -6,6 +6,7 @@
       class="currentSorting"
       style="cursor: pointer"
     >{{getCurrentSortingType}}</span>
+    <transition name="bounce">
     <div v-show="showSortingsBlock" class="main_block_style main_block_style-less sorting_list">
       <div
         v-for="sorting in getAllSortingTypes"
@@ -14,6 +15,7 @@
         @click="updateSorting(sorting)"
       >{{sorting}}</div>
     </div>
+    </transition>
   </div>
 </template>
 

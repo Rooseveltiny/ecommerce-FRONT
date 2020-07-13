@@ -1,4 +1,4 @@
 
 
 1. add filter html code
-2. 
+2. fix closing catalog structure by btn

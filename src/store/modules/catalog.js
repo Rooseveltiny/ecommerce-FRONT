@@ -17,7 +17,7 @@ export default {
         showCatalogStructure(state, event) {
             console.log(event);
             state.CatalogStructureVisible = !state.CatalogStructureVisible;
-        },       
+        },
         closeCatalogStructureGeneral(state) {
             let el = event.srcElement.id;
             state.CatalogStructureVisible = (
@@ -35,7 +35,60 @@ export default {
             productsList: {
                 products: []
             },
-            CatalogStructureVisible: false
+            CatalogStructureVisible: false,
+            filters: [
+                {
+                    name: 'Цвет',
+                    parameters: [
+                        {
+                            value: 'Красный',
+                            choosen: false
+                        },
+                        {
+                            value: 'Синий',
+                            choosen: false
+                        },
+                        {
+                            value: 'Коричневый',
+                            choosen: false
+                        }
+                    ]
+                },
+                {
+                    name: 'Покрытие',
+                    parameters: [
+                        {
+                            value: 'Стальной бархат',
+                            choosen: false
+                        },
+                        {
+                            value: 'Полимерное',
+                            choosen: false
+                        },
+                        {
+                            value: 'Printech',
+                            choosen: false
+                        }
+                    ]
+                },
+                {
+                    name: 'Толщина',
+                    parameters: [
+                        {
+                            value: 0.5,
+                            choosen: false
+                        },
+                        {
+                            value: 0.45,
+                            choosen: false
+                        },
+                        {
+                            value: 0.4,
+                            choosen: false
+                        }
+                    ]
+                }
+            ]
         }
     },
     getters: {
@@ -53,6 +106,9 @@ export default {
         },
         getCatalogStructureVision(state) {
             return state.CatalogStructureVisible;
+        },
+        getAllFilters(state){
+            return state.filters;
         }
     }
 }
