@@ -42,15 +42,12 @@ export default {
                     parameters: [
                         {
                             value: 'Красный',
-                            choosen: false
                         },
                         {
                             value: 'Синий',
-                            choosen: false
                         },
                         {
                             value: 'Коричневый',
-                            choosen: false
                         }
                     ]
                 },
@@ -88,7 +85,8 @@ export default {
                         }
                     ]
                 }
-            ]
+            ],
+            choosenFilterParameters: []
         }
     },
     getters: {
@@ -109,6 +107,9 @@ export default {
         },
         getAllFilters(state){
             return state.filters;
+        },
+        getAllChoosenFilterParameters(state){
+            return state.choosenFilterParameters;
         }
     }
 }
