@@ -1,7 +1,7 @@
 <template>
   <div
     id="CatalogStructureInner"
-    class="catalog_structure-main_page catalog_shadow_box main_block_style main_block_style-less"
+    class="catalog_shadow_box non-select main_block_style main_block_style-less"
     :class="{'catalog_structure-main': getCurrentPage == 'MainPage', 'catalog_structure-mini': getCurrentPage != 'MainPage'}">
     <div class="catalog_structure_inner">
       <div class="catalog_main_title">Каталог</div>
@@ -13,7 +13,7 @@
         >
           <div class="catalog_items_side">
             <div class="catalog_item_side_title">Профнастилы</div>
-            <div class="catalog_item_side">Профанстил С-8</div>
+            <div @click="changeCurrentPage('Catalog')" class="catalog_item_side">Профанстил С-8</div>
             <div class="catalog_item_side">Профанстил С-10</div>
             <div class="catalog_item_side">Профанстил С-21</div>
           </div>
@@ -39,15 +39,19 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 export default {
   computed: {
     ...mapGetters(['getCurrentPage'])
+  },
+  methods: {
+    ...mapMutations(['changeCurrentPage'])
   }
 };
 </script>
 
 <style scoped>
+
 .catalog_structure-mini {
   position: absolute;
   top: 57px;
@@ -59,6 +63,7 @@ export default {
 }
 
 .catalog_structure-main {
+  cursor: pointer;
   width: 25%;
   padding-right: 0;
 }

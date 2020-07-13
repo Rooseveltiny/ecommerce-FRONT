@@ -37,6 +37,16 @@ export default {
         this.updateSortingCatalog(sorting);
         this.showSortingsBlock = false;
     }
+  },
+  mounted(){
+    if (localStorage.currentCatalogSorting){
+      this.updateSortingCatalog(localStorage.currentCatalogSorting);
+    }
+  },
+  watch: {
+    getCurrentSortingType(newSorting){
+      localStorage.currentCatalogSorting = newSorting;
+    }
   }
 };
 </script>

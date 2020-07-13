@@ -2,9 +2,9 @@
   <div class="catalog_main">
     <div class="container">
       <div class="catalog_inner">
-        <div class="navigation main_block_style main_block_style-less" style="margin-bottom: 0">
-          <NavigationChain />
-        </div>
+        <!-- <div class="navigation main_block_style main_block_style-less" style="margin-bottom: 0"> -->
+          <!-- <NavigationChain /> -->
+        <!-- </div> -->
         <div class="filter_items_pagination">
           <div class="filter main_block_style-right_margin main_block_style main_block_style-less">
             <CatalogFilter />
@@ -34,7 +34,7 @@ import CatalogItems from "./CatalogItems";
 import CatalogPagination from "./CatalogPagination";
 import CatalogSorting from "./CatalogSorting";
 import CatalogFilter from "./CatalogFilter";
-import NavigationChain from "../Generals/NavigationChain";
+// import NavigationChain from "../Generals/NavigationChain";
 import { mapGetters } from 'vuex';
 
 export default {
@@ -45,8 +45,8 @@ export default {
     CatalogItems,
     CatalogPagination,
     CatalogFilter,
-    CatalogSorting,
-    NavigationChain
+    CatalogSorting
+    // NavigationChain
   }
 };
 </script>
@@ -73,6 +73,7 @@ export default {
 
 .pagination {
   margin: 0 auto;
+  padding: 10px 15px;
 }
 
 .catalog_main{

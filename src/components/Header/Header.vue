@@ -24,15 +24,19 @@
             <div @click="changeCurrentPage('MainPage')" class="logo">
               <img height="40px" :src="require('../../assets/logo/logo.svg')" alt />
             </div>
+
+            <transition name="bounce">
             <div class="catalog" v-if="getCurrentPage != 'MainPage'">
               <div
-                @click="showCatalogStructureComponentMethod(); changeCurrentPage('Catalog')"
+                @click="showCatalogStructureComponentMethod()"
                 class="catalog_inner non-select"
                 :class="{active: getCatalogStructureVision}"
                 id="CatalogStructure"
               >Каталог</div>
               <CatalogStructure v-show="getCatalogStructureVision" />
             </div>
+            </transition>
+
           </div>
           <div class="bottom_header_right">
             <div class="search">
