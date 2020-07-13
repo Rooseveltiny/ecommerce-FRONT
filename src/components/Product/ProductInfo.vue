@@ -13,24 +13,16 @@
     </div>
     <div class="section main_block_style main_block_style-less">
       <div class="section_inner" v-if="currentSection === 'Описание'">{{product.discription}}</div>
-      <div
-        class="section_inner"
-        v-if="currentSection === 'Характеристики'"
-      >
-      
-      <div class="chars_block">
-
-        <div v-for="char in product.characteristics" :key="char" class="char_item">
-          <div class="char_name">
-            {{Object.keys(char)[0]}}
-          <span class="dots"></span></div>
-          <div class="char_value">
-            {{Object.values(char)[0]}}
+      <div class="section_inner" v-if="currentSection === 'Характеристики'">
+        <div class="chars_block">
+          <div v-for="char in product.characteristics" :key="char" class="char_item">
+            <div class="char_name">
+              {{Object.keys(char)[0]}}
+              <span class="dots"></span>
+            </div>
+            <div class="char_value">{{Object.values(char)[0]}}</div>
           </div>
         </div>
-
-      </div>
-      
       </div>
       <div class="section_inner" v-if="currentSection === 'Файлы'">{{product.category}}</div>
     </div>
@@ -82,9 +74,9 @@ export default {
   position: relative;
 }
 
-.section_item-selected:after{
+.section_item-selected:after {
   position: absolute;
-  content: '';
+  content: "";
   display: block;
   height: 100%;
   width: 3px;
@@ -94,30 +86,29 @@ export default {
 }
 
 /* chars */
-.chars_block{
+.chars_block {
   width: 100%;
 }
 
-.char_item{
+.char_item {
   display: flex;
   justify-content: space-between;
   padding: 5px 0;
 }
 
-.dots{
+.dots {
   border-bottom: 1px dotted rgb(145, 145, 145);
   width: 100%;
   margin: 7px;
 }
 
-.char_name{
+.char_name {
   width: 50%;
   display: flex;
   white-space: nowrap;
 }
 
-.char_value{
+.char_value {
   width: 50%;
 }
-
 </style>
