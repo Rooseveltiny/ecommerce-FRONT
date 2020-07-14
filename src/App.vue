@@ -119,13 +119,6 @@ h6 {
   overflow-wrap: break-word;
 }
 
-.main_title {
-  margin: 0 auto 30px auto;
-  font-size: 20px;
-  text-align: center;
-  /* padding-top: 30px; */
-}
-
 .main_block_style {
   border-radius: 7px;
   background-color: #fff;
@@ -167,4 +160,13 @@ h6 {
   background: #a5a2a2;
   border-radius: 5px;
 }
+
+.main_title{
+  text-align: left;
+  padding-top: 30px;
+  font-size: 25px;
+  color: #666;
+   margin: 0 auto 10px auto;
+}
+
 </style>
