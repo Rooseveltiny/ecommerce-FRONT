@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="filter_inner">
+    <div class="filter_inner non-select">
       <div class="filter_title">Поиск по свойствам</div>
       <div v-for="filter in getAllFilters" :key="filter.name" class="filter_item">
         <div class="filter_name">{{filter.name}}</div>
@@ -72,15 +72,17 @@ export default {
   padding: 7px 25px;
   background-color: #fc0;
   font-size: 20px;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
+  position: relative;
+  
 }
 
-.filter_btn:hover{
-    background-color: #ffe373;
+.filter_btn:hover {
+  background-color: #ffe373;
 }
 
-.filter_btn:focus{
-    outline: none;
+.filter_btn:focus {
+  outline: none;
 }
 
 </style>
