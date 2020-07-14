@@ -1,9 +1,16 @@
 <template>
   <div id="app">
-    <Header />
-    <transition name="component-fade" mode="out-in">
-      <component :is="getCurrentPage"></component>
-    </transition>
+    <div class="page">
+      <Header />
+      <div class="content">
+        <transition name="component-fade" mode="out-in">
+          <component :is="getCurrentPage"></component>
+        </transition>
+      </div>
+      <div class="footer">
+        <Footer />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -11,9 +18,11 @@
 import Header from "./components/Header/Header.vue";
 import Contacts from "./components/Contacts/Contacts.vue";
 import AboutCompany from "./components/Information/AboutCompany";
+import AboutProject from "./components/Information/AboutProject";
 import Catalog from "./components/Catalog/Catalog";
 import ProductPage from "./components/Product/ProductPage";
 import MainPage from "./components/MainPage/MainPage";
+import Footer from "./components/Footer/Footer";
 
 import { mapGetters, mapMutations } from "vuex";
 
@@ -25,7 +34,9 @@ export default {
     AboutCompany,
     Catalog,
     ProductPage,
-    MainPage
+    MainPage,
+    Footer,
+    AboutProject
   },
   computed: {
     ...mapGetters(["getCurrentPage"])
@@ -42,6 +53,10 @@ export default {
 </script>
 
 <style>
+.footer {
+  margin-top: auto;
+}
+
 body {
   font-family: "PT Sans", "Helvetica", "Arial", sans-serif;
   font-size: 15px;
@@ -53,6 +68,9 @@ body {
 }
 .page {
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 hr {
   display: block;
@@ -88,10 +106,10 @@ h6 {
 }
 
 .bounce-enter-active {
-  animation: bounce-in .5s;
+  animation: bounce-in 0.5s;
 }
 .bounce-leave-active {
-  animation: bounce-in .5s reverse;
+  animation: bounce-in 0.5s reverse;
 }
 @keyframes bounce-in {
   0% {
@@ -161,12 +179,11 @@ h6 {
   border-radius: 5px;
 }
 
-.main_title{
+.main_title {
   text-align: left;
   padding-top: 30px;
   font-size: 25px;
   color: #666;
-   margin: 0 auto 10px auto;
+  margin: 0 auto 10px auto;
 }
-
 </style>
