@@ -74,8 +74,17 @@ export default {};
 }
 
 .contact_item {
-  padding: 10px 0;
+  padding: 10px 10px;
   border-bottom: 1px dotted rgb(199, 199, 199);
+  transition-duration: .7s;
+}
+
+.contact_item:hover{
+  background-color: rgb(255, 246, 212);
+}
+
+.contact_item:last-child{
+  border-bottom: none;
 }
 
 .contact_underline {
