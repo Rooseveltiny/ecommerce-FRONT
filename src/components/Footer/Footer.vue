@@ -19,7 +19,7 @@
           </div>
           <div class="footer--right_col">
             <div class="footer--right_col_inner">
-              <div class="logo">
+              <div @click="changeCurrentPage('MainPage')" class="logo">
                 <img height="40px" :src="require('../../assets/logo/logo.svg')" alt />
               </div>
             </div>

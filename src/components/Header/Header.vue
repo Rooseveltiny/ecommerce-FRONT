@@ -181,15 +181,19 @@ export default {
   height: 30px;
   width: 100%;
   border-width: 0.1px;
-  border-radius: 3px;
+  /* border-radius: 3px; */
   padding-left: 7px;
+  transition-duration: .5s;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
 .search_input:focus,
 .search_input:active {
   outline: none;
   outline-offset: none;
-  border: 1px solid #fc0;
+  border-bottom: 1px solid #fc0;
 }
 
 .search {
