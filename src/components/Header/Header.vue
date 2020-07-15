@@ -181,7 +181,6 @@ export default {
   height: 30px;
   width: 100%;
   border-width: 0.1px;
-  /* border-radius: 3px; */
   padding-left: 7px;
   transition-duration: .5s;
   border-top: none;
