@@ -9,6 +9,7 @@
                 <span class="nav_link">Череповец</span>
                 <span class="nav_link">8(8202)265-265</span>
                 <span @click="changeCurrentPage('/contacts')" class="nav_link">Контакты</span>
+                <!-- <span @click="router.push('contacts')" class="nav_link">Контакты</span> -->
                 <span @click="changeCurrentPage('/about_company')" class="nav_link">О компании</span>
                 <span @click="changeCurrentPage('/about_project')" class="nav_link">Проект</span>
               </div>
@@ -22,7 +23,7 @@
       <div class="container">
         <div class="bottom_header_inner">
           <div class="bottom_header_left">
-            <div @click="changeCurrentPage('MainPage')" class="logo">
+            <div @click="changeCurrentPage('/')" class="logo">
               <img height="40px" :src="require('../../assets/logo/logo.svg')" alt />
             </div>
 

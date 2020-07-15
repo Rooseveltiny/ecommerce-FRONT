@@ -1,17 +1,21 @@
+import router from '../../router/router'
+
 export default {
     actions: {},
     mutations: {
-        changeCurrentPage(page){
+        changeCurrentPage(state, page){
             // state.currentPage = page;
-            this.$router.push(page)
+            // state.currentPage = page;
+            router.push(page);
         }
     },
     state() {
-        return {currentPage: 'Contacts'}
+        // return {currentPage: '/contacts'}
     },
     getters: {
-        getCurrentPage(state){
-            return state.currentPage
+        getCurrentPage(){
+            console.log(router.currentRoute);
+            return router.currentRoute.name;
         }
     }
 }
