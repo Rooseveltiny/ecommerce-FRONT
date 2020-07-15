@@ -65,7 +65,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["getCatalogStructureVision"])
+    ...mapGetters(["getCatalogStructureVision", "getCurrentPage"])
   },
   components: { CatalogStructure }
 };
