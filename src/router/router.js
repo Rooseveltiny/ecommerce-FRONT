@@ -11,42 +11,41 @@ import ProductPage from "../components/Product/ProductPage";
 Vue.use(Router)
 
 let router = new Router({
-    // mode: 'history',
     routes: [
         {
             path: '/',
-            name: 'mainPage',
+            name: 'MainPage',
             component: MainPage
         },
         {
             path: '/catalog',
-            name: 'catalog',
+            name: 'Catalog',
             component: Catalog
 
         },
         {
             path: '/contacts',
-            name: 'contacts',
+            name: 'Contacts',
             component: Contacts
 
         },
         {
             path: '/about_company',
-            name: 'about_company',
+            name: 'AboutCompany',
             component: AboutCompany
 
         },
         {
             path: '/about_project',
-            name: 'about_project',
+            name: 'AboutProject',
             component: AboutProject
 
         },
         {
             path: '/product',
-            name: 'product',
+            name: 'Product',
             component: ProductPage
-        }
+        },
     ]
 })
 

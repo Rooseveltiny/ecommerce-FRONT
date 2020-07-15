@@ -16,12 +16,6 @@
 
 <script>
 import Header from "./components/Header/Header.vue";
-// import Contacts from "./components/Contacts/Contacts.vue";
-// import AboutCompany from "./components/Information/AboutCompany";
-// import AboutProject from "./components/Information/AboutProject";
-// import Catalog from "./components/Catalog/Catalog";
-// import ProductPage from "./components/Product/ProductPage";
-// import MainPage from "./components/MainPage/MainPage";
 import Footer from "./components/Footer/Footer";
 
 import { mapGetters, mapMutations } from "vuex";
@@ -30,19 +24,13 @@ export default {
   name: "App",
   components: {
     Header,
-    // Contacts,
-    // AboutCompany,
-    // Catalog,
-    // ProductPage,
-    // MainPage,
     Footer
-    // AboutProject
   },
   computed: {
     ...mapGetters(["getCurrentPage"])
   },
   methods: {
-    ...mapMutations(["closeCatalogStructureGeneral"])
+    ...mapMutations(["closeCatalogStructureGeneral", 'setCurrentPage'])
   },
   created() {
     document.addEventListener("click", event =>
