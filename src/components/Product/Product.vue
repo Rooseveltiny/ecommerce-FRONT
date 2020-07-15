@@ -6,7 +6,7 @@
     <div class="product_info">
       <div class="product_info_inner">
         <div class="product_price">{{product.price}} ₽/{{product.unit}}</div>
-        <div class="characteristic">{{product.characteristic}}</div>
+        <div class="characteristic">{{product.detail}}</div>
         <div class="balance">Остаток на складе: {{product.balance}}{{product.unit}}</div>
         <div class="characteristic"></div>
       </div>
@@ -18,11 +18,17 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
+  methods:{
+    ...mapActions(['fetchProduct'])
+  },
   computed: {
     ...mapGetters(["product"])
+  },
+  mounted(){
+    this.fetchProduct()
   }
 };
 </script>

@@ -2,7 +2,7 @@
 export default {
     actions: {
         async fetchProducts({ commit }) {
-            const res = await fetch(`http://localhost:3000/products/`);
+            const res = await fetch(`http://127.0.0.1:8000/api/v1/shop/products/all`);
             const products = await res.json();
             commit('updateProducts', products);
         }
@@ -14,8 +14,7 @@ export default {
         updateProducts(state, products) {
             state.productsList.products = products;
         },
-        showCatalogStructure(state, event) {
-            console.log(event);
+        showCatalogStructure(state) {
             state.CatalogStructureVisible = !state.CatalogStructureVisible;
         },
         closeCatalogStructureGeneral(state) {

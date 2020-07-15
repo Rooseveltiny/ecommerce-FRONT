@@ -3,7 +3,7 @@
     <div class="container">
       <div class="title_main">
         <div class="title">{{product.title}}</div>
-        <div class="article">Артикул: {{product.id}}</div>
+        <div class="article">Артикул: {{product.link}}</div>
       </div>
       <div class="product main_block_style main_block_style-less" style="margin-bottom: 0">
         <Product />
@@ -27,7 +27,7 @@ export default {
   methods: {
     ...mapActions(["fetchProduct"])
   },
-  mounted() {
+  async mounted() {
     this.fetchProduct();
   }
 };

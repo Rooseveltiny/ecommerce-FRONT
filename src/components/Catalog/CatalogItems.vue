@@ -10,19 +10,19 @@
       </div>
       <div class="product_info">
         <div class="product_title">
-          <div @click="changeCurrentPage('ProductPage')" class="title">{{product.title}}</div>
+          <div @click="updateCurrentProductUuid(product.link); changeCurrentPage('ProductPage')" class="title">{{product.title}}</div>
           <div class="price">
             <div class="product_price">{{product.price}} ₽/</div>
-            <div class="product_unit">{{product.unit}}</div>
+            <div class="product_unit">{{product.unit_of_measurement}}</div>
           </div>
         </div>
-        <div class="product_characteristic">{{product.characteristic}}</div>
+        <div class="product_characteristic">{{product.detail[0]}}</div>
         <div class="product_info_inner">
           <div class="balance">
             На складе
             <div class="balance_style">
               <div class="product_balance">{{product.balance}}</div>
-              <div class="product_unit">{{product.unit}}</div>
+              <div class="product_unit">{{product.unit_of_measurement}}</div>
             </div>
           </div>
           <button class="buy_btn">В корзину</button>
@@ -37,7 +37,7 @@ import { mapActions, mapGetters, mapMutations } from "vuex";
 
 export default {
   methods: {
-    ...mapMutations(["changeCurrentPage"]),
+    ...mapMutations(["changeCurrentPage", "updateCurrentProductUuid"]),
     ...mapActions(["fetchProducts"])
   },
   async mounted() {

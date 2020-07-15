@@ -1,14 +1,17 @@
 export default {
     actions: {
-        async fetchProduct({ commit }) {
-            const res = await fetch(`http://localhost:3000/currentProduct`);
+        async fetchProduct({ commit, getters }){
+            const res = await fetch(`http://127.0.0.1:8000/api/v1/shop/product/${getters.getCurrentProductUuid}`);
             const product = await res.json();
-            commit('updateProduct', product);
+            commit('updateCurrentProduct', product);
         }
     },
     mutations: {
-        updateProduct(state, product){
-            state.product = product;
+        updateCurrentProductUuid(state, uuid){
+            state.currentProduct.uuid = uuid;
+        },
+        updateCurrentProduct(state, product){
+            state.currentProduct.obj = product;
         },
         changeSection(state, section){
             state.currentSection = section;
@@ -16,18 +19,24 @@ export default {
     },
     state() {
         return {
-            product: {}
+            currentProduct: {
+                uuid: '',
+                obj: {}
+            }
         }
     },
     getters: {
         product(state){
-            return state.product
+            return state.currentProduct.obj
         },
         getCurrentSection(state){
             return state.currentSection;
         },
         getAllSections(state){
             return state.allSections
+        },
+        getCurrentProductUuid(state){
+            return state.currentProduct.uuid;
         }
     }
 }
