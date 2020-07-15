@@ -3,9 +3,9 @@
     <div class="page">
       <Header />
       <div class="content">
-        <transition name="component-fade" mode="out-in">
-          <component :is="getCurrentPage"></component>
-        </transition>
+          <transition name="component-fade" mode="out-in">
+      <router-view></router-view>
+          </transition>
       </div>
       <div class="footer">
         <Footer />
@@ -16,12 +16,12 @@
 
 <script>
 import Header from "./components/Header/Header.vue";
-import Contacts from "./components/Contacts/Contacts.vue";
-import AboutCompany from "./components/Information/AboutCompany";
-import AboutProject from "./components/Information/AboutProject";
-import Catalog from "./components/Catalog/Catalog";
-import ProductPage from "./components/Product/ProductPage";
-import MainPage from "./components/MainPage/MainPage";
+// import Contacts from "./components/Contacts/Contacts.vue";
+// import AboutCompany from "./components/Information/AboutCompany";
+// import AboutProject from "./components/Information/AboutProject";
+// import Catalog from "./components/Catalog/Catalog";
+// import ProductPage from "./components/Product/ProductPage";
+// import MainPage from "./components/MainPage/MainPage";
 import Footer from "./components/Footer/Footer";
 
 import { mapGetters, mapMutations } from "vuex";
@@ -30,13 +30,13 @@ export default {
   name: "App",
   components: {
     Header,
-    Contacts,
-    AboutCompany,
-    Catalog,
-    ProductPage,
-    MainPage,
-    Footer,
-    AboutProject
+    // Contacts,
+    // AboutCompany,
+    // Catalog,
+    // ProductPage,
+    // MainPage,
+    Footer
+    // AboutProject
   },
   computed: {
     ...mapGetters(["getCurrentPage"])

@@ -1,8 +1,9 @@
 export default {
     actions: {},
     mutations: {
-        changeCurrentPage(state, page){
-            state.currentPage = page;
+        changeCurrentPage(page){
+            // state.currentPage = page;
+            this.$router.push(page)
         }
     },
     state() {
