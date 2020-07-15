@@ -3,9 +3,9 @@
     <div class="page">
       <Header />
       <div class="content">
-        <transition name="component-fade" mode="out-in">
-          <router-view></router-view>
-        </transition>
+          <transition name="component-fade" mode="out-in">
+      <router-view></router-view>
+          </transition>
       </div>
       <div class="footer">
         <Footer />
@@ -30,7 +30,7 @@ export default {
     ...mapGetters(["getCurrentPage"])
   },
   methods: {
-    ...mapMutations(["closeCatalogStructureGeneral", "setCurrentPage"])
+    ...mapMutations(["closeCatalogStructureGeneral", 'setCurrentPage'])
   },
   created() {
     document.addEventListener("click", event =>

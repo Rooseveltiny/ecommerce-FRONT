@@ -27,7 +27,7 @@
             </div>
 
             <transition name="bounce">
-            <div class="catalog" v-if="$route.name != 'MainPage'">
+            <div class="catalog" v-if="getCurrentPage != 'MainPage'">
               <div
                 @click="showCatalogStructureComponentMethod()"
                 class="catalog_inner non-select"
@@ -37,6 +37,7 @@
               <CatalogStructure v-show="getCatalogStructureVision" />
             </div>
             </transition>
+
           </div>
           <div class="bottom_header_right">
             <div class="search">
