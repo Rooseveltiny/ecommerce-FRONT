@@ -2,7 +2,7 @@
   <div
     id="CatalogStructureInner"
     class="catalog_shadow_box non-select main_block_style main_block_style-less"
-    :class="{'catalog_structure-main': getCurrentPage == 'MainPage', 'catalog_structure-mini': getCurrentPage != 'MainPage'}">
+    :class="{'catalog_structure-main': $route.name == 'MainPage', 'catalog_structure-mini': $route.name != 'MainPage'}">
     <div class="catalog_structure_inner">
       <div class="catalog_main_title">Каталог</div>
       <div class="catalog_item">
