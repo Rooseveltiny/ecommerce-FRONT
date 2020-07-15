@@ -12,15 +12,15 @@
       </div>
     </div>
     <div class="section main_block_style main_block_style-less">
-      <div class="section_inner" v-if="currentSection === 'Описание'">{{product.discription}}</div>
+      <div class="section_inner" v-if="currentSection === 'Описание'">{{product.description}}</div>
       <div class="section_inner" v-if="currentSection === 'Характеристики'">
         <div class="chars_block">
-          <div v-for="char in product.characteristics" :key="char" class="char_item">
+          <div v-for="char in product.detail" :key="char" class="char_item">
             <div class="char_name">
-              {{Object.keys(char)[0]}}
+              {{char.detail_group}}
               <span class="dots"></span>
             </div>
-            <div class="char_value">{{Object.values(char)[0]}}</div>
+            <div class="char_value">{{char.title}}</div>
           </div>
         </div>
       </div>
