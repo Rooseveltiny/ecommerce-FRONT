@@ -28,7 +28,7 @@ export default {
   },
   computed: {},
   methods: {
-    ...mapMutations(["closeCatalogStructureGeneral", "setCurrentPage"])
+    ...mapMutations(["closeCatalogStructureGeneral"])
   },
   created() {
     document.addEventListener("click", event =>
