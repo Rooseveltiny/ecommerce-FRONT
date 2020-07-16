@@ -5,6 +5,11 @@ export default {
             const res = await fetch(`http://127.0.0.1:8000/api/v1/shop/products/all`);
             const products = await res.json();
             commit('updateProducts', products);
+        }, 
+        async fetchCatalogStructure({ commit }) {
+            const res = await fetch(`http://127.0.0.1:8000/api/v1/shop/categories`);
+            const categories = await res.json();
+            commit('updateCategories', categories);
         }
     },
     mutations: {
@@ -14,6 +19,9 @@ export default {
         updateProducts(state, products) {
             state.productsList.products = products;
         },
+        updateCategories(state, categories){
+            state.categories = categories;
+        },  
         showCatalogStructure(state) {
             state.CatalogStructureVisible = !state.CatalogStructureVisible;
         },
@@ -34,6 +42,7 @@ export default {
             productsList: {
                 products: []
             },
+            categories: {},
             CatalogStructureVisible: false,
             filters: [
                 {
@@ -109,6 +118,9 @@ export default {
         },
         getAllChoosenFilterParameters(state){
             return state.choosenFilterParameters;
+        },
+        getCategories(state){
+            return state.categories;
         }
     }
 }
