@@ -18,7 +18,7 @@
 import Header from "./components/Header/Header.vue";
 import Footer from "./components/Footer/Footer";
 
-import { mapGetters, mapMutations } from "vuex";
+import { mapMutations } from "vuex";
 
 export default {
   name: "App",
@@ -26,9 +26,7 @@ export default {
     Header,
     Footer
   },
-  computed: {
-    ...mapGetters(["getCurrentPage"])
-  },
+  computed: {},
   methods: {
     ...mapMutations(["closeCatalogStructureGeneral", "setCurrentPage"])
   },
