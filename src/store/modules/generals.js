@@ -5,7 +5,7 @@ export default {
     mutations: {
         changeCurrentPage: function (state, page) {
             let currentPage = { name: page };
-            router.push(currentPage);
+            router.push(currentPage).catch(()=>{});
         }
     },
     state() {
