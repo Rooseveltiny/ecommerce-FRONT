@@ -27,8 +27,8 @@ export default {
   computed: {
     ...mapGetters(["product"])
   },
-  mounted(){
-    this.fetchProduct()
+  async mounted(){
+    await this.fetchProduct()
   }
 };
 </script>

@@ -15,7 +15,7 @@
       <div class="section_inner" v-if="currentSection === 'Описание'">{{product.description}}</div>
       <div class="section_inner" v-if="currentSection === 'Характеристики'">
         <div class="chars_block">
-          <div v-for="char in product.detail" :key="char" class="char_item">
+          <div v-for="(char,index) in product.detail" :key="index" class="char_item">
             <div class="char_name">
               {{char.detail_group}}
               <span class="dots"></span>
