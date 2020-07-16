@@ -42,7 +42,7 @@ let router = new Router({
 
         },
         {
-            path: '/product/:uuid',
+            path: '/catalog/product/:uuid',
             name: 'Product',
             component: ProductPage
         },

@@ -10,7 +10,7 @@
       </div>
       <div class="product_info">
         <div class="product_title">
-          <div @click="changeCurrentPage({path: `/product/${product.link}`})" class="title">{{product.title}}</div>
+          <div @click="changeCurrentPage({path: `/catalog/product/${product.link}`})" class="title">{{product.title}}</div>
           <div class="price">
             <div class="product_price">{{product.price}} ₽/</div>
             <div class="product_unit">{{product.unit_of_measurement}}</div>
