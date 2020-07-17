@@ -11,6 +11,7 @@ import ProductPage from "../components/Product/ProductPage";
 Vue.use(Router)
 
 let router = new Router({
+    mode: 'history',
     routes: [
         {
             path: '/',
@@ -18,7 +19,7 @@ let router = new Router({
             component: MainPage
         },
         {
-            path: '/catalog',
+            path: '/catalog/:slug',
             name: 'Catalog',
             component: Catalog
 

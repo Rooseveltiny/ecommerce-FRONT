@@ -1,8 +1,14 @@
+import router from '../../router/router'
 
 export default {
     actions: {
-        async fetchProducts({ commit }) {
+        async fetchProductsOld({ commit }) {
             const res = await fetch(`http://127.0.0.1:8000/api/v1/shop/products/all`);
+            const products = await res.json();
+            commit('updateProducts', products);
+        }, 
+        async fetchProducts({ commit }) {
+            const res = await fetch(`http://127.0.0.1:8000/api/v1/shop/products/category/${router.currentRoute.params.slug}`);
             const products = await res.json();
             commit('updateProducts', products);
         }, 

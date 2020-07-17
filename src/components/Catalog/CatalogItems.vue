@@ -10,7 +10,10 @@
       </div>
       <div class="product_info">
         <div class="product_title">
-          <div @click="changeCurrentPage({path: `/catalog/product/${product.link}`})" class="title">{{product.title}}</div>
+          <div
+            @click="changeCurrentPage({path: `/catalog/product/${product.link}`})"
+            class="title"
+          >{{product.title}}</div>
           <div class="price">
             <div class="product_price">{{product.price}} ₽/</div>
             <div class="product_unit">{{product.unit_of_measurement}}</div>
@@ -37,11 +40,18 @@ import { mapActions, mapGetters, mapMutations } from "vuex";
 
 export default {
   methods: {
+    async fetchCatalogItems(){
+      this.fetchProducts();
+    },
     ...mapMutations(["changeCurrentPage"]),
     ...mapActions(["fetchProducts"])
   },
-  async mounted() {
-    this.fetchProducts();
+  mounted() {
+    this.fetchCatalogItems();
+  },
+  beforeRouteEnter(next) {
+    this.fetchCatalogItems();
+    next(1);
   },
   computed: { ...mapGetters(["getProducts"]) }
 };

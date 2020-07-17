@@ -6,7 +6,6 @@
   >
     <div class="catalog_structure_inner">
       <div class="catalog_main_title">Каталог</div>
-
       <template v-for="(cat, index) in getCategories">
         <div v-if="cat.children.length" :key="index" class="catalog_item">
           {{cat.title}}
@@ -22,7 +21,7 @@
                     v-for="(childInner, index) in child.children"
                     :key="index"
                     class="catalog_item_side"
-                    @click="changeCurrentPage('Catalog')"
+                    @click="changeCurrentPage({path: `/catalog/${childInner.slug}`})"
                   >{{childInner.title}}</div>
                 </div>
               </div>
@@ -30,22 +29,6 @@
           </div>
         </div>
       </template>
-
-      <!-- <div class="catalog_item">Доборные элементы</div>
-      <div class="catalog_item">Строительные материалы</div>-->
-      <!-- <div class="catalog_item">
-        Металлочерепица
-        <div class="catalog_side_block main_block_style main_block_style-less">
-          <div class="catalog_items_side">
-            <div class="catalog_item_side_title">М/Ч</div>
-            <div class="catalog_item_side">Каскад</div>
-            <div class="catalog_item_side">Монтеррей</div>
-            <div class="catalog_item_side">Даймонд</div>
-          </div>
-        </div>
-      </div>-->
-      <!-- <div class="catalog_item">Гладкий лист</div>
-      <div class="catalog_item">Рулоны</div>-->
     </div>
   </div>
 </template>
