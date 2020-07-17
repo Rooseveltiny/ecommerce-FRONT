@@ -40,18 +40,14 @@ import { mapActions, mapGetters, mapMutations } from "vuex";
 
 export default {
   methods: {
-    async fetchCatalogItems(){
-      this.fetchProducts();
-    },
     ...mapMutations(["changeCurrentPage"]),
     ...mapActions(["fetchProducts"])
   },
-  mounted() {
-    this.fetchCatalogItems();
+  watch: {
+    '$route': 'fetchProducts'
   },
-  beforeRouteEnter(next) {
-    this.fetchCatalogItems();
-    next(1);
+  mounted() {
+    this.fetchProducts();
   },
   computed: { ...mapGetters(["getProducts"]) }
 };
