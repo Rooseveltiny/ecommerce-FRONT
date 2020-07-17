@@ -27,8 +27,8 @@
         </div>
       </div>
 
-      <div class="catalog_item">Доборные элементы</div>
-      <div class="catalog_item">Строительные материалы</div>
+      <!-- <div class="catalog_item">Доборные элементы</div>
+      <div class="catalog_item">Строительные материалы</div> -->
       <!-- <div class="catalog_item">
         Металлочерепица
         <div class="catalog_side_block main_block_style main_block_style-less">
@@ -40,8 +40,9 @@
           </div>
         </div>
       </div>-->
-      <div class="catalog_item">Гладкий лист</div>
-      <div class="catalog_item">Рулоны</div>
+      <!-- <div class="catalog_item">Гладкий лист</div>
+      <div class="catalog_item">Рулоны</div> -->
+      
     </div>
   </div>
 </template>

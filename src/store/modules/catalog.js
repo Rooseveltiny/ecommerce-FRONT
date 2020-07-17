@@ -7,7 +7,7 @@ export default {
             commit('updateProducts', products);
         }, 
         async fetchCatalogStructure({ commit }) {
-            const res = await fetch(`http://127.0.0.1:8000/api/v1/shop/categories`);
+            const res = await fetch(`http://127.0.0.1:8000/api/v1/shop/catalog_structure`);
             const categories = await res.json();
             commit('updateCategories', categories);
         }
