@@ -7,28 +7,32 @@
     <div class="catalog_structure_inner">
       <div class="catalog_main_title">Каталог</div>
 
-      <div v-for="(cat, index) in getCategories" :key="index" class="catalog_item">
-        {{cat.title}}
-        <div
-          id="CatalogStructureInnerBlock"
-          class="catalog_side_block main_block_style main_block_style-less"
-        >
-          <div v-for="(child, index) in cat.children" :key="index" class="catalog_items_side">
-            <div class="catalog_item_side_title">{{child.title}}</div>
-            <div class="catalog_items_side_inner">
-              <div
-                v-for="(childInner, index) in child.children"
-                :key="index"
-                class="catalog_item_side"
-                @click="changeCurrentPage('Catalog')"
-              >{{childInner.title}}</div>
-            </div>
+      <template v-for="(cat, index) in getCategories">
+        <div v-if="cat.children.length" :key="index" class="catalog_item">
+          {{cat.title}}
+          <div
+            id="CatalogStructureInnerBlock"
+            class="catalog_side_block main_block_style main_block_style-less"
+          >
+            <template v-for="(child, index) in cat.children">
+              <div v-if="child.children.length" class="catalog_items_side" :key="index">
+                <div class="catalog_item_side_title">{{child.title}}</div>
+                <div class="catalog_items_side_inner">
+                  <div
+                    v-for="(childInner, index) in child.children"
+                    :key="index"
+                    class="catalog_item_side"
+                    @click="changeCurrentPage('Catalog')"
+                  >{{childInner.title}}</div>
+                </div>
+              </div>
+            </template>
           </div>
         </div>
-      </div>
+      </template>
 
       <!-- <div class="catalog_item">Доборные элементы</div>
-      <div class="catalog_item">Строительные материалы</div> -->
+      <div class="catalog_item">Строительные материалы</div>-->
       <!-- <div class="catalog_item">
         Металлочерепица
         <div class="catalog_side_block main_block_style main_block_style-less">
@@ -41,8 +45,7 @@
         </div>
       </div>-->
       <!-- <div class="catalog_item">Гладкий лист</div>
-      <div class="catalog_item">Рулоны</div> -->
-      
+      <div class="catalog_item">Рулоны</div>-->
     </div>
   </div>
 </template>
