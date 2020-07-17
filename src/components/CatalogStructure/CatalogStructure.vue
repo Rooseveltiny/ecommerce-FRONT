@@ -20,6 +20,7 @@
                 v-for="(childInner, index) in child.children"
                 :key="index"
                 class="catalog_item_side"
+                @click="changeCurrentPage('Catalog')"
               >{{childInner.title}}</div>
             </div>
           </div>
@@ -123,7 +124,7 @@ export default {
   flex-wrap: wrap;
 }
 
-.catalog_items_side_inner{
+.catalog_items_side_inner {
   display: flex;
   flex-wrap: wrap;
 }
