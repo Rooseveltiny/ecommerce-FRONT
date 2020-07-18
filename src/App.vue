@@ -39,6 +39,16 @@ export default {
 </script>
 
 <style>
+a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  color: inherit;
+}
+
 .footer {
   margin-top: auto;
 }

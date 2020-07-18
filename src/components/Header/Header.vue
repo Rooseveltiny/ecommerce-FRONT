@@ -8,8 +8,8 @@
               <div class="nav-left-part">
                 <span class="nav_link">Череповец</span>
                 <span class="nav_link">8(8202)265-265</span>
-                <span @click="changeCurrentPage('Contacts')" class="nav_link">Контакты</span>
-                <span @click="changeCurrentPage('AboutCompany')" class="nav_link">О компании</span>
+                <router-link to="contacts"><span class="nav_link">Контакты</span></router-link>
+                <router-link to="about_company"><span class="nav_link">О компании</span></router-link>
               </div>
               <div class="nav-right-part">Вход/Регистрация</div>
             </div>
@@ -21,9 +21,9 @@
       <div class="container">
         <div class="bottom_header_inner">
           <div class="bottom_header_left">
-            <div @click="changeCurrentPage('MainPage')" class="logo">
+            <router-link :to="{name: 'MainPage'}"><div class="logo">
               <img height="40px" :src="require('../../assets/logo/logo.svg')" alt />
-            </div>
+            </div></router-link>
 
             <transition name="bounce">
             <div class="catalog" v-if="$route.name != 'MainPage'">
@@ -57,7 +57,7 @@ import CatalogStructure from "../CatalogStructure/CatalogStructure";
 
 export default {
   methods: {
-    ...mapMutations(["changeCurrentPage", "showCatalogStructure"]),
+    ...mapMutations(["showCatalogStructure"]),
     showCatalogStructureComponentMethod: function(){
       this.showCatalogStructure();
     }

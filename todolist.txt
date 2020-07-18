@@ -1,4 +1,6 @@
 
 
-1. add filter html code
-2. fix closing catalog structure by btn
+1. add filter html code ---
+2. fix closing catalog structure by btn ---
+3. move to "router-link"
+4. fix catalog structure block appearing

@@ -10,10 +10,10 @@
       </div>
       <div class="product_info">
         <div class="product_title">
-          <div
-            @click="changeCurrentPage({path: `/catalog/product/${product.link}`})"
-            class="title"
-          >{{product.title}}</div>
+          <router-link :to="{ path: `/catalog/product/${product.link}` }">
+            <div class="title">{{product.title}}</div>
+          </router-link>
+
           <div class="price">
             <div class="product_price">{{product.price}} ₽/</div>
             <div class="product_unit">{{product.unit_of_measurement}}</div>
@@ -44,7 +44,7 @@ export default {
     ...mapActions(["fetchProducts"])
   },
   watch: {
-    '$route': 'fetchProducts'
+    $route: "fetchProducts"
   },
   mounted() {
     this.fetchProducts();

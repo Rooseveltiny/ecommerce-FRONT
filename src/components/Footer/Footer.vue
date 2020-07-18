@@ -5,16 +5,28 @@
         <div class="footer_inner">
           <div class="footer--left_col non-select">
             <div class="footer_section">
-              <div @click="changeCurrentPage('AboutCompany')" class="footer_item">О компании</div>
-              <div @click="changeCurrentPage('Catalog')" class="footer_item">Каталог продукции</div>
+              <router-link to="about_company">
+                <div class="footer_item">О компании</div>
+              </router-link>
+              <router-link to="catalog">
+                <div class="footer_item">Каталог продукции</div>
+              </router-link>
             </div>
             <div class="footer_section">
-              <div @click="changeCurrentPage('Contacts')" class="footer_item">Контакты</div>
-              <div @click="changeCurrentPage('MainPage')" class="footer_item">Обратная связь</div>
+              <router-link to="contacts">
+                <div class="footer_item">Контакты</div>
+              </router-link>
+              <router-link to="/">
+                <div class="footer_item">Обратная связь</div>
+              </router-link>
             </div>
             <div class="footer_section">
-              <div @click="changeCurrentPage('MainPage')" class="footer_item">Частные вопросы</div>
-              <div @click="changeCurrentPage('AboutProject')" class="footer_item">О проекте</div>
+              <router-link to="/">
+                <div class="footer_item">Частные вопросы</div>
+              </router-link>
+              <router-link to="about_project">
+                <div class="footer_item">О проекте</div>
+              </router-link>
             </div>
           </div>
           <div class="footer--right_col">
@@ -31,11 +43,11 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapMutations } from "vuex";
 export default {
-    methods: {
-        ...mapMutations(['changeCurrentPage'])
-    }
+  methods: {
+    ...mapMutations(["changeCurrentPage"])
+  }
 };
 </script>
 
@@ -44,7 +56,6 @@ export default {
   background: #333;
   margin-top: 25px;
   color: rgb(245, 245, 245);
-
 }
 
 .footer_inner {
@@ -65,7 +76,7 @@ export default {
   width: 70%;
   padding: 25px;
   font-size: 14px;
-  display: flex;    
+  display: flex;
   justify-content: space-between;
 }
 
@@ -85,6 +96,4 @@ export default {
   background: #f7efef;
   border-radius: 15px;
 }
-
-
 </style>
