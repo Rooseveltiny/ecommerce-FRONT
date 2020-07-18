@@ -5,15 +5,15 @@
         <div class="footer_inner">
           <div class="footer--left_col non-select">
             <div class="footer_section">
-              <router-link to="about_company">
+              <router-link to="/about_company">
                 <div class="footer_item">О компании</div>
               </router-link>
-              <router-link to="catalog">
+              <router-link to="/catalog">
                 <div class="footer_item">Каталог продукции</div>
               </router-link>
             </div>
             <div class="footer_section">
-              <router-link to="contacts">
+              <router-link to="/contacts">
                 <div class="footer_item">Контакты</div>
               </router-link>
               <router-link to="/">
@@ -24,7 +24,7 @@
               <router-link to="/">
                 <div class="footer_item">Частные вопросы</div>
               </router-link>
-              <router-link to="about_project">
+              <router-link to="/about_project">
                 <div class="footer_item">О проекте</div>
               </router-link>
             </div>

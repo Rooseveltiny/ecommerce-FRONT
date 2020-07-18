@@ -8,8 +8,8 @@
               <div class="nav-left-part">
                 <span class="nav_link">Череповец</span>
                 <span class="nav_link">8(8202)265-265</span>
-                <router-link to="contacts"><span class="nav_link">Контакты</span></router-link>
-                <router-link to="about_company"><span class="nav_link">О компании</span></router-link>
+                <router-link to="/contacts"><span class="nav_link">Контакты</span></router-link>
+                <router-link to="/about_company"><span class="nav_link">О компании</span></router-link>
               </div>
               <div class="nav-right-part">Вход/Регистрация</div>
             </div>

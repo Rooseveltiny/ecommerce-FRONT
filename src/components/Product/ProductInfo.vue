@@ -24,7 +24,7 @@
           </div>
         </div>
       </div>
-      <div class="section_inner" v-if="currentSection === 'Файлы'">{{product.category}}</div>
+      <div class="section_inner" v-if="currentSection === 'Файлы'"></div>
     </div>
   </div>
 </template>
