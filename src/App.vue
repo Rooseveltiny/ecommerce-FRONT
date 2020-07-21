@@ -182,4 +182,13 @@ h6 {
   color: #666;
   margin: 0 auto 10px auto;
 }
+
+.main_subtitle{
+  text-align: left;
+  padding-top: 10px;
+  font-size: 17px;
+  color: #666;
+  margin: 0 auto 10px auto;
+}
+
 </style>
