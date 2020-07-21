@@ -10,9 +10,12 @@
         <div :key="index" class="catalog_item">
         <!-- <div v-if="cat.children.length" :key="index" class="catalog_item"> -->
           {{cat.title}}
+          
+          
+          <div class=catalog_side_block>
           <div
             id="CatalogStructureInnerBlock"
-            class="catalog_side_block main_block_style main_block_style-less"
+            class="catalog_side_block_inner main_block_style main_block_style-less"
           >
             <template v-for="(child, index) in cat.children">
               <div class="catalog_items_side" :key="index">
@@ -29,6 +32,10 @@
               </div>
             </template>
           </div>
+          </div>
+
+
+
         </div>
       </template>
     </div>
@@ -101,12 +108,18 @@ export default {
   visibility: hidden;
   position: absolute;
   top: -14px;
-  left: calc(100% + 10px);
-  transition: visibility 0.2s;
+  left: calc(100%);
+  transition: visibility;
   z-index: 1000;
   padding: 15px;
   display: grid;
   width: calc(100% * 3);
+}
+
+.catalog_side_block_inner {
+  width: 100%;
+  z-index: 1000;
+  display: grid;
 }
 
 .catalog_items_side {
