@@ -7,14 +7,16 @@
     <div class="catalog_structure_inner">
       <div class="catalog_main_title">Каталог</div>
       <template v-for="(cat, index) in getCategories">
-        <div v-if="cat.children.length" :key="index" class="catalog_item">
+        <div :key="index" class="catalog_item">
+        <!-- <div v-if="cat.children.length" :key="index" class="catalog_item"> -->
           {{cat.title}}
           <div
             id="CatalogStructureInnerBlock"
             class="catalog_side_block main_block_style main_block_style-less"
           >
             <template v-for="(child, index) in cat.children">
-              <div v-if="child.children.length" class="catalog_items_side" :key="index">
+              <div class="catalog_items_side" :key="index">
+              <!-- <div v-if="child.children.length" class="catalog_items_side" :key="index"> -->
                 <div class="catalog_item_side_title">{{child.title}}</div>
                 <div class="catalog_items_side_inner">
                   <div
