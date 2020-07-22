@@ -4,14 +4,14 @@
       <div class="filter_title">Поиск по свойствам</div>
       <div v-for="filter in getAllFilters" :key="filter.name" class="filter_item">
         <div class="filter_name">{{filter.name}}</div>
-        <div v-for="parameter in filter.parameters" :key="parameter.value" class="filter_value">
+        <div v-for="(parameter, index) in filter.parameters" :key="index" class="filter_value">
           <input
             type="checkbox"
-            :value="parameter.value"
-            :id="parameter.value"
+            :value="parameter.title"
+            :id="parameter.title"
             v-model="choosenFilterParameters"
           />
-          <label :for="parameter.value">{{parameter.value}}</label>
+          <label :for="parameter.title">{{parameter.title}}</label>
         </div>
       </div>
 
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   computed: {
     ...mapGetters(["getAllFilters", "getAllChoosenFilterParameters"]),
@@ -37,6 +37,12 @@ export default {
         this.$store.state.catalog.choosenFilterParameters = val;
       }
     }
+  },
+  methods: {
+    ...mapActions(['fetchFilter'])
+  },
+  mounted(){
+    this.fetchFilter();
   }
 };
 </script>

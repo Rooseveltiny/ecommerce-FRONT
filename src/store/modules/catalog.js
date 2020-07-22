@@ -12,11 +12,16 @@ export default {
             const products = await res.json();
             commit('updateProducts', products);
         }, 
+        async fetchFilter({ commit }) {
+            const res = await fetch(`http://127.0.0.1:8000/api/v1/shop/products/filter/${router.currentRoute.params.slug}`);
+            const filter = await res.json();
+            commit('updateFilter', filter);
+        }, 
         async fetchCatalogStructure({ commit }) {
             const res = await fetch(`http://127.0.0.1:8000/api/v1/shop/catalog_structure`);
             const categories = await res.json();
             commit('updateCategories', categories);
-        }
+        },
     },
     mutations: {
         updateSortingCatalog(state, sorting) {
@@ -37,6 +42,9 @@ export default {
                 el == 'CatalogStructure' ||
                 el == "CatalogStructureInner" ||
                 el == "CatalogStructureInnerBlock") ? true : false;
+        },
+        updateFilter(state, filter){
+            state.filters = filter;
         }
     },
     state() {
@@ -50,56 +58,7 @@ export default {
             },
             categories: {},
             CatalogStructureVisible: false,
-            filters: [
-                {
-                    name: 'Цвет',
-                    parameters: [
-                        {
-                            value: 'Красный',
-                        },
-                        {
-                            value: 'Синий',
-                        },
-                        {
-                            value: 'Коричневый',
-                        }
-                    ]
-                },
-                {
-                    name: 'Покрытие',
-                    parameters: [
-                        {
-                            value: 'Стальной бархат',
-                            choosen: false
-                        },
-                        {
-                            value: 'Полимерное',
-                            choosen: false
-                        },
-                        {
-                            value: 'Printech',
-                            choosen: false
-                        }
-                    ]
-                },
-                {
-                    name: 'Толщина',
-                    parameters: [
-                        {
-                            value: 0.5,
-                            choosen: false
-                        },
-                        {
-                            value: 0.45,
-                            choosen: false
-                        },
-                        {
-                            value: 0.4,
-                            choosen: false
-                        }
-                    ]
-                }
-            ],
+            filters: [],
             choosenFilterParameters: []
         }
     },

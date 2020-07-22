@@ -7,8 +7,8 @@
     <div class="catalog_structure_inner">
       <div class="catalog_main_title">Каталог</div>
       <template v-for="(cat, index) in getCategories">
-        <div :key="index" class="catalog_item">
-        <!-- <div v-if="cat.children.length" :key="index" class="catalog_item"> -->
+        <!-- <div :key="index" class="catalog_item"> -->
+        <div v-if="cat.children.length" :key="index" class="catalog_item">
           {{cat.title}}
           
           
@@ -18,8 +18,8 @@
             class="catalog_side_block_inner main_block_style main_block_style-less"
           >
             <template v-for="(child, index) in cat.children">
-              <div class="catalog_items_side" :key="index">
-              <!-- <div v-if="child.children.length" class="catalog_items_side" :key="index"> -->
+              <!-- <div class="catalog_items_side" :key="index"> -->
+              <div v-if="child.children.length" class="catalog_items_side" :key="index">
                 <div class="catalog_item_side_title">{{child.title}}</div>
                 <div class="catalog_items_side_inner">
                   <div
@@ -113,8 +113,10 @@ export default {
   z-index: 1000;
   padding: 15px;
   display: grid;
-  width: calc(100% * 3);
+  width: 50rem;
+  /* width: calc(100% * 3); */
 }
+
 
 .catalog_side_block_inner {
   width: 100%;
