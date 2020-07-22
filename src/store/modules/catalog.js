@@ -2,26 +2,40 @@ import router from '../../router/router'
 
 export default {
     actions: {
-        async fetchProductsOld({ commit }) {
-            const res = await fetch(`http://127.0.0.1:8000/api/v1/shop/products/all`);
-            const products = await res.json();
-            commit('updateProducts', products);
-        }, 
         async fetchProducts({ commit }) {
-            const res = await fetch(`http://127.0.0.1:8000/api/v1/shop/products/category/${router.currentRoute.params.slug}`);
+            const baseRoute = 'http://127.0.0.1:8000/api/v1/shop/products/category/'
+            const category = router.currentRoute.params.slug
+            const res = await fetch(`${baseRoute}${category}`);
+            // const filter = router.currentRoute.params.parameters ? router.currentRoute.params.parameters : '';
+            // const res = await fetch(`${baseRoute}${category}/${filter}`);
             const products = await res.json();
             commit('updateProducts', products);
-        }, 
+        },
         async fetchFilter({ commit }) {
             const res = await fetch(`http://127.0.0.1:8000/api/v1/shop/products/filter/${router.currentRoute.params.slug}`);
             const filter = await res.json();
             commit('updateFilter', filter);
-        }, 
+        },
         async fetchCatalogStructure({ commit }) {
             const res = await fetch(`http://127.0.0.1:8000/api/v1/shop/catalog_structure`);
             const categories = await res.json();
             commit('updateCategories', categories);
         },
+        setQueryParams({ getters }) {
+            let queryObj = Object();
+            let allChoosen = getters.getAllChoosenFilterParameters;
+            for (let filterItem of allChoosen) {
+                let nameOfValue = filterItem['detail_group'].slug;
+                let choosenValues = [];
+                allChoosen.forEach(value => {
+                    if (value['detail_group'].slug == nameOfValue) {
+                        choosenValues.push(value['slug']);
+                    }
+                })
+                queryObj[nameOfValue] = choosenValues;
+            }
+            router.push({ query: queryObj });
+        }
     },
     mutations: {
         updateSortingCatalog(state, sorting) {
@@ -30,9 +44,9 @@ export default {
         updateProducts(state, products) {
             state.productsList.products = products;
         },
-        updateCategories(state, categories){
+        updateCategories(state, categories) {
             state.categories = categories;
-        },  
+        },
         showCatalogStructure(state) {
             state.CatalogStructureVisible = !state.CatalogStructureVisible;
         },
@@ -43,7 +57,7 @@ export default {
                 el == "CatalogStructureInner" ||
                 el == "CatalogStructureInnerBlock") ? true : false;
         },
-        updateFilter(state, filter){
+        updateFilter(state, filter) {
             state.filters = filter;
         }
     },
@@ -78,13 +92,13 @@ export default {
         getCatalogStructureVision(state) {
             return state.CatalogStructureVisible;
         },
-        getAllFilters(state){
+        getAllFilters(state) {
             return state.filters;
         },
-        getAllChoosenFilterParameters(state){
+        getAllChoosenFilterParameters(state) {
             return state.choosenFilterParameters;
         },
-        getCategories(state){
+        getCategories(state) {
             return state.categories;
         }
     }

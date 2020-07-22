@@ -7,7 +7,7 @@
         <div v-for="(parameter, index) in filter.parameters" :key="index" class="filter_value">
           <input
             type="checkbox"
-            :value="parameter.title"
+            :value="parameter"
             :id="parameter.title"
             v-model="choosenFilterParameters"
           />
@@ -17,7 +17,7 @@
 
       <transition name="bounce">
         <div class="filter_btn_block" v-if="getAllChoosenFilterParameters.length">
-          <button class="filter_btn">Поиск</button>
+          <button @click="setQueryParams" class="filter_btn">Поиск</button>
         </div>
       </transition>
     </div>
@@ -39,7 +39,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['fetchFilter'])
+    ...mapActions(['fetchFilter', 'setQueryParams'])
   },
   mounted(){
     this.fetchFilter();

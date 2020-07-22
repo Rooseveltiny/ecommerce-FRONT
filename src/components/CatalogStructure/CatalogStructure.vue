@@ -10,32 +10,27 @@
         <!-- <div :key="index" class="catalog_item"> -->
         <div v-if="cat.children.length" :key="index" class="catalog_item">
           {{cat.title}}
-          
-          
-          <div class=catalog_side_block>
-          <div
-            id="CatalogStructureInnerBlock"
-            class="catalog_side_block_inner main_block_style main_block_style-less"
-          >
-            <template v-for="(child, index) in cat.children">
-              <!-- <div class="catalog_items_side" :key="index"> -->
-              <div v-if="child.children.length" class="catalog_items_side" :key="index">
-                <div class="catalog_item_side_title">{{child.title}}</div>
-                <div class="catalog_items_side_inner">
-                  <div
-                    v-for="(childInner, index) in child.children"
-                    :key="index"
-                    class="catalog_item_side"
-                    @click="changeCurrentPage({path: `/catalog/${childInner.slug}`})"
-                  >{{childInner.title}}</div>
+          <div class="catalog_side_block">
+            <div
+              id="CatalogStructureInnerBlock"
+              class="catalog_side_block_inner main_block_style main_block_style-less"
+            >
+              <template v-for="(child, index) in cat.children">
+                <!-- <div class="catalog_items_side" :key="index"> -->
+                <div v-if="child.children.length" class="catalog_items_side" :key="index">
+                  <div class="catalog_item_side_title">{{child.title}}</div>
+                  <div class="catalog_items_side_inner">
+                    <div
+                      v-for="(childInner, index) in child.children"
+                      :key="index"
+                      class="catalog_item_side"
+                      @click="changeCurrentPage({path: `/catalog/${childInner.slug}`})"
+                    >{{childInner.title}}</div>
+                  </div>
                 </div>
-              </div>
-            </template>
+              </template>
+            </div>
           </div>
-          </div>
-
-
-
         </div>
       </template>
     </div>
@@ -116,7 +111,6 @@ export default {
   width: 50rem;
   /* width: calc(100% * 3); */
 }
-
 
 .catalog_side_block_inner {
   width: 100%;
