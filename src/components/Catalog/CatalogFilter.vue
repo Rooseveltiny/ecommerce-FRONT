@@ -43,6 +43,9 @@ export default {
   },
   mounted(){
     this.fetchFilter();
+  },
+  watch: {
+    $route: "fetchFilter"
   }
 };
 </script>
