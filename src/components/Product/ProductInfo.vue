@@ -17,7 +17,7 @@
         <div class="chars_block">
           <div v-for="(char,index) in product.detail" :key="index" class="char_item">
             <div class="char_name">
-              {{char.detail_group}}
+              {{char.detail_group.title}}
               <span class="dots"></span>
             </div>
             <div class="char_value">{{char.title}}</div>
