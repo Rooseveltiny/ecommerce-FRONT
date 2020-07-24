@@ -6,8 +6,8 @@ export default {
             const baseRoute = 'http://127.0.0.1:8000/api/v1/shop/products/category/'
             const category = router.currentRoute.params.slug
             const res = await fetch(`${baseRoute}${category}`);
-            // const filter = router.currentRoute.params.parameters ? router.currentRoute.params.parameters : '';
-            // const res = await fetch(`${baseRoute}${category}/${filter}`);
+            // const filter = router;
+            // const res = await fetch(`${baseRoute}${category}${filter}`);
             const products = await res.json();
             commit('updateProducts', products);
         },

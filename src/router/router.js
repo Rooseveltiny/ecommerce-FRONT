@@ -22,25 +22,22 @@ let router = new Router({
             path: '/catalog/:slug',
             name: 'Catalog',
             component: Catalog
-
+            
         },
         {
             path: '/contacts',
             name: 'Contacts',
             component: Contacts
-
         },
         {
             path: '/about_company',
             name: 'AboutCompany',
             component: AboutCompany
-
         },
         {
             path: '/about_project',
             name: 'AboutProject',
             component: AboutProject
-
         },
         {
             path: '/catalog/product/:uuid',

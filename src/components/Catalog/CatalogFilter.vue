@@ -17,7 +17,7 @@
 
       <transition name="bounce">
         <div class="filter_btn_block" v-if="getAllChoosenFilterParameters.length">
-          <button @click="setQueryParams" class="filter_btn">Поиск</button>
+          <button @click="filterProducts" class="filter_btn">Поиск</button>
         </div>
       </transition>
     </div>
@@ -39,7 +39,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['fetchFilter', 'setQueryParams'])
+    ...mapActions(['fetchFilter', 'setQueryParams', 'fetchProducts']),
+    filterProducts: function(){
+      this.setQueryParams();
+      this.fetchProducts();
+    }
   },
   mounted(){
     this.fetchFilter();
