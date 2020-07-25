@@ -7,7 +7,7 @@ export default {
             const categoryAndQueryParams = router.currentRoute.fullPath;
             const res = await fetch(`${ApiSettings.BASE_ROUTE}${categoryAndQueryParams}`);
             const products = await res.json();
-            commit('updateProducts', products);   /////// Полный рефакторинг; заменить всё одной функцией
+            commit('updateProducts', products);
         },
         async fetchFilter({ commit }) {
             const res = await fetch(`${ApiSettings.BASE_ROUTE}/products/filter/${router.currentRoute.params.slug}`);
@@ -41,9 +41,31 @@ export default {
             state.sorting.currentSorting = sorting;
         },
         updateProducts(state, products) {
+            let replaceValue = `${ApiSettings.BASE_ROUTE}/products/category/`
+
+            // updating products
             state.productsList.products = products.results;
-            state.pagination.nextURL = products.next;
-            state.pagination.prevURL = products.previous;
+
+            // updating pagination
+            let nextURL = products.next != null ? products.next.replace(replaceValue, '') : null;
+            let prevURL = products.previous != null ? products.previous.replace(replaceValue, '') : null;
+            let currentPageNumber = 0;
+
+            if (nextURL != null) {
+                currentPageNumber = Number(nextURL.match(/page=(\d*)/)[1]) - 1;
+            } else if (prevURL != null) {
+                let regExp = prevURL.match(/page=(\d*)/);
+                if (regExp.length) {
+                    currentPageNumber = Number(regExp[1]) + 1;
+                } else {
+                    currentPageNumber = 1;
+                }
+            } else {
+                currentPageNumber = 1;
+            }
+            state.pagination.nextURL = nextURL;
+            state.pagination.prevURL = prevURL;
+            state.pagination.currentPageNumber = currentPageNumber;
             state.pagination.count = products.count;
         },
         updateCategories(state, categories) {
@@ -77,9 +99,9 @@ export default {
             filters: [],
             choosenFilterParameters: [],
             pagination: {
-                currentPage: 1,
-                nextURL: 0,
-                prevURL: 2,
+                currentPageNumber: 1,
+                nextURL: '',
+                prevURL: '',
                 count: 0
             }
         }
@@ -111,6 +133,11 @@ export default {
         },
         getCatalogPageInfo: state => pageSection => {
             return state.pagination[pageSection];
+        },
+        getCatalogPaginationURL: function (pageNumber) {
+
+            console.log(pageNumber);
+        
         }
     }
 }
