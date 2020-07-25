@@ -19,7 +19,7 @@ let router = new Router({
             component: MainPage
         },
         {
-            path: '/catalog/:slug',
+            path: '/products/category/:slug',
             name: 'Catalog',
             component: Catalog
             

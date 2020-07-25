@@ -24,7 +24,7 @@
                       v-for="(childInner, index) in child.children"
                       :key="index"
                       class="catalog_item_side"
-                      @click="changeCurrentPage({path: `/catalog/${childInner.slug}`})"
+                      @click="changeCurrentPage({name: 'Catalog', params: {slug: childInner.slug}})"
                     >{{childInner.title}}</div>
                   </div>
                 </div>

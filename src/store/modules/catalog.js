@@ -1,23 +1,21 @@
 import router from '../../router/router'
+import ApiSettings from '../ApiSettings'
 
 export default {
     actions: {
         async fetchProducts({ commit }) {
-            const baseRoute = 'http://127.0.0.1:8000/api/v1/shop/products/category/'
-            const category = router.currentRoute.params.slug
-            const res = await fetch(`${baseRoute}${category}`);
-            // const filter = router;
-            // const res = await fetch(`${baseRoute}${category}${filter}`);
+            const categoryAndQueryParams = router.currentRoute.fullPath;
+            const res = await fetch(`${ApiSettings.BASE_ROUTE}${categoryAndQueryParams}`);
             const products = await res.json();
-            commit('updateProducts', products);
+            commit('updateProducts', products);   /////// Полный рефакторинг; заменить всё одной функцией
         },
         async fetchFilter({ commit }) {
-            const res = await fetch(`http://127.0.0.1:8000/api/v1/shop/products/filter/${router.currentRoute.params.slug}`);
+            const res = await fetch(`${ApiSettings.BASE_ROUTE}/products/filter/${router.currentRoute.params.slug}`);
             const filter = await res.json();
             commit('updateFilter', filter);
         },
         async fetchCatalogStructure({ commit }) {
-            const res = await fetch(`http://127.0.0.1:8000/api/v1/shop/catalog_structure`);
+            const res = await fetch(`${ApiSettings.BASE_ROUTE}/catalog_structure`);
             const categories = await res.json();
             commit('updateCategories', categories);
         },
@@ -34,7 +32,8 @@ export default {
                 })
                 queryObj[nameOfValue] = choosenValues;
             }
-            router.push({ query: queryObj });
+            queryObj['page'] = getters.getCatalogPageInfo('currentPage');
+            router.replace({ query: queryObj });
         }
     },
     mutations: {
@@ -42,7 +41,10 @@ export default {
             state.sorting.currentSorting = sorting;
         },
         updateProducts(state, products) {
-            state.productsList.products = products;
+            state.productsList.products = products.results;
+            state.pagination.nextURL = products.next;
+            state.pagination.prevURL = products.previous;
+            state.pagination.count = products.count;
         },
         updateCategories(state, categories) {
             state.categories = categories;
@@ -73,7 +75,13 @@ export default {
             categories: {},
             CatalogStructureVisible: false,
             filters: [],
-            choosenFilterParameters: []
+            choosenFilterParameters: [],
+            pagination: {
+                currentPage: 1,
+                nextURL: 0,
+                prevURL: 2,
+                count: 0
+            }
         }
     },
     getters: {
@@ -100,6 +108,9 @@ export default {
         },
         getCategories(state) {
             return state.categories;
+        },
+        getCatalogPageInfo: state => pageSection => {
+            return state.pagination[pageSection];
         }
     }
 }

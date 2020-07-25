@@ -2,7 +2,7 @@
   <div>
     <div class="pagination non-select">
       <div class="pagination_inner">
-        <div class="pag_arrow pag_item left"></div>
+        <div @click="$router.push(getCatalogPageInfo('nextURL'))" class="pag_arrow pag_item left"></div>
         <div class="pag_item">1</div>
         <div class="pag_item current_page">2</div>
         <div class="pag_item">3</div>
@@ -13,7 +13,18 @@
 </template>
 
 <script>
-export default {};
+import { mapActions, mapGetters } from 'vuex';
+export default {
+  methods: {
+    ...mapActions(['setQueryParams']),
+    changePage(){
+      this.setQueryParams();
+    }
+  },
+  computed: {
+    ...mapGetters(['getCatalogPageInfo'])
+  }
+};
 </script>
 
 <style scoped>
