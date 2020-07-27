@@ -2,6 +2,8 @@
   <div>
     <div class="filter_inner non-select">
       <div class="filter_title">Поиск по свойствам</div>
+
+        
       <div v-for="filter in getAllFilters" :key="filter.name" class="filter_item">
         <div class="filter_name">{{filter.name}}</div>
         <div v-for="(parameter, index) in filter.parameters" :key="index" class="filter_value">
@@ -33,14 +35,15 @@ export default {
       get() {
         return this.$store.state.catalog.choosenFilterParameters;
       },
-      set(val) {
-        this.$store.state.catalog.choosenFilterParameters = val;
+      set(inputValue) {
+        this.$store.state.catalog.choosenFilterParameters = inputValue;
       }
     }
   },
   methods: {
     ...mapActions(['fetchFilter', 'setQueryParams', 'fetchProducts']),
-    filterProducts: function(){
+    filterProducts: function(e){
+      e.preventDefault();
       this.setQueryParams();
       this.fetchProducts();
     }
@@ -49,7 +52,7 @@ export default {
     this.fetchFilter();
   },
   watch: {
-    $route: "fetchFilter"
+    // $route: "fetchFilter"
   }
 };
 </script>

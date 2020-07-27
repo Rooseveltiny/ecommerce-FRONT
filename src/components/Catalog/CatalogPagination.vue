@@ -4,21 +4,15 @@
       <div class="pagination_inner">
 
         <div
-          v-show="getCatalogPageInfo('prevURL')"
-          @click="$router.push(getCatalogPageInfo('prevURL'))"
           class="pag_arrow pag_item left"
         ></div>
 
-        <div v-for="(page,index) in getCatalogPageInfo('currentPageNumber')" :key="index" class="pag_item">{{index+1}}</div>
         
-
         <div class="pag_item">1</div>
         <div class="pag_item current_page">2</div>
         <div class="pag_item">3</div>
 
         <div
-          v-show="getCatalogPageInfo('nextURL')"
-          @click="$router.push(getCatalogPageInfo('nextURL'))"
           class="pag_arrow pag_item right"
         ></div>
 
@@ -37,8 +31,8 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["getCatalogPageInfo"]),
-  },
+    ...mapGetters(['getPagination'])
+  }
 };
 </script>
 

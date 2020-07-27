@@ -32,8 +32,8 @@ export default {
                 })
                 queryObj[nameOfValue] = choosenValues;
             }
-            queryObj['page'] = getters.getCatalogPageInfo('currentPage');
-            router.replace({ query: queryObj });
+            queryObj['page'] = 1;
+            router.replace({ query: queryObj }).catch(() => { });
         }
     },
     mutations: {
@@ -41,32 +41,8 @@ export default {
             state.sorting.currentSorting = sorting;
         },
         updateProducts(state, products) {
-            let replaceValue = `${ApiSettings.BASE_ROUTE}/products/category/`
-
-            // updating products
-            state.productsList.products = products.results;
-
-            // updating pagination
-            let nextURL = products.next != null ? products.next.replace(replaceValue, '') : null;
-            let prevURL = products.previous != null ? products.previous.replace(replaceValue, '') : null;
-            let currentPageNumber = 0;
-
-            if (nextURL != null) {
-                currentPageNumber = Number(nextURL.match(/page=(\d*)/)[1]) - 1;
-            } else if (prevURL != null) {
-                let regExp = prevURL.match(/page=(\d*)/);
-                if (regExp.length) {
-                    currentPageNumber = Number(regExp[1]) + 1;
-                } else {
-                    currentPageNumber = 1;
-                }
-            } else {
-                currentPageNumber = 1;
-            }
-            state.pagination.nextURL = nextURL;
-            state.pagination.prevURL = prevURL;
-            state.pagination.currentPageNumber = currentPageNumber;
-            state.pagination.count = products.count;
+            state.products.productsList = products.results;
+            state.products.productsPagination = products;
         },
         updateCategories(state, categories) {
             state.categories = categories;
@@ -91,19 +67,14 @@ export default {
                 sortingTypes: ['по возрастанию цены', "по убыванию цены", "по наименованию", "по рейтингу"],
                 currentSorting: 'по возрастанию цены'
             },
-            productsList: {
-                products: []
+            products: {
+                productsList: [],
+                productsPagination: {}
             },
             categories: {},
             CatalogStructureVisible: false,
             filters: [],
             choosenFilterParameters: [],
-            pagination: {
-                currentPageNumber: 1,
-                nextURL: '',
-                prevURL: '',
-                count: 0
-            }
         }
     },
     getters: {
@@ -114,10 +85,10 @@ export default {
             return state.sorting.sortingTypes;
         },
         getProducts(state) {
-            return state.productsList.products
+            return state.products.productsList;
         },
         catalogLoadingBlock(state) {
-            return state.productsList.products.length;
+            return state.products.productsList.length;
         },
         getCatalogStructureVision(state) {
             return state.CatalogStructureVisible;
@@ -131,13 +102,15 @@ export default {
         getCategories(state) {
             return state.categories;
         },
-        getCatalogPageInfo: state => pageSection => {
-            return state.pagination[pageSection];
-        },
-        getCatalogPaginationURL: function (pageNumber) {
-
-            console.log(pageNumber);
-        
+        getPagination(state) {
+            let pag = state.products.productsPagination;
+            pag.next = pag.next.replace(ApiSettings.BASE_ROUTE, '');
+            pag.previous = pag.previous.replace(ApiSettings.BASE_ROUTE, '');
+            console.log(pag);
+            pag.pages_links = pag.pages_links.map(value => {
+                return value[0].replace(ApiSettings.BASE_ROUTE, '');
+            })
+            return pag;
         }
     }
 }
