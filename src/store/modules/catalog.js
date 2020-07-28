@@ -78,18 +78,18 @@ export default {
                         name: "по наименованию",
                         sort_field: 'title'
                     },
-                    {
-                        name: "по рейтингу",
-                        sort_field: 'rating'
-                    },
+                    // {
+                    //     name: "по рейтингу",
+                    //     sort_field: 'rating'
+                    // },
                     {
                         name: "по умолчанию",
-                        sort_field: 'default'
+                        sort_field: 'link'
                     }
                 ],
                 currentSorting: {
                     name: 'по умолчанию',
-                    sort_field: 'default'
+                    sort_field: 'link'
                 }
             },
             products: {
