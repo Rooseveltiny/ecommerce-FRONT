@@ -2,20 +2,25 @@
   <div>
     <div class="pagination non-select">
       <div class="pagination_inner">
-
         <div
+          v-show="getPagination.previous"
+          @click="$router.push(getPagination.previous).catch(()=>{})"
           class="pag_arrow pag_item left"
         ></div>
 
-        
-        <div class="pag_item">1</div>
-        <div class="pag_item current_page">2</div>
-        <div class="pag_item">3</div>
+        <div
+          v-for="(pagItem, index) in getPagination.page_links"
+          :key="index"
+          class="pag_item"
+          :class="{current_page: pagItem.is_active}"
+          @click="$router.push(pagItem.link).catch(()=>{})"
+        >{{pagItem.number}}</div>
 
         <div
+          v-show="getPagination.next"
+          @click="$router.push(getPagination.next).catch(()=>{})"
           class="pag_arrow pag_item right"
         ></div>
-
       </div>
     </div>
   </div>
@@ -31,8 +36,8 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['getPagination'])
-  }
+    ...mapGetters(["getPagination"]),
+  },
 };
 </script>
 

@@ -104,12 +104,9 @@ export default {
         },
         getPagination(state) {
             let pag = state.products.productsPagination;
-            pag.next = pag.next.replace(ApiSettings.BASE_ROUTE, '');
-            pag.previous = pag.previous.replace(ApiSettings.BASE_ROUTE, '');
-            console.log(pag);
-            pag.pages_links = pag.pages_links.map(value => {
-                return value[0].replace(ApiSettings.BASE_ROUTE, '');
-            })
+            if (pag.next) { pag.next = pag.next.replace(ApiSettings.BASE_ROUTE, '') }
+            if (pag.previous) { pag.previous = pag.previous.replace(ApiSettings.BASE_ROUTE, '') }
+            if (pag.page_links) { pag.page_links.map(value => { value.link = value.link.replace(ApiSettings.BASE_ROUTE, '') }); }
             return pag;
         }
     }
