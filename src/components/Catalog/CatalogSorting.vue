@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     ...mapActions(["setQueryParams"]),
-    ...mapMutations(["updateSortingCatalog"]),
+    ...mapMutations(["updateSortingCatalog", "updateSortingFromURL"]),
     showAllSortings() {
       this.showSortingsBlock = !this.showSortingsBlock;
     },
@@ -42,7 +42,9 @@ export default {
         this.setQueryParams();
     }
   },
-  mounted(){},
+  mounted(){
+    this.updateSortingFromURL();
+  },
   watch: {}
 };
 </script>

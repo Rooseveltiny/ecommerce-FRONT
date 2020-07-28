@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions, mapMutations } from "vuex";
 export default {
   computed: {
     ...mapGetters(["getAllFilters", "getAllChoosenFilterParameters"]),
@@ -42,14 +42,16 @@ export default {
   },
   methods: {
     ...mapActions(['fetchFilter', 'setQueryParams', 'fetchProducts']),
+    ...mapMutations(['collectFilterValuesFromURL']),
     filterProducts: function(e){
       e.preventDefault();
       this.setQueryParams();
       this.fetchProducts();
     }
   },
-  mounted(){
-    this.fetchFilter();
+  async mounted(){
+    await this.fetchFilter();
+    this.collectFilterValuesFromURL();
   },
   watch: {
     // $route: "fetchFilter"

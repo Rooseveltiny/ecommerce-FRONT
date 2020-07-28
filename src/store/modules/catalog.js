@@ -41,6 +41,15 @@ export default {
         updateSortingCatalog(state, sorting) {
             state.sorting.currentSorting = sorting;
         },
+        updateSortingFromURL(state) {
+            let sortFieldFromURL = router.currentRoute.query.sort_field;
+            let sortingType = state.sorting.sortingTypes.find(value => {
+                return value.sort_field == sortFieldFromURL;
+            })
+            if (sortingType) {
+                state.sorting.currentSorting = sortingType;
+            }
+        },
         updateProducts(state, products) {
             state.products.productsList = products.results;
             state.products.productsPagination = products;
@@ -60,7 +69,35 @@ export default {
         },
         updateFilter(state, filter) {
             state.filters = filter;
+        },
+        collectFilterValuesFromURL(state) {
+            let allValuesFromURL = router.currentRoute.query;
+            delete allValuesFromURL.page;
+            delete allValuesFromURL.sort_field;
+
+            let allValuesArray = [];
+            for (let element of Object.values(allValuesFromURL)) {
+                if (Array.isArray(element)) {
+                    allValuesArray = allValuesArray.concat(element);
+                } else {
+                    allValuesArray.push(element);
+                }
+            }
+            let allFilterValuesArray = [];
+            for (let element of state.filters) {
+                allFilterValuesArray = allFilterValuesArray.concat(element.parameters);
+            }
+            let allChoosenFilterValues = allFilterValuesArray.filter(value => {
+                for (let chooseVal of allValuesArray) {
+                    if (chooseVal == value.slug) {
+                        return true;
+                    }
+                }
+                return false;
+            })
+            state.choosenFilterParameters = allChoosenFilterValues;
         }
+        
     },
     state() {
         return {
