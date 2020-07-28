@@ -5,22 +5,22 @@
       @click="showAllSortings"
       class="currentSorting"
       style="cursor: pointer"
-    >{{getCurrentSortingType}}</span>
+    >{{getCurrentSortingType.name}}</span>
     <transition name="bounce">
     <div v-show="showSortingsBlock" class="main_block_style main_block_style-less sorting_list">
       <div
         v-for="sorting in getAllSortingTypes"
-        :key="sorting"
+        :key="sorting.name"
         class="sorting_item non-select"
         @click="updateSorting(sorting)"
-      >{{sorting}}</div>
+      >{{sorting.name}}</div>
     </div>
     </transition>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapMutations, mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -31,6 +31,7 @@ export default {
     ...mapGetters(["getCurrentSortingType", "getAllSortingTypes"])
   },
   methods: {
+    ...mapActions(["setQueryParams"]),
     ...mapMutations(["updateSortingCatalog"]),
     showAllSortings() {
       this.showSortingsBlock = !this.showSortingsBlock;
@@ -38,18 +39,11 @@ export default {
     updateSorting(sorting){
         this.updateSortingCatalog(sorting);
         this.showSortingsBlock = false;
+        this.setQueryParams();
     }
   },
-  mounted(){
-    if (localStorage.currentCatalogSorting){
-      this.updateSortingCatalog(localStorage.currentCatalogSorting);
-    }
-  },
-  watch: {
-    getCurrentSortingType(newSorting){
-      localStorage.currentCatalogSorting = newSorting;
-    }
-  }
+  mounted(){},
+  watch: {}
 };
 </script>
 

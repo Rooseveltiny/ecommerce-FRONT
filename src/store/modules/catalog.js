@@ -32,6 +32,7 @@ export default {
                 })
                 queryObj[nameOfValue] = choosenValues;
             }
+            queryObj['sort_field'] = getters.getCurrentSortingType.sort_field;
             queryObj['page'] = 1;
             router.replace({ query: queryObj }).catch(() => { });
         }
@@ -64,8 +65,32 @@ export default {
     state() {
         return {
             sorting: {
-                sortingTypes: ['по возрастанию цены', "по убыванию цены", "по наименованию", "по рейтингу"],
-                currentSorting: 'по возрастанию цены'
+                sortingTypes: [
+                    {
+                        name: 'по возрастанию цены',
+                        sort_field: 'price'
+                    },
+                    {
+                        name: "по убыванию цены",
+                        sort_field: '-price'
+                    },
+                    {
+                        name: "по наименованию",
+                        sort_field: 'title'
+                    },
+                    {
+                        name: "по рейтингу",
+                        sort_field: 'rating'
+                    },
+                    {
+                        name: "по умолчанию",
+                        sort_field: 'default'
+                    }
+                ],
+                currentSorting: {
+                    name: 'по умолчанию',
+                    sort_field: 'default'
+                }
             },
             products: {
                 productsList: [],
@@ -79,10 +104,15 @@ export default {
     },
     getters: {
         getCurrentSortingType(state) {
-            return state.sorting.currentSorting
+            return state.sorting.currentSorting;
         },
         getAllSortingTypes(state) {
-            return state.sorting.sortingTypes;
+            let sortings = state.sorting.sortingTypes.slice();
+            let currentSortingIndex = state.sorting.sortingTypes.findIndex(item => {
+                return item.name === state.sorting.currentSorting.name;
+            })
+            sortings.splice(currentSortingIndex, 1);
+            return sortings;
         },
         getProducts(state) {
             return state.products.productsList;
