@@ -41,10 +41,10 @@ import { mapActions, mapGetters, mapMutations } from "vuex";
 export default {
   methods: {
     ...mapMutations(["changeCurrentPage"]),
-    ...mapActions(["fetchProducts"])
+    ...mapActions(["fetchProducts", "fetchFilter"])
   },
   watch: {
-    $route: "fetchProducts"
+    $route: ["fetchProducts", "fetchFilter"]
   },
   mounted() {
     this.fetchProducts();

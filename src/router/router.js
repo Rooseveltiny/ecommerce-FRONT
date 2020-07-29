@@ -22,10 +22,9 @@ let router = new Router({
             path: '/products/category/:slug',
             name: 'Catalog',
             props: {
-            sort_field: 'default'  
+                sort_field: 'default'
             },
             component: Catalog
-            
         },
         {
             path: '/contacts',
