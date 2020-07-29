@@ -4,7 +4,7 @@
       <div class="pagination_inner">
         <div
           v-show="getPagination.previous"
-          @click="$router.push(getPagination.previous).catch(()=>{})"
+          @click="$router.push(getPagination.previous).catch(()=>{}); smoothScrollTop()"
           class="pag_arrow pag_item left"
         ></div>
 
@@ -13,12 +13,12 @@
           :key="index"
           class="pag_item"
           :class="{current_page: pagItem.is_active}"
-          @click="$router.push(pagItem.link).catch(()=>{})"
+          @click="$router.push(pagItem.link).catch(()=>{}); smoothScrollTop()"
         >{{pagItem.number}}</div>
 
         <div
           v-show="getPagination.next"
-          @click="$router.push(getPagination.next).catch(()=>{})"
+          @click="$router.push(getPagination.next).catch(()=>{}); smoothScrollTop()"
           class="pag_arrow pag_item right"
         ></div>
       </div>
@@ -32,7 +32,10 @@ export default {
   methods: {
     ...mapActions(["setQueryParams"]),
     changePage() {
-      this.setQueryParams();
+      // this.setQueryParams();
+    },
+    smoothScrollTop: async function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     },
   },
   computed: {
