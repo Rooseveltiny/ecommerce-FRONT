@@ -109,7 +109,7 @@ export default {
   padding: 15px;
   display: grid;
   width: 50rem;
-  /* width: calc(100% * 3); */
+  padding-bottom: 20rem;
 }
 
 .catalog_side_block_inner {
