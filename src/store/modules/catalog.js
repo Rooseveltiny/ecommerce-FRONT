@@ -97,7 +97,7 @@ export default {
             })
             state.choosenFilterParameters = allChoosenFilterValues;
         }
-        
+
     },
     state() {
         return {
@@ -131,7 +131,7 @@ export default {
             },
             products: {
                 productsList: [],
-                productsPagination: {}
+                productsPagination: {},
             },
             categories: {},
             CatalogStructureVisible: false,

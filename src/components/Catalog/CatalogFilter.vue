@@ -18,7 +18,7 @@
       </div>
 
       <transition name="bounce">
-        <div class="filter_btn_block" v-if="getAllChoosenFilterParameters.length">
+        <div class="filter_btn_block" v-if="mayShowFilterBtn">
           <button @click="filterProducts" class="filter_btn">Поиск</button>
         </div>
       </transition>
@@ -29,6 +29,11 @@
 <script>
 import { mapGetters, mapActions, mapMutations } from "vuex";
 export default {
+  data(){
+    return {
+      mayShowFilterBtn: false
+    }
+  },
   computed: {
     ...mapGetters(["getAllFilters", "getAllChoosenFilterParameters"]),
     choosenFilterParameters: {
@@ -36,6 +41,7 @@ export default {
         return this.$store.state.catalog.choosenFilterParameters;
       },
       set(inputValue) {
+        this.mayShowFilterBtn = true;
         this.$store.state.catalog.choosenFilterParameters = inputValue;
       }
     }
@@ -47,6 +53,7 @@ export default {
       e.preventDefault();
       this.setQueryParams();
       this.fetchProducts();
+      this.mayShowFilterBtn = false;
     }
   },
   async mounted(){
