@@ -1,37 +1,35 @@
 <template>
   <div>
-    <div
-      v-for="(product, index) in getProducts"
-      :key="index"
-      class="catalog_item main_block_style main_block_style-less"
-    >
-      <div class="product_img">
-        <img src="https://via.placeholder.com/100" alt />
-      </div>
-      <div class="product_info">
-        <div class="product_title">
-          <router-link :to="{ path: `/catalog/product/${product.link}` }">
-            <div class="title">{{product.title}}</div>
-          </router-link>
-
-          <div class="price">
-            <div class="product_price">{{product.price}} ₽/</div>
-            <div class="product_unit">{{product.unit_of_measurement}}</div>
-          </div>
+    <template v-for="(product, index) in getProducts">
+      <div :key="index" class="catalog_item main_block_style main_block_style-less">
+        <div class="product_img">
+          <img src="https://via.placeholder.com/100" alt />
         </div>
-        <div class="product_characteristic">{{product.detail[0]}}</div>
-        <div class="product_info_inner">
-          <div class="balance">
-            На складе
-            <div class="balance_style">
-              <div class="product_balance">{{product.balance}}</div>
+        <div class="product_info">
+          <div class="product_title">
+            <router-link :to="{ path: `/catalog/product/${product.link}` }">
+              <div class="title">{{product.title}}</div>
+            </router-link>
+
+            <div class="price">
+              <div class="product_price">{{product.price}} ₽/</div>
               <div class="product_unit">{{product.unit_of_measurement}}</div>
             </div>
           </div>
-          <button class="buy_btn">В корзину</button>
+          <div class="product_characteristic">{{product.detail[0]}}</div>
+          <div class="product_info_inner">
+            <div class="balance">
+              На складе
+              <div class="balance_style">
+                <div class="product_balance">{{product.balance}}</div>
+                <div class="product_unit">{{product.unit_of_measurement}}</div>
+              </div>
+            </div>
+            <button class="buy_btn">В корзину</button>
+          </div>
         </div>
       </div>
-    </div>
+    </template>
   </div>
 </template>
 
@@ -41,15 +39,15 @@ import { mapActions, mapGetters, mapMutations } from "vuex";
 export default {
   methods: {
     ...mapMutations(["changeCurrentPage"]),
-    ...mapActions(["fetchProducts", "fetchFilter"])
+    ...mapActions(["fetchProducts", "fetchFilter"]),
   },
   watch: {
-    $route: ["fetchProducts", "fetchFilter"]
+    $route: ["fetchProducts", "fetchFilter"],
   },
   mounted() {
     this.fetchProducts();
   },
-  computed: { ...mapGetters(["getProducts"]) }
+  computed: { ...mapGetters(["getProducts"]) },
 };
 </script>
 

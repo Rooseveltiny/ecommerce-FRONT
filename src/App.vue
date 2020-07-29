@@ -183,6 +183,14 @@ h6 {
   margin: 0 auto 10px auto;
 }
 
+.main_little_title{
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: 15px;
+  /* text-transform: uppercase; */
+}
+
 .main_subtitle{
   text-align: left;
   padding-top: 10px;

@@ -3,7 +3,12 @@
     <div class="container">
       <div class="catalog_and_stuff">
         <CatalogStructure />
-        <MainBanner />
+        <div class="banner_and_offers">
+          <MainBanner />
+          <keep-alive>
+            <MainOffers/>
+          </keep-alive>
+        </div>
       </div>
     </div>
   </div>
@@ -12,15 +17,14 @@
 <script>
 import CatalogStructure from "../CatalogStructure/CatalogStructure";
 import MainBanner from "../MainPage/MainBanner";
+import MainOffers from "../MainPage/MainOffers";
 export default {
-  components: { CatalogStructure, MainBanner }
+  components: { CatalogStructure, MainBanner, MainOffers },
 };
 </script>
 
 <style scoped>
-
-.catalog_and_stuff{
-    display: flex;
+.catalog_and_stuff {
+  display: flex;
 }
-
 </style>

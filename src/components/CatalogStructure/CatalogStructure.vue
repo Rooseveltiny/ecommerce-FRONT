@@ -1,7 +1,7 @@
 <template>
   <div
     id="CatalogStructureInner"
-    class="catalog_shadow_box non-select main_block_style main_block_style-less"
+    class="catalog_shadow_box non-select main_block_style main_block_style-less main_block_style-right_margin "
     :class="{'catalog_structure-main': $route.name == 'MainPage', 'catalog_structure-mini': $route.name != 'MainPage'}"
   >
     <div class="catalog_structure_inner">
@@ -68,6 +68,7 @@ export default {
   cursor: pointer;
   width: 25%;
   padding-right: 0;
+  height: 100%;
 }
 
 .catalog_main_title {
@@ -109,7 +110,7 @@ export default {
   padding: 15px;
   display: grid;
   width: 50rem;
-  padding-bottom: 20rem;
+  height: 100%;
 }
 
 .catalog_side_block_inner {
