@@ -31,9 +31,6 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   methods: {
     ...mapActions(["setQueryParams"]),
-    changePage() {
-      // this.setQueryParams();
-    },
     smoothScrollTop: async function () {
       window.scrollTo({ top: 0, behavior: "smooth" });
     },
