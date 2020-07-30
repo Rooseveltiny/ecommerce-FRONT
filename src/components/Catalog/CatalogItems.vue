@@ -3,7 +3,7 @@
     <template v-for="(product, index) in getProducts">
       <div :key="index" class="catalog_item main_block_style main_block_style-less">
         <div class="product_img">
-          <img src="https://via.placeholder.com/100" alt />
+          <img src="https://e-commerce-vdk.s3.eu-central-1.amazonaws.com/kaskad.jpg" width="100" height="100" alt />
         </div>
         <div class="product_info">
           <div class="product_title">
@@ -68,6 +68,10 @@ export default {
   font-size: 18px;
   display: flex;
   justify-content: space-between;
+}
+
+.product_img img{
+  border-radius: 7px;
 }
 
 .product_characteristic {
