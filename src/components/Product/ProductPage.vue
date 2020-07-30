@@ -2,13 +2,14 @@
   <div>
     <div class="container">
       <div class="title_main">
-        <div @click="$router.go(-1)" class="get_back">
-        </div>
         <div>
         <div class="title">{{product.title}}</div>
         <div class="article">Артикул: {{product.link}}</div>
         </div>
+        <div @click="$router.go(-1)" class="get_back">
+          <div class="get_back_label main_block_style main_block_style-less">Вернуться назад</div>
       </div>
+        </div>
       <div class="product main_block_style main_block_style-less" style="margin-bottom: 0">
         <Product />
       </div>
@@ -45,6 +46,7 @@ export default {
 
 .title_main {
   display: flex;
+  justify-content: space-between;
   color: #666;
   padding: 15px 0 0 15px;
 }
@@ -59,21 +61,58 @@ export default {
   border-radius: 3px;
   padding: 10px 20px;
   transition-duration: .5s;
+  width: 50px;
 }
 
 .get_back:hover{
     background-color: #ffe373;
 }
 
-.get_back:after{
+.get_back::after, .get_back::before{
   position: absolute;
   content: '';
-  border-top: 1px solid #666;
-  border-right: 1px solid #666;
-  width: 10px;
-  height: 10px;
-  right: 12px;
-  transform: rotate(-135deg);
+  background-color: #666;
+  width: 2px;
+  height: 25px;
+}
+
+.get_back::before{
+  transform: rotate(45deg);
+}
+
+.get_back::after{
+  transform: rotate(-45deg);
+}
+
+.get_back:hover .get_back_label{
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(35px);
+}
+
+.get_back_label{
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  font-size: 14px;
+  display: flex;
+  width: 140px;
+  right: 110px;
+  padding: 5px 10px;
+  transition-duration: 1s;
+}
+
+.get_back_label::after{
+  display: block;
+    content: '';
+    position: absolute;
+    height: 22px;
+    width: 22px;
+    background-color: #fff;
+    top: 5px;
+    right: -7px;
+    transform: rotate(45deg);
+    box-shadow: 2px -2px 5px 0px rgba(0, 0, 0, 0.1);;
 }
 
 </style>
