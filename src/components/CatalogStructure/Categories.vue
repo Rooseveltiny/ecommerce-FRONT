@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="extra_container">
       <div @click="$router.go(-1)" class="get_back_block">
         <div class="get_back_block_inner">назад</div>
@@ -28,7 +27,6 @@
       </div>
     <div class="right_side_block"></div>
     </div>
-  </div>
 </template>
 
 <script>

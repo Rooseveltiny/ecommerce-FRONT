@@ -216,7 +216,6 @@ h6 {
 
 .get_back_block_inner::after{
   opacity: 0;
-  /* opacity: 1; */
   position: absolute;
   display: block;
   content: '';
@@ -224,7 +223,7 @@ h6 {
   border-right: 1px solid #999;
   width: 8px;
   height: 8px;
-  top: 4%;
+  top: 24px;
   right: 45px;
   z-index: 1000;
   transform: rotate(45deg);
