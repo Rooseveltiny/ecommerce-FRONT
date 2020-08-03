@@ -1,11 +1,13 @@
 <template>
   <div
     id="CatalogStructureInner"
-    class="catalog_shadow_box non-select main_block_style main_block_style-less main_block_style-right_margin "
+    class="catalog_shadow_box non-select main_block_style main_block_style-less main_block_style-right_margin"
     :class="{'catalog_structure-main': $route.name == 'MainPage', 'catalog_structure-mini': $route.name != 'MainPage'}"
   >
     <div class="catalog_structure_inner">
-      <div class="catalog_main_title">Каталог</div>
+      <div class="catalog_main_title">
+        <router-link to="/catalog/categories">Каталог</router-link>
+        </div>
       <template v-for="(cat, index) in getCategories">
         <!-- <div :key="index" class="catalog_item"> -->
         <div v-if="cat.children.length" :key="index" class="catalog_item">
@@ -41,15 +43,15 @@
 import { mapMutations, mapGetters, mapActions } from "vuex";
 export default {
   computed: {
-    ...mapGetters(["getCategories"])
+    ...mapGetters(["getCategories"]),
   },
   methods: {
     ...mapActions(["fetchCatalogStructure"]),
-    ...mapMutations(["changeCurrentPage"])
+    ...mapMutations(["changeCurrentPage"]),
   },
   async mounted() {
     await this.fetchCatalogStructure();
-  }
+  },
 };
 </script>
 

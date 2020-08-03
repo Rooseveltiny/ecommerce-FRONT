@@ -7,6 +7,7 @@ import Contacts from "../components/Contacts/Contacts.vue";
 import AboutCompany from "../components/Information/AboutCompany";
 import AboutProject from "../components/Information/AboutProject";
 import ProductPage from "../components/Product/ProductPage";
+import Categories from "../components/CatalogStructure/Categories";
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ let router = new Router({
             name: 'Product',
             component: ProductPage
         },
+        {
+            path: '/catalog/categories',
+            name: 'Categories',
+            component: Categories
+        }
     ]
 })
 
