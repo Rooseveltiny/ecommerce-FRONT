@@ -11,7 +11,7 @@
           <div class="categories_inner">
             <div v-for="(cat, index) in allCategories" :key="index" class="category_item">
               <div class="category_img">
-                <img src="https:via.placeholder.com/200" alt />
+                <img src="https://via.placeholder.com/200" :alt="require('../../assets/logo/loadingBlock.gif')" />
               </div>
               <router-link
                 v-if="cat.is_endpoint"

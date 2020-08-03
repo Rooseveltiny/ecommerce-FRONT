@@ -96,6 +96,9 @@ export default {
                 return false;
             })
             state.choosenFilterParameters = allChoosenFilterValues;
+        },
+        clearFilterParams(state){
+            state.choosenFilterParameters = []
         }
     },
     state() {

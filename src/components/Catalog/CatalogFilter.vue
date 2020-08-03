@@ -3,7 +3,6 @@
     <div class="filter_inner non-select">
       <div class="filter_title">Поиск по свойствам</div>
 
-        
       <div v-for="filter in getAllFilters" :key="filter.name" class="filter_item">
         <div class="filter_name">{{filter.name}}</div>
         <div v-for="(parameter, index) in filter.parameters" :key="index" class="filter_value">
@@ -17,11 +16,14 @@
         </div>
       </div>
 
-      <transition name="bounce">
-        <div class="filter_btn_block" v-if="mayShowFilterBtn">
-          <button @click="filterProducts" class="filter_btn">Поиск</button>
-        </div>
-      </transition>
+      <div class="filter_buttons">
+        <transition name="bounce">
+          <div class="filter_btn_block" v-if="mayShowFilterBtn">
+            <button @click="filterProducts" class="filter_btn">Поиск</button>
+          </div>
+        </transition>
+        <span @click="clearFilter" class="filter_clear_btn">Очистить фильтр</span>
+      </div>
     </div>
   </div>
 </template>
@@ -29,10 +31,10 @@
 <script>
 import { mapGetters, mapActions, mapMutations } from "vuex";
 export default {
-  data(){
+  data() {
     return {
-      mayShowFilterBtn: false
-    }
+      mayShowFilterBtn: false,
+    };
   },
   computed: {
     ...mapGetters(["getAllFilters", "getAllChoosenFilterParameters"]),
@@ -43,26 +45,29 @@ export default {
       set(inputValue) {
         this.mayShowFilterBtn = true;
         this.$store.state.catalog.choosenFilterParameters = inputValue;
-      }
-    }
+      },
+    },
   },
   methods: {
-    ...mapActions(['fetchFilter', 'setQueryParams', 'fetchProducts']),
-    ...mapMutations(['collectFilterValuesFromURL']),
-    filterProducts: function(e){
-      e.preventDefault();
+    ...mapActions(["fetchFilter", "setQueryParams", "fetchProducts"]),
+    ...mapMutations(["collectFilterValuesFromURL", "clearFilterParams"]),
+    filterProducts: function () {
+      this.setQueryParams();
+      this.fetchProducts();
+      this.mayShowFilterBtn = false;
+    },
+    clearFilter: function(){
+      this.clearFilterParams();
       this.setQueryParams();
       this.fetchProducts();
       this.mayShowFilterBtn = false;
     }
   },
-  async mounted(){
+  async mounted() {
     await this.fetchFilter();
     this.collectFilterValuesFromURL();
   },
-  watch: {
-    // $route: "fetchFilter"
-  }
+  watch: {},
 };
 </script>
 
@@ -99,7 +104,6 @@ export default {
   font-size: 20px;
   transition-duration: 0.5s;
   position: relative;
-  
 }
 
 .filter_btn:hover {
@@ -110,4 +114,19 @@ export default {
   outline: none;
 }
 
+.filter_buttons {
+  text-align: center;
+}
+
+.filter_clear_btn {
+  color: #005da3;
+}
+
+.filter_clear_btn {
+  display: inline-block;
+  margin-top: 7px;
+  font-size: 13px;
+  border-bottom: 1px #005da3 dotted;
+  cursor: pointer;
+}
 </style>
