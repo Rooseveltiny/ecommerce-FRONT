@@ -199,4 +199,58 @@ h6 {
   margin: 0 auto 10px auto;
 }
 
+/* GET BACK BUTTON */
+/* GET BACK BUTTON */
+
+.get_back_block {
+  display: flex;
+  color: #999;
+  flex: 1;
+  transition-duration: .5s;
+}
+
+.get_back_block_inner{
+  padding: 15px 0 0 35px;
+  position: relative;
+}
+
+.get_back_block_inner::after{
+  opacity: 0;
+  /* opacity: 1; */
+  position: absolute;
+  display: block;
+  content: '';
+  border-top: 1px solid #999;
+  border-right: 1px solid #999;
+  width: 8px;
+  height: 8px;
+  top: 4%;
+  right: 45px;
+  z-index: 1000;
+  transform: rotate(45deg);
+  transition-duration: .5s;
+}
+
+.get_back_block:hover {
+  display: flex;
+  color: #666;
+  flex: 1;
+  background-color: #ebe4e4;
+}
+
+.get_back_block:hover .get_back_block_inner::after{
+  transform: rotate(-135deg);
+  opacity: 1;
+}
+
+.right_side_block{
+  flex: 1;
+}
+
+.extra_container {
+  display: flex;
+}
+
+/* GET BACK BUTTON END */
+
 </style>
