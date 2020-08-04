@@ -97,7 +97,7 @@ export default {
             })
             state.choosenFilterParameters = allChoosenFilterValues;
         },
-        clearFilterParams(state){
+        clearFilterParams(state) {
             state.choosenFilterParameters = []
         }
     },
@@ -117,10 +117,6 @@ export default {
                         name: "по наименованию",
                         sort_field: 'title'
                     },
-                    // {
-                    //     name: "по рейтингу",
-                    //     sort_field: 'rating'
-                    // },
                     {
                         name: "по умолчанию",
                         sort_field: 'link'
@@ -130,6 +126,9 @@ export default {
                     name: 'по умолчанию',
                     sort_field: 'link'
                 }
+            },
+            catalogView: {
+                //// in future
             },
             products: {
                 productsList: [],

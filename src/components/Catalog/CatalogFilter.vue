@@ -11,6 +11,7 @@
             :value="parameter"
             :id="parameter.title"
             v-model="choosenFilterParameters"
+            @change="filterProducts"
           />
           <label :for="parameter.title">{{parameter.title}}</label>
         </div>
@@ -18,11 +19,11 @@
 
       <div class="filter_buttons">
         <transition name="bounce">
-          <div class="filter_btn_block" v-if="mayShowFilterBtn">
-            <button @click="filterProducts" class="filter_btn">Поиск</button>
+          <div class="filter_btn_block" v-if="getAllChoosenFilterParameters.length">
+            <!-- <button @click="filterProducts" class="filter_btn">Поиск</button> -->
+            <span @click="clearFilter" class="filter_clear_btn">Очистить фильтр</span>
           </div>
         </transition>
-        <span @click="clearFilter" class="filter_clear_btn">Очистить фильтр</span>
       </div>
     </div>
   </div>
@@ -33,7 +34,7 @@ import { mapGetters, mapActions, mapMutations } from "vuex";
 export default {
   data() {
     return {
-      mayShowFilterBtn: false,
+      mayShowFilterBtn: false, // old parameter
     };
   },
   computed: {
@@ -54,20 +55,16 @@ export default {
     filterProducts: function () {
       this.setQueryParams();
       this.fetchProducts();
-      this.mayShowFilterBtn = false;
     },
-    clearFilter: function(){
+    clearFilter: function () {
       this.clearFilterParams();
       this.setQueryParams();
-      this.fetchProducts();
-      this.mayShowFilterBtn = false;
-    }
+    },
   },
   async mounted() {
     await this.fetchFilter();
     this.collectFilterValuesFromURL();
-  },
-  watch: {},
+  }
 };
 </script>
 
@@ -124,7 +121,6 @@ export default {
 
 .filter_clear_btn {
   display: inline-block;
-  margin-top: 7px;
   font-size: 13px;
   border-bottom: 1px #005da3 dotted;
   cursor: pointer;
