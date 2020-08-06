@@ -3,7 +3,7 @@
     <div class="container">
       <div class="catalog_inner">
         <!-- <div class="navigation main_block_style main_block_style-less" style="margin-bottom: 0"> -->
-          <!-- <NavigationChain /> -->
+        <!-- <NavigationChain /> -->
         <!-- </div> -->
         <div class="filter_items_pagination">
           <div class="filter main_block_style-right_margin main_block_style main_block_style-less">
@@ -13,14 +13,32 @@
             <div class="sorting main_block_style main_block_style-less">
               <CatalogSorting />
             </div>
-            <div class="catalog_items">
-              <div v-show="!catalogLoadingBlock" class="loading_block"><div class="loading">
-                <img width="100px" height="100px" :src="require('../../assets/logo/loadingBlock.gif')" alt="">
-                </div></div>
-              <CatalogItems v-show="catalogLoadingBlock" />
-            </div>
-            <div v-show="catalogLoadingBlock" class="pagination main_block_style main_block_style-less">
-              <CatalogPagination />
+
+            <template v-show="getProducts.length">
+              <div class="catalog_items">
+                <div v-show="!catalogLoadingBlock" class="loading_block">
+                  <div class="loading">
+                    <img
+                      width="100px"
+                      height="100px"
+                      :src="require('../../assets/logo/loadingBlock.gif')"
+                      alt
+                    />
+                  </div>
+                </div>
+                <CatalogItems v-show="catalogLoadingBlock" />
+              </div>
+
+              <div
+                v-show="getProducts.length"
+                class="pagination main_block_style main_block_style-less"
+              >
+                <CatalogPagination />
+              </div>
+            </template>
+
+            <div v-if="!getProducts.length" class="main_block_style">
+              <b>По вышему запросу ничего не найдено :(</b>
             </div>
           </div>
         </div>
@@ -35,19 +53,19 @@ import CatalogPagination from "./CatalogPagination";
 import CatalogSorting from "./CatalogSorting";
 import CatalogFilter from "./CatalogFilter";
 // import NavigationChain from "../Generals/NavigationChain";
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 export default {
-  computed:{
-    ...mapGetters(['catalogLoadingBlock'])
+  computed: {
+    ...mapGetters(["catalogLoadingBlock", "getProducts"]),
   },
   components: {
     CatalogItems,
     CatalogPagination,
     CatalogFilter,
-    CatalogSorting
+    CatalogSorting,
     // NavigationChain
-  }
+  },
 };
 </script>
 
@@ -76,11 +94,11 @@ export default {
   padding: 10px 15px;
 }
 
-.catalog_main{
+.catalog_main {
   padding-bottom: 50px;
 }
 
-.loading_block{
+.loading_block {
   text-align: center;
   padding-top: 40px;
 }

@@ -64,7 +64,7 @@ export default {
   async mounted() {
     await this.fetchFilter();
     this.collectFilterValuesFromURL();
-  }
+  },
 };
 </script>
 

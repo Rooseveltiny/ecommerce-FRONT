@@ -4,10 +4,12 @@ import ApiSettings from '../ApiSettings'
 export default {
     actions: {
         async fetchProducts({ commit }) {
+            commit('updateShowCatalogBlock', true);
             const categoryAndQueryParams = router.currentRoute.fullPath;
             const res = await fetch(`${ApiSettings.BASE_ROUTE}${categoryAndQueryParams}`);
             const products = await res.json();
             commit('updateProducts', products);
+            commit('updateShowCatalogBlock', false);
         },
         async fetchFilter({ commit }) {
             const res = await fetch(`${ApiSettings.BASE_ROUTE}/products/filter/${router.currentRoute.params.slug}`);
@@ -53,6 +55,9 @@ export default {
         updateProducts(state, products) {
             state.products.productsList = products.results;
             state.products.productsPagination = products;
+        },
+        updateShowCatalogBlock(state, show) {
+            state.products.showLoadingBlock = show;
         },
         updateCategories(state, categories) {
             state.categories = categories;
@@ -133,6 +138,7 @@ export default {
             products: {
                 productsList: [],
                 productsPagination: {},
+                showLoadingBlock: false
             },
             categories: {},
             CatalogStructureVisible: false,
@@ -156,7 +162,7 @@ export default {
             return state.products.productsList;
         },
         catalogLoadingBlock(state) {
-            return state.products.productsList.length;
+            return !state.products.showLoadingBlock;
         },
         getCatalogStructureVision(state) {
             return state.CatalogStructureVisible;
