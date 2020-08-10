@@ -24,6 +24,11 @@ export default {
 </script>
 
 <style scoped>
+
+.banner_and_offers{
+  width: 75%;
+}
+
 .catalog_and_stuff {
   display: flex;
 }

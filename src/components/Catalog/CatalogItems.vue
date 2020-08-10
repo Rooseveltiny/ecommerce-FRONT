@@ -21,7 +21,13 @@
               <div class="product_unit">{{product.unit_of_measurement}}</div>
             </div>
           </div>
-          <div class="product_characteristic">{{product.detail[0]}}</div>
+          <div class="product_characteristic">
+            <div
+              v-for="(detail, index) in product.detail"
+              :key="index"
+              class="product_characteristic_item"
+            >{{detail}}</div>
+          </div>
           <div class="product_info_inner">
             <div class="balance">
               На складе
@@ -82,6 +88,20 @@ export default {
 .product_characteristic {
   color: #666;
   font-size: 15px;
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+  overflow: hidden;
+}
+
+.product_characteristic_item {
+  margin-right: 10px;
+  padding: 0 10px;
+  border: 1.2px dashed #ffe373;
+  border-radius: 7px;
+  background-color: rgb(255, 249, 195);
+  cursor: cell;
+  white-space: nowrap;
 }
 
 .catalog_item {
@@ -104,7 +124,7 @@ export default {
   display: flex;
   padding: 0 5px;
   margin: 0 5px;
-  background-color: #fc0;
+  /* background-color: #fc0; */
   position: relative;
 }
 
