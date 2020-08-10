@@ -96,7 +96,6 @@ export default {
 
 .filter_btn_block {
   text-align: center;
-  padding-top: 5px;
 }
 
 .filter_btn {
