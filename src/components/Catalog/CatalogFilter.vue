@@ -52,13 +52,18 @@ export default {
   methods: {
     ...mapActions(["fetchFilter", "setQueryParams", "fetchProducts"]),
     ...mapMutations(["collectFilterValuesFromURL", "clearFilterParams"]),
+     smoothScrollTop: async function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    },
     filterProducts: function () {
       this.setQueryParams();
       this.fetchProducts();
+      this.smoothScrollTop();
     },
     clearFilter: function () {
       this.clearFilterParams();
       this.setQueryParams();
+      this.smoothScrollTop();
     },
   },
   async mounted() {
