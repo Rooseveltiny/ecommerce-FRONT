@@ -5,15 +5,17 @@
 
       <div v-for="filter in getAllFilters" :key="filter.name" class="filter_item">
         <div class="filter_name">{{filter.name}}</div>
-        <div v-for="(parameter, index) in filter.parameters" :key="index" class="filter_value">
-          <input
-            type="checkbox"
-            :value="parameter"
-            :id="parameter.title"
-            v-model="choosenFilterParameters"
-            @change="filterProducts"
-          />
-          <label :for="parameter.title">{{parameter.title}}</label>
+        <div class="filter_values_block">
+          <div v-for="(parameter, index) in filter.parameters" :key="index" class="filter_value">
+            <input
+              :type="filter.input_type"
+              :value="parameter"
+              :id="parameter.title"
+              v-model="choosenFilterParameters"
+              @change="filterProducts"
+            />
+            <label :for="parameter.title">{{parameter.title}}</label>
+          </div>
         </div>
       </div>
 
@@ -52,7 +54,7 @@ export default {
   methods: {
     ...mapActions(["fetchFilter", "setQueryParams", "fetchProducts"]),
     ...mapMutations(["collectFilterValuesFromURL", "clearFilterParams"]),
-     smoothScrollTop: async function () {
+    smoothScrollTop: async function () {
       window.scrollTo({ top: 0, behavior: "smooth" });
     },
     filterProducts: function () {
@@ -92,6 +94,11 @@ export default {
 
 .filter_value {
   padding: 2px 0;
+}
+
+.filter_values_block{
+    overflow: overlay;
+    max-height: 135px;
 }
 
 .filter_btn_block {

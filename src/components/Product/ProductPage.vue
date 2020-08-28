@@ -7,7 +7,7 @@
       <div class="title_main">
         <div>
           <div class="title">{{product.title}}</div>
-          <div class="article">Артикул: {{product.link}}</div>
+          <div class="article">Код продукта: {{product.product_code}}</div>
         </div>
         <div @click="$router.go(-1)" class="get_back">
           <div class="get_back_label main_block_style main_block_style-less">Вернуться назад</div>

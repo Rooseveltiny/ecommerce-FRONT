@@ -7,7 +7,7 @@
       <div class="product_info_inner">
         <div class="product_price">{{product.price}} ₽/{{product.unit_of_measurement}}</div>
         <div class="characteristic"></div>
-        <div class="balance">Остаток на складе: {{product.balance}}{{product.unit_of_measurement}}</div>
+        <div class="balance">Остаток на складе: {{product.balance}}&nbsp;{{product.unit_of_measurement}}</div>
         <div class="characteristic"></div>
       </div>
       <div class="buy_btn_block">
