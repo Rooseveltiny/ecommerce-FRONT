@@ -1,5 +1,11 @@
 <template>
   <div class="sorting_inner non-select">
+
+    <div class="found_block">
+      <span>Найдено товаров:&nbsp;</span>
+      <span class="found">{{getProductsCount}}</span>
+    </div>
+    <div class="sorting_block">
     <span>Сортировать:&nbsp;</span>
     <span
       @click="showAllSortings"
@@ -16,6 +22,7 @@
       >{{sorting.name}}</div>
     </div>
     </transition>
+    </div>
   </div>
 </template>
 
@@ -28,7 +35,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getCurrentSortingType", "getAllSortingTypes"])
+    ...mapGetters(["getCurrentSortingType", "getAllSortingTypes", "getProductsCount"])
   },
   methods: {
     ...mapActions(["setQueryParams"]),
@@ -50,6 +57,12 @@ export default {
 </script>
 
 <style>
+
+.found{
+  color: #0d61af;
+  border-bottom: 1px dotted;
+}
+
 .sorting_list {
   display: grid;
   text-align: left;
@@ -73,6 +86,8 @@ export default {
 .sorting_inner {
   text-align: right;
   position: relative;
+  justify-content: space-between;
+  display: flex;
 }
 
 .currentSorting {

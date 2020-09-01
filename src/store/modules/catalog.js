@@ -182,6 +182,9 @@ export default {
             if (pag.previous) { pag.previous = pag.previous.replace(ApiSettings.BASE_ROUTE, '') }
             if (pag.page_links) { pag.page_links.map(value => { value.link = value.link.replace(ApiSettings.BASE_ROUTE, '') }); }
             return pag;
+        },
+        getProductsCount(state){
+            return state.products.productsPagination.count;
         }
     }
 }

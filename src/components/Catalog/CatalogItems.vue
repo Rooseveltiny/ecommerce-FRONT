@@ -2,12 +2,12 @@
   <div>
     <template v-for="(product, index) in getProducts">
       <div :key="index" class="catalog_item main_block_style main_block_style-less">
-        <div class="product_img">
+        <div class="product_img" style="width:100px; height:100px">
           <img
             src="https://e-commerce-vdk.s3.eu-central-1.amazonaws.com/kaskad.jpg"
             width="100"
             height="100"
-            alt
+            alt=""
           />
         </div>
         <div class="product_info">

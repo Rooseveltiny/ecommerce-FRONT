@@ -1,6 +1,6 @@
 <template>
   <div class="product">
-    <div class="product_image">
+    <div class="product_image" style="width: 300px; height: 300px">
       <img width="300" height="300" src="https://e-commerce-vdk.s3.eu-central-1.amazonaws.com/kaskad.jpg" alt />
     </div>
     <div class="product_info">
