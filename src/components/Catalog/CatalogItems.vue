@@ -2,20 +2,18 @@
   <div>
     <template v-for="(product, index) in getProducts">
       <div :key="index" class="catalog_item main_block_style main_block_style-less">
-        <div class="product_img" style="width:100px; height:100px">
-          <img
-            src="https://e-commerce-vdk.s3.eu-central-1.amazonaws.com/kaskad.jpg"
-            width="100"
-            height="100"
-            alt=""
-          />
+        <div class="product_img">
+          <template v-if="product.all_images.length">
+            <div class="img_wrapper">
+              <img onload="this.style.visibility='visible'" :src="product.all_images[0].cloud_link" alt />
+            </div>
+          </template>
         </div>
         <div class="product_info">
           <div class="product_title">
             <router-link :to="{ path: `/catalog/product/${product.link}` }">
               <div class="title">{{product.title}}</div>
             </router-link>
-
             <div class="price">
               <div class="product_price">{{product.price}} ₽/</div>
               <div class="product_unit">{{product.unit_of_measurement}}</div>
@@ -65,7 +63,7 @@ export default {
 <style scoped>
 .product_info {
   display: grid;
-  padding: 0 50px;
+  padding: 0 35px;
   width: 100%;
 }
 
@@ -74,15 +72,18 @@ export default {
   font-weight: bold;
 }
 
+.product_img{
+  width: 120px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
 .product_title {
   font-family: "PT Sans", "Helvetica", "Arial", sans-serif;
   font-size: 18px;
   display: flex;
   justify-content: space-between;
-}
-
-.product_img img {
-  border-radius: 7px;
 }
 
 .product_characteristic {

@@ -40,7 +40,17 @@ export default {
 
 <style>
 
+.img_wrapper{
+  display: flex;
+  position: relative;
+}
 
+ 
+.img_wrapper img{
+  width: 100%;
+  visibility: hidden;
+  z-index: 1000;
+}
 
 a:hover,
 a:visited,

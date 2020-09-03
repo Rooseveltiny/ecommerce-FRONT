@@ -12,7 +12,9 @@
       </div>
     </div>
     <div class="section main_block_style main_block_style-less">
-      <div class="section_inner" v-if="currentSection === 'Описание'">{{product.description}}</div>
+      <div class="section_inner" v-if="currentSection === 'Описание'">
+      {{product.description}}
+      </div>
       <div class="section_inner" v-if="currentSection === 'Характеристики'">
         <div class="chars_block">
           <div v-for="(char,index) in product.detail" :key="index" class="char_item">
@@ -24,7 +26,11 @@
           </div>
         </div>
       </div>
-      <div class="section_inner" v-if="currentSection === 'Файлы'"></div>
+      <div class="section_inner" v-if="currentSection === 'Файлы'">
+        <div v-for="(file, index) in product.all_files" :key="index" class="file_item">
+          <a target="_blank" :href="file.cloud_link"><span class="file_title">{{file.title}}</span></a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -45,6 +51,13 @@ export default {
 </script>
 
 <style scoped>
+
+.file_title{
+  color: #0d61af;
+  border-bottom: 1px dotted;
+
+}
+
 .sections {
   display: grid;
   width: 20%;
