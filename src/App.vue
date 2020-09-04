@@ -40,16 +40,29 @@ export default {
 
 <style>
 
+/* slider settings */
+.slider:hover .slider-btn{
+  opacity: 1;
+}
+
+.slider-btn{
+  opacity: 0;
+  transition: .5s !important;
+}
+
+.slider-btn-right{
+  background: none;
+} 
+
+
 .img_wrapper{
   display: flex;
   position: relative;
 }
 
- 
 .img_wrapper img{
   width: 100%;
   visibility: hidden;
-  z-index: 1000;
 }
 
 a:hover,

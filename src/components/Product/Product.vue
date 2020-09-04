@@ -1,13 +1,33 @@
 <template>
   <div class="product">
     <div class="product_image" style="width: 300px; height: 300px">
-      <img width="300" height="300" src="https://e-commerce-vdk.s3.eu-central-1.amazonaws.com/kaskad.jpg" alt />
+      <!-- <img
+        width="300"
+        height="300"
+        src="https://e-commerce-vdk.s3.eu-central-1.amazonaws.com/kaskad.jpg"
+        alt
+      /> -->
+
+      <Slider animation="normal" :autoplay="false">
+        <SliderItem v-for="(img, index) in product.all_images" :key="index">
+      <img
+        width="300"
+        height="300"
+        :src="img.cloud_link"
+        alt
+      />
+        </SliderItem>
+      </Slider>
+
+
     </div>
     <div class="product_info">
       <div class="product_info_inner">
         <div class="product_price">{{product.price}} ₽/{{product.unit_of_measurement}}</div>
         <div class="characteristic"></div>
-        <div class="balance">Остаток на складе: {{product.balance}}&nbsp;{{product.unit_of_measurement}}</div>
+        <div
+          class="balance"
+        >Остаток на складе: {{product.balance}}&nbsp;{{product.unit_of_measurement}}</div>
         <div class="characteristic"></div>
       </div>
       <div class="buy_btn_block">
@@ -19,17 +39,22 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import { Slider, SliderItem } from "vue-easy-slider";
 
 export default {
-  methods:{
-    ...mapActions(['fetchProduct'])
+  components: {
+    Slider,
+    SliderItem,
+  },
+  methods: {
+    ...mapActions(["fetchProduct"]),
   },
   computed: {
-    ...mapGetters(["product"])
+    ...mapGetters(["product"]),
   },
-  async mounted(){
-    await this.fetchProduct()
-  }
+  async mounted() {
+    await this.fetchProduct();
+  },
 };
 </script>
 

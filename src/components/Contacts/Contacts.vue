@@ -41,9 +41,9 @@
               width="100%"
               height="100%"
               frameborder="0"
-              style="border-radius: 7px; z-index: 1000"
+              style="border-radius: 7px"
             ></iframe>
-            <span class="mapLoading">Загрузка карты...</span>
+            <span class="mapLoading" style="z-index: -100">Загрузка карты...</span>
           </div>
         </div>
       </div>
