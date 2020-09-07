@@ -96,6 +96,10 @@ export default {
   padding: 2px 0;
 }
 
+/* .filter_value label, input{
+  cursor: pointer;
+} */
+
 .filter_values_block{
     overflow: overlay;
     max-height: 135px;

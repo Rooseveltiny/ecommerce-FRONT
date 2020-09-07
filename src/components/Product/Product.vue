@@ -1,14 +1,7 @@
 <template>
   <div class="product">
     <div class="product_image" style="width: 300px; height: 300px">
-      <!-- <img
-        width="300"
-        height="300"
-        src="https://e-commerce-vdk.s3.eu-central-1.amazonaws.com/kaskad.jpg"
-        alt
-      /> -->
-
-      <Slider animation="normal" :autoplay="false">
+        <Slider animation="normal" :autoplay="false">
         <SliderItem v-for="(img, index) in product.all_images" :key="index">
       <img
         width="300"
@@ -18,8 +11,6 @@
       />
         </SliderItem>
       </Slider>
-
-
     </div>
     <div class="product_info">
       <div class="product_info_inner">
