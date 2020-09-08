@@ -9,6 +9,7 @@ import AboutProject from "../components/Information/AboutProject";
 import ProductPage from "../components/Product/ProductPage";
 import Categories from "../components/CatalogStructure/Categories";
 import FeedBack from "../components/Generals/FeedBack";
+import FAQ from "../components/Generals/FAQ";
 
 Vue.use(Router)
 
@@ -57,6 +58,11 @@ let router = new Router({
             path: '/feedback',
             name: 'FeedBack',
             component: FeedBack
+        },
+        {
+            path: '/faq',
+            name: 'FAQ',
+            component: FAQ
         }
     ]
 })

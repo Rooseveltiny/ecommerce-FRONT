@@ -8,7 +8,7 @@
               <router-link to="/about_company">
                 <div class="footer_item">О компании</div>
               </router-link>
-              <router-link to="/catalog">
+              <router-link to="/catalog/categories">
                 <div class="footer_item">Каталог продукции</div>
               </router-link>
             </div>
@@ -21,7 +21,7 @@
               </router-link>
             </div>
             <div class="footer_section">
-              <router-link to="/">
+              <router-link to="/faq">
                 <div class="footer_item">Частные вопросы</div>
               </router-link>
               <router-link to="/about_project">
