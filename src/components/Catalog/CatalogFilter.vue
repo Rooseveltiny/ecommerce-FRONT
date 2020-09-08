@@ -18,11 +18,9 @@
           </div>
         </div>
       </div>
-
       <div class="filter_buttons">
         <transition name="bounce">
           <div class="filter_btn_block" v-if="getAllChoosenFilterParameters.length">
-            <!-- <button @click="filterProducts" class="filter_btn">Поиск</button> -->
             <span @click="clearFilter" class="filter_clear_btn">Очистить фильтр</span>
           </div>
         </transition>

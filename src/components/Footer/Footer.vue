@@ -16,7 +16,7 @@
               <router-link to="/contacts">
                 <div class="footer_item">Контакты</div>
               </router-link>
-              <router-link to="/">
+              <router-link to="/feedback">
                 <div class="footer_item">Обратная связь</div>
               </router-link>
             </div>

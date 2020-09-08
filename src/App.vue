@@ -80,7 +80,7 @@ a:active {
 }
 
 body {
-  font-family: "PT Sans", "Helvetica", "Arial", sans-serif;
+  font-family: "Arial", "PT Sans", "Helvetica", "Arial", sans-serif;
   font-size: 15px;
   color: #333;
   line-height: 1.6;
