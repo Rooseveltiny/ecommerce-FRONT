@@ -10,12 +10,12 @@
                 class="radio_input"
                 :class="{'radio_input-active': form.client_type==1}"
                 @click="form.client_type=1"
-              >Физическое лицо</div>
+              >Частное лицо</div>
               <div
                 class="radio_input"
                 :class="{'radio_input-active': form.client_type==2}"
                 @click="form.client_type=2"
-              >Юридическое лицо</div>
+              >Организация</div>
             </div>
             <div class="form_field">
               <label for="name">Ваше имя</label>
@@ -23,7 +23,7 @@
             </div>
             <transition name="component-fade" mode="out-in">
               <div class="form_field" v-if="form.client_type==2">
-                <label for="company">Компания</label>
+                <label for="company">Название организации</label>
                 <input class="input_field" required type="text" v-model="form.company" id="company" />
               </div>
             </transition>
@@ -111,7 +111,8 @@ label {
 
 .input_field {
   height: 35px;
-  border: 1px solid #666;
+  border: 1px solid rgb(207, 207, 207);
+  border: none;
   border-radius: 5px;
 }
 
@@ -121,20 +122,34 @@ label {
 }
 
 .radio_input {
-  border: 1.2px dashed #ffe373;
-  background-color: rgb(255, 249, 195);
   padding: 5px 10px;
   border-radius: 5px;
   color: #666;
   cursor: pointer;
   font-size: 14px;
+  position: relative;
 }
 
-.radio_input-active {
-  border-width: 2px;
-  color: #666;
-  font-weight: bold;
+.radio_input::before{
+    content: "";
+    /* width: 100%; */
+    height: 3px;
+    background-color: #fc0;
+    transition-duration: .7s;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
+
+.radio_input.radio_input-active::before {
+    width: 100%;
+}
+
+.radio_input-active{
+    color: #333;
+}
+
+
 
 input {
   outline: none;
@@ -151,6 +166,7 @@ input {
     padding: 12px;
     color: #333;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .form_result{

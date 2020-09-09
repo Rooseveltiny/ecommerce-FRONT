@@ -59,7 +59,7 @@ export default {
 
 <style scoped>
 .q_item {
-  width: 50%;
+  width: 60%;
   text-align: left;
   display: flex;
   margin: 0 auto;
