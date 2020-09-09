@@ -1,32 +1,44 @@
 <template>
-    <div class="extra_container">
-      <div @click="$router.go(-1)" class="get_back_block">
-        <div class="get_back_block_inner">назад</div>
-      </div>
+  <div class="extra_container">
+    <div @click="$router.go(-1)" class="get_back_block">
+      <div class="get_back_block_inner">назад</div>
+    </div>
 
-      <div class="container">
-        <div class="main_title">Категории</div>
+    <div class="container">
+      <div class="main_title">Категории</div>
 
-        <div class="categories main_block_style">
-          <div class="categories_inner">
-            <div v-for="(cat, index) in allCategories" :key="index" class="category_item">
-              <div class="category_img">
-                <img src="https://via.placeholder.com/200" :alt="require('../../assets/logo/loadingBlock.gif')" />
-              </div>
-              <router-link
-                v-if="cat.is_endpoint"
-                :to="{ name: 'Catalog', params: { slug: cat.slug }}"
-              >{{cat.title}}</router-link>
-              <router-link
-                v-else
-                :to="{ path: '/catalog/categories', query: { parent: cat.slug }}"
-              >{{cat.title}}</router-link>
-            </div>
+      <div class="categories main_block_style">
+        <div class="categories_inner">
+          <div v-for="(cat, index) in allCategories" :key="index" class="category_item">
+            <!-- new -->
+            <template v-if="cat.is_endpoint">
+              <router-link :to="{ name: 'Catalog', params: { slug: cat.slug }}">
+                <div class="category_img">
+                  <img
+                    src="https://via.placeholder.com/200"
+                    :alt="require('../../assets/logo/loadingBlock.gif')"
+                  />
+                </div>
+                <div class="cat_title">{{cat.title}}</div>
+              </router-link>
+            </template>
+            <template v-else>
+              <router-link :to="{ path: '/catalog/categories', query: { parent: cat.slug }}">
+                <div class="category_img">
+                  <img
+                    src="https://via.placeholder.com/200"
+                    :alt="require('../../assets/logo/loadingBlock.gif')"
+                  />
+                </div>
+                <div class="cat_title">{{cat.title}}</div>
+              </router-link>
+            </template>
           </div>
         </div>
       </div>
-    <div class="right_side_block"></div>
     </div>
+    <div class="right_side_block"></div>
+  </div>
 </template>
 
 <script>
@@ -87,4 +99,9 @@ img {
   display: grid;
   justify-items: center;
 }
+
+.cat_title{
+  text-align: center;
+}
+
 </style>
