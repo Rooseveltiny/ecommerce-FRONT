@@ -33,6 +33,9 @@
                 <span class="contact_underline">СБ</span> с 9:00 до 15:00
               </div>
             </div>
+            <div class="contact_item">
+              <router-link to="/feedback"><div class="contact_callback">Оставить заявку</div></router-link>
+            </div>
           </div>
 
           <div class="contacts_map main_block_style main_block_style-less">
@@ -89,7 +92,7 @@ export default {};
 
 .contact_underline {
   padding: 2px 5px;
-  background-color: #fc0;
+  background-color: rgb(255, 234, 151);
   border-radius: 7px;
   border: 1px dotted #666;
 }
@@ -110,6 +113,16 @@ a {
     z-index: 0;
     font-size: 25px;
     color: #666;
+}
+
+.contact_callback{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fc0;
+    border-radius: 5px;
 }
 
 </style>

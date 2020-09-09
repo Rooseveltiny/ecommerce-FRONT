@@ -4,7 +4,7 @@
     <div class="form_container">
       <transition name="component-fade" mode="out-in">
         <form @submit.prevent="sendForm">
-          <div class="form_block" v-if="!formSent">
+          <div class="form_block main_block_style" v-if="!formSent">
                <div class="form_field form_field-radio non-select">
               <div
                 class="radio_input"
@@ -111,9 +111,13 @@ label {
 
 .input_field {
   height: 35px;
-  border: 1px solid rgb(207, 207, 207);
+  /* border: 1px solid rgb(238, 238, 238); */
   border: none;
   border-radius: 5px;
+  background-color: #f6f6f6;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
 }
 
 .form_field-radio {

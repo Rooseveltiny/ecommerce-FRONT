@@ -19,7 +19,7 @@
           <template v-for="n in 4">
             <div :key="n" v-if="allOffers[n] != null" class="offer_item">
               <div class="offer_img">
-                <img src alt />
+                <!-- <img :src="allOffers[n].all_images[0].cloud_link" alt /> -->
               </div>
               <div :key="n" class="offer_title">
                 <router-link

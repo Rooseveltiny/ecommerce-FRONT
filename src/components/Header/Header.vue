@@ -8,8 +8,12 @@
               <div class="nav-left-part">
                 <span class="nav_link">Череповец</span>
                 <span class="nav_link">8(8202)265-265</span>
-                <router-link to="/contacts"><span class="nav_link">Контакты</span></router-link>
-                <router-link to="/about_company"><span class="nav_link">О компании</span></router-link>
+                <router-link to="/contacts">
+                  <span class="nav_link">Контакты</span>
+                </router-link>
+                <router-link to="/feedback">
+                  <span class="nav_link">Обратная связь</span>
+                </router-link>
               </div>
               <div class="nav-right-part">Вход/Регистрация</div>
             </div>
@@ -21,20 +25,22 @@
       <div class="container">
         <div class="bottom_header_inner">
           <div class="bottom_header_left">
-            <router-link :to="{name: 'MainPage'}"><div class="logo">
-              <img height="40px" :src="require('../../assets/logo/logo.svg')" alt />
-            </div></router-link>
+            <router-link :to="{name: 'MainPage'}">
+              <div class="logo">
+                <img height="40px" :src="require('../../assets/logo/logo.svg')" alt />
+              </div>
+            </router-link>
 
             <transition name="bounce">
-            <div class="catalog" v-if="$route.name != 'MainPage'">
-              <div
-                @click="showCatalogStructureComponentMethod()"
-                class="catalog_inner non-select"
-                :class="{active: getCatalogStructureVision}"
-                id="CatalogStructure"
-              >Каталог</div>
-              <CatalogStructure v-show="getCatalogStructureVision" />
-            </div>
+              <div class="catalog" v-if="$route.name != 'MainPage'">
+                <div
+                  @click="showCatalogStructureComponentMethod()"
+                  class="catalog_inner non-select"
+                  :class="{active: getCatalogStructureVision}"
+                  id="CatalogStructure"
+                >Каталог</div>
+                <CatalogStructure v-show="getCatalogStructureVision" />
+              </div>
             </transition>
           </div>
           <div class="bottom_header_right">
@@ -58,14 +64,14 @@ import CatalogStructure from "../CatalogStructure/CatalogStructure";
 export default {
   methods: {
     ...mapMutations(["showCatalogStructure"]),
-    showCatalogStructureComponentMethod: function(){
+    showCatalogStructureComponentMethod: function () {
       this.showCatalogStructure();
-    }
+    },
   },
   computed: {
-    ...mapGetters(["getCatalogStructureVision"])
+    ...mapGetters(["getCatalogStructureVision"]),
   },
-  components: { CatalogStructure }
+  components: { CatalogStructure },
 };
 </script>
 
@@ -148,7 +154,7 @@ export default {
   top: 48%;
   right: 12%;
   transform: rotate(-45deg);
-  transition-duration: .3s;
+  transition-duration: 0.3s;
 }
 
 .catalog_inner.active:after {
@@ -176,7 +182,7 @@ export default {
   width: 100%;
   border-width: 0.1px;
   padding-left: 7px;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
   border-top: none;
   border-left: none;
   border-right: none;

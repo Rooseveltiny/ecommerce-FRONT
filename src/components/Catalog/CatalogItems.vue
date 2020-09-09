@@ -101,7 +101,7 @@ export default {
   border: 1.2px dashed #ffe373;
   border-radius: 7px;
   background-color: rgb(255, 249, 195);
-  cursor: cell;
+  /* cursor: none; */
   white-space: nowrap;
 }
 
