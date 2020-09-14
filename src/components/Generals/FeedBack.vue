@@ -187,6 +187,31 @@ input {
     color: rgb(137, 137, 221);
 }
 
+@media (max-width: 990px){
+  .form_block{
+    width: 50%;
+  }
+}
+
+@media (max-width: 770px){
+  .form_block{
+    width: 70%;
+  }
+}
+
+
+
+@media (max-width: 575px){
+  .form_block{
+    width: 100%;
+  }
+
+  .form_container{
+    padding-left: 0;
+  }
+
+}
+
 </style>
 
 

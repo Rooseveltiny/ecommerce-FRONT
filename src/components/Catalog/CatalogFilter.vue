@@ -10,11 +10,11 @@
             <input
               :type="filter.input_type"
               :value="parameter"
-              :id="parameter.title"
+              :id="parameter.slug"
               v-model="choosenFilterParameters"
               @change="filterProducts"
             />
-            <label :for="parameter.title">{{parameter.title}}</label>
+            <label :for="parameter.slug">{{parameter.title}}</label>
           </div>
         </div>
       </div>

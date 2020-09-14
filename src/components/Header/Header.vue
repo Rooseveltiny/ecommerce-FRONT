@@ -208,4 +208,17 @@ export default {
   padding: 0 20px;
   border-radius: 3px;
 }
+
+@media (max-width: 990px){
+  .nav_inner{
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 575px){
+  .nav_inner{
+    font-size: 11px;
+  }
+}
+
 </style>

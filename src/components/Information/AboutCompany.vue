@@ -153,4 +153,24 @@ a{
     color: #fff;
 }
 
+@media (max-width: 575px){
+    .projects{
+        flex-wrap: wrap;
+    }
+
+    .project_item{
+        width: 100%;
+    }
+
+    .about_company-info{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 320px){
+    .about_company-info{
+        font-size: 12px;
+    }
+}
+
 </style>

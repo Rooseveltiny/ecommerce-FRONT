@@ -34,7 +34,9 @@
               </div>
             </div>
             <div class="contact_item">
-              <router-link to="/feedback"><div class="contact_callback">Оставить заявку</div></router-link>
+              <router-link to="/feedback">
+                <div class="contact_callback">Оставить заявку</div>
+              </router-link>
             </div>
           </div>
 
@@ -79,14 +81,14 @@ export default {};
 .contact_item {
   padding: 10px 10px;
   border-bottom: 1px dotted rgb(199, 199, 199);
-  transition-duration: .7s;
+  transition-duration: 0.7s;
 }
 
-.contact_item:hover{
+.contact_item:hover {
   background-color: rgb(255, 246, 212);
 }
 
-.contact_item:last-child{
+.contact_item:last-child {
   border-bottom: none;
 }
 
@@ -101,28 +103,56 @@ a {
   text-decoration: none;
 }
 
-.contacts_map{
+.contacts_map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.mapLoading {
+  position: absolute;
+  z-index: 0;
+  font-size: 25px;
+  color: #666;
+}
+
+.contact_callback {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fc0;
+  border-radius: 5px;
+}
+
+@media (max-width: 770px) {
+  .contacts_block {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
+    flex-wrap: wrap;
+  }
 
-.mapLoading{
-    position: absolute;
-    z-index: 0;
-    font-size: 25px;
-    color: #666;
-}
-
-.contact_callback{
+  .contacts_block * {
     width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fc0;
-    border-radius: 5px;
+  }
+
+  .main_block_style-right_margin {
+    margin: 0;
+  }
+
+  .contacts_map {
+    height: 400px;
+  }
 }
 
+@media (max-width: 320px) {
+  .contacts_map {
+    height: 300px;
+  }
+
+  .contact_item {
+    font-size: 13px;
+  }
+}
 </style>
