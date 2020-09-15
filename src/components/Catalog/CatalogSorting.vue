@@ -58,6 +58,8 @@ export default {
 
 <style>
 
+
+
 .found{
   color: #0d61af;
   border-bottom: 1px dotted;
@@ -68,8 +70,8 @@ export default {
   text-align: left;
   position: absolute;
   top: 15px;
-  left: 73%;
-  width: 27%;
+  /* left: 73%; */
+  /* width: 33%; */
   background-color: white;
   padding: 15px;
 }
@@ -94,4 +96,5 @@ export default {
   color: #0d61af;
   border-bottom: 1px dotted;
 }
+
 </style>

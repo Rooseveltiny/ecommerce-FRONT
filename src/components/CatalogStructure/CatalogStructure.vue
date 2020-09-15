@@ -56,6 +56,9 @@ export default {
 </script>
 
 <style scoped>
+
+
+
 .catalog_structure-mini {
   position: absolute;
   top: 57px;
@@ -88,6 +91,7 @@ export default {
   padding: 10px 5px;
   padding-left: 15px;
   padding-right: 20px;
+  /* border-bottom: 1px solid rgb(202, 202, 202); */
 }
 
 .catalog_item:hover {

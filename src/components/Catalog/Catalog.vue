@@ -101,4 +101,22 @@ export default {
   text-align: center;
   padding-top: 40px;
 }
+
+@media (max-width: 770px){
+ .filter_items_pagination{
+   flex-wrap: wrap;
+ }
+  .filter{
+    width: 100%;
+   margin-bottom: 0;
+   margin-right: 0;
+  }
+
+  .sorting_and_items{
+    width: 100%;
+  }
+
+}
+
+
 </style>

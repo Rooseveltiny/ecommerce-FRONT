@@ -21,12 +21,12 @@
               <label for="name">Ваше имя</label>
               <input class="input_field" required type="text" v-model="form.name" id="name" />
             </div>
-            <transition name="component-fade" mode="out-in">
+            <!-- <transition name="component-fade" mode="out-in"> -->
               <div class="form_field" v-if="form.client_type==2">
                 <label for="company">Название организации</label>
                 <input class="input_field" required type="text" v-model="form.company" id="company" />
               </div>
-            </transition>
+            <!-- </transition> -->
             <div class="form_field">
               <label for="phone_number">Номер телефона</label>
               <input

@@ -138,4 +138,20 @@ export default {
   border-bottom: 1px #005da3 dotted;
   cursor: pointer;
 }
+
+@media (max-width: 990px) {
+    .filter_item{
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 990px) {
+    .filter_item{
+    font-size: 16px;
+  }
+}
+
+
+
+
 </style>

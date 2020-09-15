@@ -156,4 +156,16 @@ export default {
 .buy_btn:hover {
   background-color: #ffe373 !important;
 }
+
+@media (max-width: 990px){
+  .product_characteristic{
+    font-size: 12px;
+  }
+
+  .product_info_inner{
+    padding-top: 10px;
+  }
+}
+
+
 </style>
