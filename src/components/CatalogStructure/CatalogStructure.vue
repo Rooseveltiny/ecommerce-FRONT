@@ -1,53 +1,72 @@
 <template>
+  <transition name="component-fade" mode="out-in">
   <div
-    id="CatalogStructureInner"
-    class="catalog_shadow_box non-select main_block_style main_block_style-less main_block_style-right_margin"
-    :class="{'catalog_structure-main': $route.name == 'MainPage', 'catalog_structure-mini': $route.name != 'MainPage'}"
+    v-if="getCatalogStructureVision"
+    id="MainCatalogStructure"
+    class="main_catalog_structure main_block_style main_block_style-less"
   >
-    <div class="catalog_structure_inner">
-      <div class="catalog_main_title">
-        <router-link to="/catalog/categories">Каталог</router-link>
-        </div>
+    <div id="CatalogCategories" class="catalog_categories">
       <template v-for="(cat, index) in getCategories">
-        <!-- <div :key="index" class="catalog_item"> -->
-        <div v-if="cat.children.length" :key="index" class="catalog_item">
-          {{cat.title}}
-          <div class="catalog_side_block">
-            <div
-              id="CatalogStructureInnerBlock"
-              class="catalog_side_block_inner main_block_style main_block_style-less"
-            >
-              <template v-for="(child, index) in cat.children">
-                <!-- <div class="catalog_items_side" :key="index"> -->
-                <div v-if="child.children.length" class="catalog_items_side" :key="index">
-                  <div class="catalog_item_side_title">{{child.title}}</div>
-                  <div class="catalog_items_side_inner">
-                    <div
-                      v-for="(childInner, index) in child.children"
-                      :key="index"
-                      class="catalog_item_side"
-                      @click="changeCurrentPage({name: 'Catalog', params: {slug: childInner.slug}})"
-                    >{{childInner.title}}</div>
-                  </div>
-                </div>
-              </template>
-            </div>
+        <div
+          :key="index"
+          class="catalog_category_item"
+          @click="changeCurrentCategory(cat)"
+          :class="{active: cat==getCurrentCategory}"
+        >
+          <div class="catalog_category_icon">
+            <img
+              :src="cat.small_icon_link"
+              width="25px"
+              alt
+            />
           </div>
+          <div class="catalog_category_title">{{cat.title}}</div>
         </div>
       </template>
     </div>
+    <div id="CatalogSubCategories" class="catalog_sub_categories">
+      <div class="category_title">{{getCurrentCategory.title}}</div>
+      <div class="catalog_sub_categories_inner">
+        <template v-for="(sub_cat, index) in getCurrentCategory.children">
+          <div :key="index" class="catalog_sub_category">
+            <div class="catalog_sub_category_title">{{sub_cat.title}}</div>
+            <template v-for="(sub_cat_item, index) in sub_cat.children">
+              <div :key="index" class="sub_cat_item">
+                <router-link :to="{name: 'Catalog', params: {slug: sub_cat_item.slug}}">
+                  <span @click="closeCatalogStructure()">{{sub_cat_item.title}}</span>
+                </router-link>
+              </div>
+            </template>
+          </div>
+        </template>
+      </div>
+    </div>
+    <div class="category_picture">
+      <div class="cat_image">
+        <img width="90%" :src="getCurrentCategory.cat_pic_link" alt="">
+      </div>
+    </div>
   </div>
+  </transition>
 </template>
 
 <script>
 import { mapMutations, mapGetters, mapActions } from "vuex";
 export default {
   computed: {
-    ...mapGetters(["getCategories"]),
+    ...mapGetters([
+      "getCategories",
+      "getCurrentCategory",
+      "getCatalogStructureVision",
+    ]),
   },
   methods: {
     ...mapActions(["fetchCatalogStructure"]),
-    ...mapMutations(["changeCurrentPage"]),
+    ...mapMutations([
+      "changeCurrentPage",
+      "changeCurrentCategory",
+      "closeCatalogStructure",
+    ]),
   },
   async mounted() {
     await this.fetchCatalogStructure();
@@ -57,100 +76,119 @@ export default {
 
 <style scoped>
 
+/* CATEGORIES */
 
-
-.catalog_structure-mini {
-  position: absolute;
-  top: 57px;
-  left: -150px;
-  border-radius: 0 0 7px 7px;
-  padding-right: 0;
-  width: calc(100% * 2.5);
-  z-index: 1000;
-}
-
-.catalog_structure-main {
-  cursor: pointer;
-  width: 25%;
-  padding-right: 0;
-  height: 100%;
-}
-
-.catalog_main_title {
-  font-size: 20px;
-  text-align: center;
-}
-
-.catalog_shadow_box {
-  -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
-}
-
-.catalog_item {
-  padding: 10px 5px;
-  padding-left: 15px;
-  padding-right: 20px;
-  /* border-bottom: 1px solid rgb(202, 202, 202); */
-}
-
-.catalog_item:hover {
-  background-color: #fc0;
-}
-
-.catalog_item:hover .catalog_side_block {
-  visibility: visible;
-}
-
-.catalog_structure_inner {
-  position: relative;
-}
-
-.catalog_side_block {
-  visibility: hidden;
-  position: absolute;
-  top: -14px;
-  left: calc(100%);
-  transition: visibility;
-  z-index: 1000;
-  padding: 15px;
-  display: grid;
-  width: 50rem;
-  height: 100%;
-}
-
-.catalog_side_block_inner {
+.main_catalog_structure {
   width: 100%;
+  position: absolute;
+  left: 0;
   z-index: 1000;
-  display: grid;
+  display: flex;
+
+  -webkit-box-shadow: 0px 0px 0px 3000px rgba(0, 0, 0, 0.38);
+  -moz-box-shadow: 0px 0px 0px 3000px rgba(0, 0, 0, 0.38);
+  box-shadow: 0px 0px 0px 3000px rgba(0, 0, 0, 0.38);
 }
 
-.catalog_items_side {
-  flex-wrap: wrap;
+.catalog_categories {
+  width: 30%;
+  border-right: 1px solid rgb(231, 231, 231);
 }
 
-.catalog_items_side_inner {
+.catalog_category_item {
+  position: relative;
+  margin: 4px 15px;
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.catalog_category_item:hover {
+  background-color: rgb(245, 245, 245);
+}
+
+.catalog_category_item.active {
+  background-color: rgb(245, 245, 245);
+}
+
+.catalog_category_icon {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  height: 25px;
+  width: 25px;
+}
+
+/* SUB CATEGORIES */
+
+.catalog_sub_category{
+  width: 50%;
+}
+
+.catalog_sub_category_title {
+  padding: 0 5px;
+}
+
+.catalog_category_item:after {
+  position: absolute;
+  content: "";
+  border-right: 2px solid #999;
+  border-top: 2px solid #999;
+  right: 15px;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+}
+
+.catalog_sub_categories {
+  margin-left: 15px;
+  width: 50%;
+}
+
+.catalog_sub_categories_inner{
   display: flex;
   flex-wrap: wrap;
 }
 
-.catalog_side_block:hover {
-  visibility: visible;
-}
-
-.catalog_item_side_title {
-  font-weight: bold;
-  text-align: left;
-  padding: 7px 0;
-}
-
-.catalog_item_side {
-  padding: 0 15px;
-  width: 50%;
+.category_title {
+  font-weight: 600;
+  font-size: 19px;
   color: #666;
+  padding-bottom: 20px;
 }
 
-.catalog_item_side:hover {
-  background-color: #fc0;
+.catalog_sub_category_title {
+  font-weight: bold;
 }
+
+.sub_cat_item {
+  color: #666;
+  padding: 0 5px;
+  transition-duration: .5s;
+}
+
+.sub_cat_item:hover {
+  border-radius: 5px;
+  color: red;
+}
+
+/* CATEGORY PICTURE */
+.category_picture{
+  width: 20%;
+  display: flex;
+  align-items: center;
+}
+
+.cat_image{
+  display: flex;
+  align-items: center;
+}
+
+.cat_image img{
+  border-radius: 7px;
+}
+
 </style>
+

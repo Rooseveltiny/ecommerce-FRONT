@@ -3,6 +3,9 @@
     <div class="page">
       <Header />
       <div class="content">
+        <div class="container">
+          <CatalogStructure />
+        </div>
         <transition name="component-fade" mode="out-in">
           <router-view></router-view>
         </transition>
@@ -17,50 +20,42 @@
 <script>
 import Header from "./components/Header/Header.vue";
 import Footer from "./components/Footer/Footer";
-
-import { mapMutations } from "vuex";
+import CatalogStructure from "./components/CatalogStructure/CatalogStructure";
 
 export default {
   name: "App",
   components: {
     Header,
-    Footer
+    Footer,
+    CatalogStructure
   },
   computed: {},
-  methods: {
-    ...mapMutations(["closeCatalogStructureGeneral"])
-  },
-  created() {
-    document.addEventListener("click", event =>
-      this.closeCatalogStructureGeneral(event)
-    );
-  }
+  methods: {},
+  created() {},
 };
 </script>
 
 <style>
-
 /* slider settings */
-.slider:hover .slider-btn{
+.slider:hover .slider-btn {
   opacity: 1;
 }
 
-.slider-btn{
+.slider-btn {
   opacity: 0;
-  transition: .5s !important;
+  transition: 0.5s !important;
 }
 
-.slider-btn-right{
+.slider-btn-right {
   background: none;
-} 
+}
 
-
-.img_wrapper{
+.img_wrapper {
   display: flex;
   position: relative;
 }
 
-.img_wrapper img{
+.img_wrapper img {
   width: 100%;
   visibility: hidden;
 }
@@ -148,6 +143,7 @@ h6 {
 /* Container */
 
 .container {
+  position: relative;
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
@@ -209,7 +205,7 @@ h6 {
   margin: 0 auto 10px auto;
 }
 
-.main_little_title{
+.main_little_title {
   color: #000;
   font-weight: bold;
   font-size: 18px;
@@ -217,7 +213,7 @@ h6 {
   /* text-transform: uppercase; */
 }
 
-.main_subtitle{
+.main_subtitle {
   text-align: left;
   padding-top: 10px;
   font-size: 17px;
@@ -232,19 +228,19 @@ h6 {
   display: flex;
   color: #999;
   flex: 1;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 }
 
-.get_back_block_inner{
+.get_back_block_inner {
   padding: 15px 0 0 35px;
   position: relative;
 }
 
-.get_back_block_inner::after{
+.get_back_block_inner::after {
   opacity: 0;
   position: absolute;
   display: block;
-  content: '';
+  content: "";
   border-top: 1px solid #999;
   border-right: 1px solid #999;
   width: 8px;
@@ -253,7 +249,7 @@ h6 {
   right: 45px;
   z-index: 1000;
   transform: rotate(45deg);
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 }
 
 .get_back_block:hover {
@@ -263,12 +259,12 @@ h6 {
   background-color: #ebe4e4;
 }
 
-.get_back_block:hover .get_back_block_inner::after{
+.get_back_block:hover .get_back_block_inner::after {
   transform: rotate(-135deg);
   opacity: 1;
 }
 
-.right_side_block{
+.right_side_block {
   flex: 1;
 }
 
@@ -277,5 +273,4 @@ h6 {
 }
 
 /* GET BACK BUTTON END */
-
 </style>

@@ -1,35 +1,20 @@
 <template>
   <div>
     <div class="container">
-      <div class="catalog_and_stuff">
-        <CatalogStructure />
-        <div class="banner_and_offers">
-          <MainBanner />
-          <keep-alive>
-            <MainOffers/>
-          </keep-alive>
-        </div>
-      </div>
+      <MainBanner/>
     </div>
   </div>
 </template>
 
 <script>
-import CatalogStructure from "../CatalogStructure/CatalogStructure";
-import MainBanner from "../MainPage/MainBanner";
-import MainOffers from "../MainPage/MainOffers";
+
+import MainBanner from './MainBanner'
+
 export default {
-  components: { CatalogStructure, MainBanner, MainOffers },
+  components: {MainBanner}
 };
 </script>
 
 <style scoped>
 
-.banner_and_offers{
-  width: 75%;
-}
-
-.catalog_and_stuff {
-  display: flex;
-}
 </style>

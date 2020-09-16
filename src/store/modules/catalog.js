@@ -61,16 +61,16 @@ export default {
         },
         updateCategories(state, categories) {
             state.categories = categories;
+            state.currentCategory = categories[0]
         },
-        showCatalogStructure(state) {
-            state.CatalogStructureVisible = !state.CatalogStructureVisible;
+        closeCatalogStructure(state){
+            state.CatalogStructureVisible = false;
         },
-        closeCatalogStructureGeneral(state) {
+        openCloseCatalogStructureGeneral(state) {
             let el = event.srcElement.id;
-            state.CatalogStructureVisible = (
-                el == 'CatalogStructure' ||
-                el == "CatalogStructureInner" ||
-                el == "CatalogStructureInnerBlock") ? true : false;
+            if (el == "CatalogStructure") {
+                state.CatalogStructureVisible = !state.CatalogStructureVisible;
+            }
         },
         updateFilter(state, filter) {
             state.filters = filter;
@@ -104,6 +104,9 @@ export default {
         },
         clearFilterParams(state) {
             state.choosenFilterParameters = []
+        },
+        changeCurrentCategory(state, currentCategory) {
+            state.currentCategory = currentCategory;
         }
     },
     state() {
@@ -142,6 +145,9 @@ export default {
             },
             categories: {},
             CatalogStructureVisible: false,
+            currentCategory: {
+                title: "Нет выбрано"
+            },
             filters: [],
             choosenFilterParameters: [],
         }
@@ -183,8 +189,11 @@ export default {
             if (pag.page_links) { pag.page_links.map(value => { value.link = value.link.replace(ApiSettings.BASE_ROUTE, '') }); }
             return pag;
         },
-        getProductsCount(state){
+        getProductsCount(state) {
             return state.products.productsPagination.count;
+        },
+        getCurrentCategory(state) {
+            return state.currentCategory;
         }
     }
 }

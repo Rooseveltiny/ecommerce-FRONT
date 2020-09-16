@@ -32,14 +32,13 @@
             </router-link>
 
             <transition name="bounce">
-              <div class="catalog" v-if="$route.name != 'MainPage'">
+              <div class="catalog">
                 <div
                   @click="showCatalogStructureComponentMethod()"
                   class="catalog_inner non-select"
                   :class="{active: getCatalogStructureVision}"
                   id="CatalogStructure"
-                >Каталог</div>
-                <CatalogStructure v-show="getCatalogStructureVision" />
+                >Каталог продукции</div>
               </div>
             </transition>
           </div>
@@ -59,19 +58,17 @@
 
 <script>
 import { mapMutations, mapGetters } from "vuex";
-import CatalogStructure from "../CatalogStructure/CatalogStructure";
 
 export default {
   methods: {
-    ...mapMutations(["showCatalogStructure"]),
+    ...mapMutations(["openCloseCatalogStructureGeneral"]),
     showCatalogStructureComponentMethod: function () {
-      this.showCatalogStructure();
+      this.openCloseCatalogStructureGeneral();
     },
   },
   computed: {
     ...mapGetters(["getCatalogStructureVision"]),
   },
-  components: { CatalogStructure },
 };
 </script>
 
@@ -124,7 +121,7 @@ export default {
 }
 
 .catalog {
-  cursor: pointer;
+  z-index: 1001;
   display: flex;
   align-items: center;
   margin-left: 50px;
@@ -132,34 +129,66 @@ export default {
 }
 
 .catalog_inner {
+  cursor: pointer;
   background-color: #fc0;
   padding: 5px 10px;
-  padding-right: 30px;
-  font-size: 18px;
+  padding-right: 37px;
+  font-size: 15px;
   border-radius: 7px;
-  transition-duration: 0.5s;
+  transition-duration: transform 0.5s;
 }
+
+.catalog_inner::after,
+.catalog_inner::before{
+  content: "";
+  width: 16px;
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+  top: 0;
+  position: absolute;
+  top: 42%;
+  right: 11px;
+  height: 6px;
+  transition: transform .5s;
+}
+
+
+.catalog_inner::before{
+  top: 49%;
+  border-top: none;
+  border-bottom: 3px solid #333;
+  height: 7px;
+}
+
+.catalog_inner.active::before,
+.catalog_inner.active::after{
+  width: 20px;
+}
+
+.catalog_inner.active::before{
+  border-top: none;
+  border-bottom: 3px solid rgb(252, 102, 102);
+  transform: rotate(-45deg);
+  top: 42%;
+}
+
+.catalog_inner.active::after{
+  border-bottom: none;
+  border-top: 3px solid rgb(252, 102, 102);
+  transform: rotate(45deg);
+  top: 47%;
+}
+
+
 
 .catalog_inner:hover {
   background-color: #ffe373;
 }
 
-.catalog_inner:after {
-  position: absolute;
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-top: 1.5px solid rgb(0, 0, 0);
-  border-right: 1.5px solid rgb(0, 0, 0);
-  top: 48%;
-  right: 12%;
-  transform: rotate(-45deg);
-  transition-duration: 0.3s;
-}
-
-.catalog_inner.active:after {
-  transform: rotate(135deg);
-  top: 44%;
+.catalog_inner.active{
+  background-color: #fff;
+  border: 2px solid rgb(252, 102, 102);
+  color: rgb(252, 102, 102);
 }
 
 .bottom_header_right {
