@@ -33,7 +33,7 @@
             <template v-for="(sub_cat_item, index) in sub_cat.children">
               <div :key="index" class="sub_cat_item">
                 <router-link :to="{name: 'Catalog', params: {slug: sub_cat_item.slug}}">
-                  <span @click="closeCatalogStructure()">{{sub_cat_item.title}}</span>
+                  <span @click="clearFilterParams(); closeCatalogStructure()">{{sub_cat_item.title}}</span>
                 </router-link>
               </div>
             </template>
@@ -64,6 +64,7 @@ export default {
     ...mapActions(["fetchCatalogStructure"]),
     ...mapMutations([
       "changeCurrentPage",
+      "clearFilterParams",
       "changeCurrentCategory",
       "closeCatalogStructure",
     ]),
@@ -134,8 +135,8 @@ export default {
 .catalog_category_item:after {
   position: absolute;
   content: "";
-  border-right: 2px solid #999;
-  border-top: 2px solid #999;
+  border-right: 2px solid rgb(200, 200, 200);
+  border-top: 2px solid rgb(200, 200, 200);
   right: 15px;
   width: 10px;
   height: 10px;
