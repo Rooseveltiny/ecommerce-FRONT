@@ -43,12 +43,7 @@
             </transition>
           </div>
           <div class="bottom_header_right">
-            <div class="search">
-              <div class="search_input_block">
-                <input placeholder="Найти товар" class="search_input" type="text" />
-              </div>
-              <button class="find_btn">Найти</button>
-            </div>
+            <Search />
           </div>
         </div>
       </div>
@@ -58,8 +53,12 @@
 
 <script>
 import { mapMutations, mapGetters } from "vuex";
+import Search from '../Generals/Search'
 
 export default {
+  components: {
+    Search
+  },
   methods: {
     ...mapMutations(["openCloseCatalogStructureGeneral"]),
     showCatalogStructureComponentMethod: function () {
@@ -192,7 +191,7 @@ export default {
 }
 
 .bottom_header_right {
-  width: 30%;
+  width: 45%;
   text-align: right;
 }
 
@@ -200,43 +199,6 @@ export default {
   padding: 15px 0 10px 0;
 }
 
-/* SEARCH temporary BLOCK */
-
-.search_input_block {
-  width: 100%;
-}
-
-.search_input {
-  height: 30px;
-  width: 100%;
-  border-width: 0.1px;
-  padding-left: 7px;
-  transition-duration: 0.5s;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-}
-
-.search_input:focus,
-.search_input:active {
-  outline: none;
-  outline-offset: none;
-  border-bottom: 1px solid #fc0;
-}
-
-.search {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.find_btn {
-  margin-left: 20px;
-  height: 30px;
-  background-color: #fc0;
-  border: none;
-  padding: 0 20px;
-  border-radius: 3px;
-}
 
 @media (max-width: 990px){
   .nav_inner{

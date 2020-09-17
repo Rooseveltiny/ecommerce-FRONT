@@ -36,6 +36,7 @@ export default {
 </script>
 
 <style>
+
 /* slider settings */
 .slider:hover .slider-btn {
   opacity: 1;
@@ -173,6 +174,12 @@ h6 {
 
 .main_block_style-right_margin {
   margin-right: 15px;
+}
+
+.global_shadow{
+  -webkit-box-shadow: 0px 0px 0px 3000px rgba(0, 0, 0, 0.38);
+  -moz-box-shadow: 0px 0px 0px 3000px rgba(0, 0, 0, 0.38);
+  box-shadow: 0px 0px 0px 3000px rgba(0, 0, 0, 0.38);
 }
 
 .non-select {

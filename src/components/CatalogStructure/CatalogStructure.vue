@@ -3,7 +3,7 @@
   <div
     v-if="getCatalogStructureVision"
     id="MainCatalogStructure"
-    class="main_catalog_structure main_block_style main_block_style-less"
+    class="main_catalog_structure global_shadow main_block_style main_block_style-less"
   >
     <div id="CatalogCategories" class="catalog_categories">
       <template v-for="(cat, index) in getCategories">
@@ -85,10 +85,6 @@ export default {
   left: 0;
   z-index: 1000;
   display: flex;
-
-  -webkit-box-shadow: 0px 0px 0px 3000px rgba(0, 0, 0, 0.38);
-  -moz-box-shadow: 0px 0px 0px 3000px rgba(0, 0, 0, 0.38);
-  box-shadow: 0px 0px 0px 3000px rgba(0, 0, 0, 0.38);
 }
 
 .catalog_categories {
