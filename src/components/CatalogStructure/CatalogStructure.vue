@@ -83,7 +83,7 @@ export default {
   width: 100%;
   position: absolute;
   left: 0;
-  z-index: 1000;
+  z-index: 1400;
   display: flex;
 }
 
