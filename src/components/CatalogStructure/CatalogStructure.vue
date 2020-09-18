@@ -81,10 +81,15 @@ export default {
 
 .main_catalog_structure {
   width: 100%;
-  position: absolute;
-  left: 0;
-  z-index: 1400;
-  display: flex;
+    position: absolute;
+    left: 0;
+    z-index: 1400;
+    display: flex;
+    max-width: 1070px;
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .catalog_categories {

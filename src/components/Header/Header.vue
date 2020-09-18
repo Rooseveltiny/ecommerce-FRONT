@@ -120,7 +120,7 @@ export default {
 }
 
 .catalog {
-  z-index: 1001;
+  z-index: 1450;
   display: flex;
   align-items: center;
   margin-left: 50px;
