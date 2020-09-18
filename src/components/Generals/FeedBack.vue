@@ -164,13 +164,13 @@ input {
 
 .submit_btn {
   width: 100%;
-    background-color: #fc0;
-    margin-top: 10px;
-    border: none;
-    padding: 12px;
-    color: #333;
-    /* border-radius: 5px; */
-    cursor: pointer;
+  background-color: #fc0;
+  margin-top: 10px;
+  border: none;
+  padding: 12px;
+  color: #333;
+  /* border-radius: 5px; */
+  cursor: pointer;
 }
 
 .form_result{

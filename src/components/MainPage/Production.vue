@@ -65,4 +65,35 @@ export default {};
     opacity: 0.4;
 }
 
+
+
+@media (max-width: 990px){
+  
+  .production_desription{
+    font-size: 22px;
+  }
+
+}
+
+@media (max-width: 770px){
+  
+  .production_desription{
+    font-size: 18px;
+  }
+
+}
+
+@media (max-width: 575px){
+  
+  .production_desription{
+    font-size: 18px;
+    width: 70%;
+  }
+
+  .production_video{
+    width: 30%;
+  }
+
+}
+
 </style>
