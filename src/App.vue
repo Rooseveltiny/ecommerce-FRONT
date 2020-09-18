@@ -280,4 +280,9 @@ h6 {
 }
 
 /* GET BACK BUTTON END */
+
+.section{
+  margin-top: 25px;
+}
+
 </style>

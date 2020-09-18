@@ -74,12 +74,12 @@ export default {
 .category_img {
   width: 100%;
   /* background-color: red; */
-  border-radius: 7px;
+  /* border-radius: 7px; */
 }
 
 img {
   width: 100%;
-  border-radius: 7px;
+  /* border-radius: 7px; */
 }
 
 .categories {

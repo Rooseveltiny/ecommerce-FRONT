@@ -74,7 +74,7 @@ export default {
 
 .footer--left_col {
   width: 70%;
-  padding: 25px;
+  padding: 25px 25px 25px 0;
   font-size: 14px;
   display: flex;
   justify-content: space-between;
@@ -83,7 +83,7 @@ export default {
 .footer--right_col {
   width: 30%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 

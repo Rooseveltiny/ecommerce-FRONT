@@ -99,7 +99,7 @@ export default {
   margin-right: 10px;
   padding: 0 10px;
   border: 1.2px dashed #ffe373;
-  border-radius: 7px;
+  /* border-radius: 7px; */
   background-color: rgb(255, 249, 195);
   /* cursor: none; */
   white-space: nowrap;
@@ -118,7 +118,7 @@ export default {
   display: flex;
   align-items: center;
   color: #666;
-  border-radius: 7px;
+  /* border-radius: 7px; */
 }
 
 .balance_style {
@@ -132,7 +132,7 @@ export default {
 .buy_btn {
   transition-duration: 0.3s;
   border: 1px solid #d9d9d9;
-  border-radius: 7px;
+  /* border-radius: 7px; */
   padding: 0 20px;
   outline: none;
   background-color: #fff;

@@ -1,27 +1,37 @@
 
 <template>
-  <div class="banner_main">
-    <div class="banner_inner">
-      <div class="banner_left_side">
-          <img width="100%" src="https://e-commerce-vdk.s3.eu-central-1.amazonaws.com/AllBanners/left.jpg" alt="">
-      </div>
-      <div class="banner_mid_side">
-        <div class="content_inner">
-          <br />
-          <span class="title">Добро</span>
-          <br />
-          <span class="sub_title">пожаловать</span>
-          <br />
-          <span class="description">в интернет-магазин "Всё для кровли"</span>
-          <div class="pluses">
-            <div class="plus_item">Реальные остатки</div>
-            <div class="plus_item">Актуальные цены</div>
-            <div class="plus_item">Полный каталог</div>
+  <div class="section">
+    <div class="banner_main">
+      <div class="banner_inner">
+        <div class="banner_left_side">
+          <img
+            width="100%"
+            src="https://e-commerce-vdk.s3.eu-central-1.amazonaws.com/AllBanners/left.jpg"
+            alt
+          />
+        </div>
+        <div class="banner_mid_side">
+          <div class="content_inner">
+            <br />
+            <span class="title">Добро</span>
+            <br />
+            <span class="sub_title">пожаловать</span>
+            <br />
+            <span class="description">в интернет-магазин "Всё для кровли"</span>
+            <div class="pluses">
+              <div class="plus_item">Реальные остатки</div>
+              <div class="plus_item">Актуальные цены</div>
+              <div class="plus_item">Полный каталог</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="banner_right_side">
-          <img width="100%" src="https://e-commerce-vdk.s3.eu-central-1.amazonaws.com/AllBanners/right.jpg" alt="">
+        <div class="banner_right_side">
+          <img
+            width="100%"
+            src="https://e-commerce-vdk.s3.eu-central-1.amazonaws.com/AllBanners/right.jpg"
+            alt
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -34,7 +44,6 @@ export default {};
 <style scoped>
 .banner_main {
   width: 100%;
-  margin-top: 30px;
   height: 250px;
 }
 
@@ -82,24 +91,22 @@ export default {};
   transition-duration: 0.5s;
 }
 
-.pluses{
-    display: flex;
-    color: #666;
+.pluses {
+  display: flex;
+  color: #666;
 }
 
-.plus_item{
-    background-color: #fc0;
-    margin: 5px;
-    padding: 5px 15px;
+.plus_item {
+  background-color: #fc0;
+  margin: 5px;
+  padding: 5px 15px;
 }
 
-.plus_item:first-child{
-    margin-left: 0;
+.plus_item:first-child {
+  margin-left: 0;
 }
 
 img {
-    width: 100%;
+  width: 100%;
 }
-
-
 </style>

@@ -123,7 +123,7 @@ export default {
   width: 70%;
   display: flex;
   position: relative;
-  z-index: 100;
+  z-index: 1020;
   transition-duration: 0.3s;
 }
 

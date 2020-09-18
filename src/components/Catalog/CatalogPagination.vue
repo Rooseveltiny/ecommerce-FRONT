@@ -57,7 +57,7 @@ export default {
   margin: 0 7px;
   font-size: 17px;
   color: #666;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   transition-duration: 0.4s;
   cursor: pointer;
 }
