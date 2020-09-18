@@ -46,7 +46,6 @@
               width="100%"
               height="100%"
               frameborder="0"
-              style="border-radius: 7px"
             ></iframe>
             <span class="mapLoading" style="z-index: -100">Загрузка карты...</span>
           </div>
@@ -95,7 +94,7 @@ export default {};
 .contact_underline {
   padding: 2px 5px;
   background-color: rgb(255, 234, 151);
-  border-radius: 7px;
+  /* border-radius: 7px; */
   border: 1px dotted #666;
 }
 
@@ -124,7 +123,7 @@ a {
   align-items: center;
   justify-content: center;
   background-color: #fc0;
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
 @media (max-width: 770px) {

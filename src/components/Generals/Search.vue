@@ -6,7 +6,7 @@
       :class="{active: searchActive}"
       id="search_input_block"
     >
-      <input placeholder="Найти товар" class="search_input"  type="text" v-model="searchInput" />
+      <input placeholder="Найти среди 2351 товаров" class="search_input" type="text" v-model="searchInput" />
       <div class="search_icon">
         <img
           width="18px"
@@ -16,7 +16,7 @@
       </div>
       <div
         class="search_results main_block_style main_block_style-less"
-        v-if="getSearchResult.products.length || getSearchResult.categories.length"
+        v-if="getSearchResult.products.length || getSearchResult.categories.length || isSearching"
       >
         <div class="search_results_inner">
           <div class="search_results_block" v-if="getSearchResult.products.length">
@@ -39,6 +39,21 @@
               </template>
             </div>
           </div>
+          <div class="search_results_block">
+            <div class="loading_block" v-show="showSearchingBlock">
+              <img
+                width="40px"
+                height="40px"
+                :src="require('../../assets/logo/loadingBlock.gif')"
+                alt
+              />
+            </div>
+          </div>
+          <div class="search_results_block">
+            <div class="nothing_found" v-show="getSearchResult.nothing_found">
+              По данному запросу ничего не найдено :(
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -53,10 +68,14 @@ export default {
       searchInput: "",
       timerId: undefined,
       searchActive: false,
+      isSearching: false,
     };
   },
   computed: {
     ...mapGetters(["getSearchResult"]),
+    showSearchingBlock(){
+      return !this.getSearchResult.products.length && !this.getSearchResult.categories.length && !this.getSearchResult.nothing_found;
+    }
   },
   methods: {
     ...mapActions(["fetchSearchResult"]),
@@ -65,6 +84,8 @@ export default {
   watch: {
     searchInput: function () {
       if (this.searchInput.length > 2) {
+        this.clearSearchResult();
+        this.isSearching = true;
         clearTimeout(this.timerId);
         this.timerId = setTimeout(
           this.fetchSearchResult,
@@ -74,6 +95,7 @@ export default {
       } else {
         clearTimeout(this.timerId);
         this.clearSearchResult();
+        this.isSearching = false;
       }
     },
   },
@@ -101,7 +123,7 @@ export default {
   width: 70%;
   display: flex;
   position: relative;
-  z-index: 1200;
+  z-index: 100;
   transition-duration: 0.3s;
 }
 
@@ -112,8 +134,8 @@ export default {
   padding: 15px 20px;
   transition-duration: 0.5s;
   border: none;
-  background: rgb(235, 235, 235);
-  border-radius: 20px;
+  background: #f0f2f5;
+  /* border-radius: 20px; */
 }
 
 .search_input:focus,
@@ -162,11 +184,16 @@ export default {
 .search_result_item {
   padding: 5px 10px;
   transition-duration: 0.5s;
-  border-radius: 7px;
+  /* border-radius: 7px; */
   cursor: pointer;
 }
 
 .search_result_item:hover {
   background: rgb(245, 245, 245);
+}
+
+.loading_block {
+  display: flex;
+  justify-content: center;
 }
 </style>

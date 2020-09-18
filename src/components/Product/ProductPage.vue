@@ -63,7 +63,7 @@ export default {
   margin-right: 15px;
   position: relative;
   border: 1px solid rgb(194, 194, 194);
-  border-radius: 3px;
+  /* border-radius: 3px; */
   padding: 10px 20px;
   transition-duration: 0.5s;
   width: 50px;

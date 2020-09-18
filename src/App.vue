@@ -157,7 +157,7 @@ h6 {
 }
 
 .main_block_style {
-  border-radius: 7px;
+  /* border-radius: 7px; */
   background-color: #fff;
   margin: 25px 0;
   padding: 25px;

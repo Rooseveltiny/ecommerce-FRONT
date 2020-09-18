@@ -133,7 +133,7 @@ export default {
   padding: 5px 10px;
   padding-right: 37px;
   font-size: 15px;
-  border-radius: 7px;
+  /* border-radius: 7px; */
   transition-duration: transform 0.5s;
 }
 

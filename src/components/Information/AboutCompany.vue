@@ -113,7 +113,7 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 7px;
+    /* border-radius: 7px; */
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -128,7 +128,7 @@ a{
   bottom: 0;
   background: rgba(0,0,0,.5);
   z-index: 2;
-  border-radius: 7px;
+  /* border-radius: 7px; */
 }
 
 .project_item:hover .project_content{

@@ -15,6 +15,7 @@ export default {
         clearSearchResult(state){
             state.searchResult.products = [];
             state.searchResult.categories = [];
+            state.searchResult.nothing_found = false;
         },
         updateSearchResult(state, searchResult){
             state.searchResult = searchResult;
@@ -25,6 +26,7 @@ export default {
             searchResult: {
                 products: [],
                 categories: [],
+                nothing_found: false
             }
         }
     },

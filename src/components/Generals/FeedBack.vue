@@ -113,7 +113,7 @@ label {
   height: 35px;
   /* border: 1px solid rgb(238, 238, 238); */
   border: none;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   background-color: #f6f6f6;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
@@ -127,7 +127,7 @@ label {
 
 .radio_input {
   padding: 5px 10px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   color: #666;
   cursor: pointer;
   font-size: 14px;
@@ -169,13 +169,13 @@ input {
     border: none;
     padding: 12px;
     color: #333;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     cursor: pointer;
 }
 
 .form_result{
     border: 2px dashed #fc0;
-    border-radius: 7px;
+    /* border-radius: 7px; */
     padding: 20px;
     color: #666;
     font-size: 17px;

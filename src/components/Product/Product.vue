@@ -43,10 +43,13 @@ export default {
   computed: {
     ...mapGetters(["product"]),
   },
-  async mounted() {
-    await this.fetchProduct();
+  mounted() {
+    this.fetchProduct();
   },
-};
+  watch: {
+    $route: ["fetchProduct"]
+  }
+}
 </script>
 
 <style scoped>
@@ -77,7 +80,7 @@ export default {
   background-color: #fc0;
   outline: none;
   border: none;
-  border-radius: 7px;
+  /* border-radius: 7px; */
   font-size: 20px;
   width: 100%;
   height: 50px;

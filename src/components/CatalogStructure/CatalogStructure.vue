@@ -98,7 +98,7 @@ export default {
   display: flex;
   align-items: center;
   padding: 5px 15px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   cursor: pointer;
 }
 
@@ -167,7 +167,7 @@ export default {
 }
 
 .sub_cat_item:hover {
-  border-radius: 5px;
+  /* border-radius: 5px; */
   color: red;
 }
 
@@ -184,7 +184,7 @@ export default {
 }
 
 .cat_image img{
-  border-radius: 7px;
+  /* border-radius: 7px; */
 }
 
 </style>

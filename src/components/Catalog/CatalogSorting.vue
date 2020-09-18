@@ -70,7 +70,7 @@ export default {
   text-align: left;
   position: absolute;
   top: 15px;
-  /* left: 73%; */
+  left: 73%;
   /* width: 33%; */
   background-color: white;
   padding: 15px;
