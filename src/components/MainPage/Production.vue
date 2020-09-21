@@ -7,7 +7,7 @@
         <div class="production_video">
             <div class="fade_background"></div>
           <video class="video" loop="loop" autoplay="" muted="">
-          <source src="https://clck.ru/QuVgZ"/>
+          <source src="https://e-commerce-vdk.s3.eu-central-1.amazonaws.com/videos/videoplayback.mp4"/>
           </video>
         </div>
       </div>

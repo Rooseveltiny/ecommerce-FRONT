@@ -6,6 +6,9 @@
     class="main_catalog_structure global_shadow main_block_style main_block_style-less"
   >
     <div id="CatalogCategories" class="catalog_categories">
+      <div class="catalog_category_item">
+      <div @click="closeCatalogStructure()" class="close_catalog">Закрыть</div>
+      </div>
       <template v-for="(cat, index) in getCategories">
         <div
           :key="index"
@@ -79,6 +82,12 @@ export default {
 
 /* CATEGORIES */
 
+.close_catalog{
+  background-color: #fc0;
+  padding: 5px 10px;
+  display: none;
+}
+
 .main_catalog_structure {
   width: 100%;
     position: absolute;
@@ -103,8 +112,15 @@ export default {
   display: flex;
   align-items: center;
   padding: 5px 15px;
-  /* border-radius: 5px; */
   cursor: pointer;
+}
+
+.catalog_category_item:first-child{
+  display: none;
+}
+
+.catalog_category_item:first-child:after {
+  display: none;
 }
 
 .catalog_category_item:hover {
@@ -172,7 +188,6 @@ export default {
 }
 
 .sub_cat_item:hover {
-  /* border-radius: 5px; */
   color: red;
 }
 
@@ -188,9 +203,52 @@ export default {
   align-items: center;
 }
 
-.cat_image img{
-  /* border-radius: 7px; */
+
+/* making catalog structure for mobiles */
+@media (max-width: 575px){
+  
+  .main_catalog_structure{
+    padding: 0;
+    margin: 0;
+  }
+
+  .category_picture{
+    display: none;
+  }
+
+  .catalog_sub_categories{
+    display: none;
+  }
+
+  .catalog_categories{
+    width: 100%;
+  }
+
+  .catalog_category_item{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .catalog_category_item:first-child{
+    display: block;
+  }
+
+  .catalog_category_item.active{
+    background: none;
+  }
+
+  .main_catalog_structure{
+    top: -115px;
+  }
+
+  .close_catalog{
+    display: block;
+  }
+
+  
+
 }
+
 
 </style>
 

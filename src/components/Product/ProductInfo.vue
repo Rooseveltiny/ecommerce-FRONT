@@ -11,7 +11,7 @@
         >{{section}}</div>
       </div>
     </div>
-    <div class="section main_block_style main_block_style-less">
+    <div class="section_main main_block_style main_block_style-less">
       <div class="section_inner" v-if="currentSection === 'Описание'">
       {{product.description}}
       </div>
@@ -68,7 +68,7 @@ export default {
   display: flex;
 }
 
-.section {
+.section_main {
   width: 80%;
 }
 

@@ -210,6 +210,11 @@ export default {
   .nav_inner{
     font-size: 11px;
   }
+
+  .catalog{
+    z-index: 100;
+  }
+
 }
 
 </style>
