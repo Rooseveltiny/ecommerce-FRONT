@@ -5,15 +5,15 @@
     id="MainCatalogStructure"
     class="main_catalog_structure global_shadow main_block_style main_block_style-less"
   >
-    <div id="CatalogCategories" class="catalog_categories">
+    <div id="CatalogCategories" class="catalog_categories" :class="{mb_categories_active: openedSubCategoriesOnMobiles}">
       <div class="catalog_category_item">
-      <div @click="closeCatalogStructure()" class="close_catalog">Закрыть</div>
+      <div @click="closeCatalogStructureDetaily()" class="close_catalog">Закрыть</div>
       </div>
       <template v-for="(cat, index) in getCategories">
         <div
           :key="index"
           class="catalog_category_item"
-          @click="changeCurrentCategory(cat)"
+          @click="changeCurrentCategory(cat); openCloseSubCategoriesOnMobiles()"
           :class="{active: cat==getCurrentCategory}"
         >
           <div class="catalog_category_icon">
@@ -27,7 +27,14 @@
         </div>
       </template>
     </div>
-    <div id="CatalogSubCategories" class="catalog_sub_categories">
+    <div id="CatalogSubCategories"
+     class="catalog_sub_categories"
+     :class="{mb_sub_categories_active: openedSubCategoriesOnMobiles}"
+     >
+<div class="sub_categories_btn_back">
+     <div class="close_catalog" v-if="openedSubCategoriesOnMobiles" @click="openCloseSubCategoriesOnMobiles">Назад</div>
+</div>
+
       <div class="category_title">{{getCurrentCategory.title}}</div>
       <div class="catalog_sub_categories_inner">
         <template v-for="(sub_cat, index) in getCurrentCategory.children">
@@ -36,7 +43,7 @@
             <template v-for="(sub_cat_item, index) in sub_cat.children">
               <div :key="index" class="sub_cat_item">
                 <router-link :to="{name: 'Catalog', params: {slug: sub_cat_item.slug}}">
-                  <span @click="clearFilterParams(); closeCatalogStructure()">{{sub_cat_item.title}}</span>
+                  <span @click="clearFilterParams(); closeCatalogStructureDetaily()">{{sub_cat_item.title}}</span>
                 </router-link>
               </div>
             </template>
@@ -56,6 +63,11 @@
 <script>
 import { mapMutations, mapGetters, mapActions } from "vuex";
 export default {
+  data(){
+    return {
+      openedSubCategoriesOnMobiles: false
+    }
+  },
   computed: {
     ...mapGetters([
       "getCategories",
@@ -71,6 +83,13 @@ export default {
       "changeCurrentCategory",
       "closeCatalogStructure",
     ]),
+    openCloseSubCategoriesOnMobiles(){
+      this.openedSubCategoriesOnMobiles = !this.openedSubCategoriesOnMobiles;
+    },
+    closeCatalogStructureDetaily(){
+      this.closeCatalogStructure();
+      this.openedSubCategoriesOnMobiles = false;
+    }
   },
   async mounted() {
     await this.fetchCatalogStructure();
@@ -87,6 +106,12 @@ export default {
   padding: 5px 10px;
   display: none;
 }
+
+.sub_categories_btn{
+  padding-left: 0;
+  margin-left: 10px;
+}
+
 
 .main_catalog_structure {
   width: 100%;
@@ -242,10 +267,49 @@ export default {
   }
 
   .close_catalog{
+    display: inline-block;
+  }
+
+  .mb_sub_categories_active{
     display: block;
   }
 
-  
+  .mb_categories_active{
+    display: none;
+  }
+
+  .category_title{
+    display: none;
+  }
+
+  .catalog_sub_category_title{
+    padding: 5px 15px;
+  }
+
+  .sub_cat_item{
+    padding: 3px 15px;
+  }
+
+  .sub_categories_btn_back{
+    padding: 15px 10px 15px 0;
+    margin-left: 15px;
+  }
+
+  .catalog_sub_categories{
+    width: 100%;
+  }
+
+  .catalog_sub_categories_inner{
+    padding-bottom: 20px;
+    width: 100%;
+  }
+
+  .catalog_sub_category{
+    display: inline-block;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-bottom: 10px;
+  }
 
 }
 

@@ -33,6 +33,7 @@
                 <div class="product_balance">{{product.balance}}</div>
                 <div class="product_unit">{{product.unit_of_measurement}}</div>
               </div>
+              <hint-component :hintContent="balanceHint" iconWidthHeight="15px"/>
             </div>
             <button class="buy_btn">В корзину</button>
           </div>
@@ -46,6 +47,11 @@
 import { mapActions, mapGetters, mapMutations } from "vuex";
 
 export default {
+  data(){
+    return {
+      balanceHint: 'Сколько товара в данный момент лежит на складе'
+    }
+  },
   methods: {
     ...mapMutations(["changeCurrentPage"]),
     ...mapActions(["fetchProducts", "fetchFilter"]),

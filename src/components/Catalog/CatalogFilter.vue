@@ -84,6 +84,8 @@ export default {
   font-weight: bold;
   padding-left: 5px;
   background-color: #ffe373;
+  display: flex;
+  align-items: center;
 }
 
 .filter_item {

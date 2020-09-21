@@ -65,6 +65,9 @@ export default {
   border-bottom: 1px dotted;
 }
 
+.found_block{
+}
+
 .sorting_list {
   display: grid;
   text-align: left;

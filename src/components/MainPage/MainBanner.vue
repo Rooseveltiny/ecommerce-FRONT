@@ -159,6 +159,10 @@ img {
    margin-left: 0;
  }
 
+  .banner_mid_side{
+    width: 80%;
+  }
+
 }
 
 </style>
