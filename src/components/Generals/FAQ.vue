@@ -8,7 +8,7 @@
           :class="{active: current_question == index}"
           @click="setCurrent(index)"
         >{{q.question}}</div>
-        <div v-if="index==current_question" class="q_answer">
+          <div class="q_answer" :class="{active: index==current_question}">
             {{q.answer}}
         </div>
       </div>
@@ -64,6 +64,7 @@ export default {
   display: flex;
   margin: 0 auto;
   display: block;
+  font-size: 21px;
 }
 
 .q_title {
@@ -99,11 +100,21 @@ export default {
 }
 
 .q_answer{
-    word-break: break-all;
-    margin-bottom: 20px;
-    padding: 5px 20px;
-    border-radius: 7px;
-    background: #fff;
+  word-break: break-all;
+  margin-bottom: 20px;
+  padding: 5px 20px;
+  border-radius: 7px;
+  background: #fff;
+  transition: 0.3s ease-out;
+  display: none;
+
 }
+
+.q_answer.active{
+  display: block;
+}
+
+
+
 
 </style>
