@@ -1,14 +1,9 @@
 <template>
   <div class="product">
     <div class="product_image" style="width: 300px; height: 300px">
-        <Slider animation="normal" :autoplay="false">
+      <Slider animation="normal" :autoplay="false">
         <SliderItem v-for="(img, index) in product.all_images" :key="index">
-      <img
-        width="300"
-        height="300"
-        :src="img.cloud_link"
-        alt
-      />
+          <img width="300" height="300" :src="img.cloud_link" alt />
         </SliderItem>
       </Slider>
     </div>
@@ -18,7 +13,9 @@
         <div class="characteristic"></div>
         <div
           class="balance"
-        >Остаток на складе: {{product.balance}}&nbsp;{{product.unit_of_measurement}}</div>
+        >Остаток на складе: {{product.balance}}&nbsp;{{product.unit_of_measurement}}
+        <hint-component hintContent="Столько товара сейчас лежит на складе)" marginLeft="10px"/>
+        </div>
         <div class="characteristic"></div>
       </div>
       <div class="buy_btn_block">
@@ -47,9 +44,9 @@ export default {
     this.fetchProduct();
   },
   watch: {
-    $route: ["fetchProduct"]
-  }
-}
+    $route: ["fetchProduct"],
+  },
+};
 </script>
 
 <style scoped>
@@ -71,6 +68,9 @@ export default {
 
 .balance {
   color: #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .product_info_inner {

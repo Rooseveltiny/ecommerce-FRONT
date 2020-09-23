@@ -33,9 +33,9 @@
                 <div class="product_balance">{{product.balance}}</div>
                 <div class="product_unit">{{product.unit_of_measurement}}</div>
               </div>
-              <hint-component :hintContent="balanceHint" iconWidthHeight="15px"/>
+              <!-- <hint-component :hintContent="balanceHint" iconWidthHeight="15px"/> -->
             </div>
-            <button class="buy_btn">В корзину</button>
+            <button class="buy_btn" @click="addToCart(product.link)">В корзину</button>
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     ...mapMutations(["changeCurrentPage"]),
-    ...mapActions(["fetchProducts", "fetchFilter"]),
+    ...mapActions(["fetchProducts", "fetchFilter", "addToCart"]),
   },
   watch: {
     $route: ["fetchProducts", "fetchFilter"],

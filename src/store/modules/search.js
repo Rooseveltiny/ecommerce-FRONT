@@ -5,10 +5,10 @@ export default {
     actions: { 
        async fetchSearchResult({commit}, searchInputValue){
         let apiCall = '/search_products';
-        let searchInput = `?search_input_value=${searchInputValue}`
+        let searchInput = `?search_input_value=${searchInputValue}`;
         const res = await fetch(`${ApiSettings.BASE_ROUTE}${apiCall}${searchInput}`);
         const searchResult = await res.json();
-        commit('updateSearchResult', searchResult);  
+        commit('updateSearchResult', searchResult);
         }
     },
     mutations: {
