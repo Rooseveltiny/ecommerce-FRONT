@@ -35,7 +35,8 @@
               </div>
               <!-- <hint-component :hintContent="balanceHint" iconWidthHeight="15px"/> -->
             </div>
-            <button class="buy_btn" @click="addToCart(product.link)">В корзину</button>
+            <addToCartBtn :productLink="product.link" />
+            <!-- <button class="buy_btn" @click="addToCart(product.link)">В корзину</button> -->
           </div>
         </div>
       </div>
@@ -45,8 +46,10 @@
 
 <script>
 import { mapActions, mapGetters, mapMutations } from "vuex";
+import addToCartBtn from '../Cart/AddToCartBtn'
 
 export default {
+  components: {addToCartBtn},
   data(){
     return {
       balanceHint: 'Сколько товара в данный момент лежит на складе'
@@ -54,7 +57,7 @@ export default {
   },
   methods: {
     ...mapMutations(["changeCurrentPage"]),
-    ...mapActions(["fetchProducts", "fetchFilter", "addToCart"]),
+    ...mapActions(["fetchProducts", "fetchFilter"]),
   },
   watch: {
     $route: ["fetchProducts", "fetchFilter"],

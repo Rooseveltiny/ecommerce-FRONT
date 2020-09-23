@@ -6,14 +6,16 @@ export default {
         async fetchCart({commit, getters}){
             if (getters.getCartUUID != undefined){
                 let response = await fetch(`${ApiSettings.BASE_ROUTE}/cart_list/${getters.getCartUUID}`);
-                let json_data = await response.json();
-                commit('updateClientCart', json_data);
+                if (response.status != 500){
+                    let json_data = await response.json();
+                    commit('updateClientCart', json_data);
+                }
             } 
         },
-        async addToCart({ commit, getters, dispatch }, productUUID) {
+        async addToCart({ commit, getters, dispatch }, inputData) {
             let data = {
-                product: productUUID,
-                quantity: 1,
+                product: inputData.productLink,
+                quantity: Number(inputData.productQuantity),
                 cart_uuid: getters.getCartUUID
             }
             let request_obj = { 
@@ -24,9 +26,12 @@ export default {
                 body: JSON.stringify(data),
                 }
             let response = await fetch(`${ApiSettings.BASE_ROUTE}/add_to_cart`, request_obj);
-            let resp_data = await response.json();
-            commit('updateCartUUID', resp_data);
-            dispatch('fetchCart');
+            
+            if (response.status != 500){
+                let resp_data = await response.json();
+                commit('updateCartUUID', resp_data);
+                dispatch('fetchCart');
+            }
         }
     },
     mutations: {
