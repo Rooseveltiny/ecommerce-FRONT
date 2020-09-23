@@ -3,7 +3,14 @@ import ApiSettings from '../ApiSettings'
 
 export default {
     actions: {
-        async addToCart({ commit, getters }, productUUID) {
+        async fetchCart({commit, getters}){
+            if (getters.getCartUUID != undefined){
+                let response = await fetch(`${ApiSettings.BASE_ROUTE}/cart_list/${getters.getCartUUID}`);
+                let json_data = await response.json();
+                commit('updateClientCart', json_data);
+            } 
+        },
+        async addToCart({ commit, getters, dispatch }, productUUID) {
             let data = {
                 product: productUUID,
                 quantity: 1,
@@ -19,11 +26,12 @@ export default {
             let response = await fetch(`${ApiSettings.BASE_ROUTE}/add_to_cart`, request_obj);
             let resp_data = await response.json();
             commit('updateCartUUID', resp_data);
+            dispatch('fetchCart');
         }
     },
     mutations: {
-        updateClientCart() {
-            return undefined;
+        updateClientCart(state, gotten_cart) {
+            state.cartProducts = gotten_cart;
         },
         updateCartUUID(state, data){
             if (Object.prototype.hasOwnProperty.call(data, "cart_uuid")){
@@ -40,6 +48,12 @@ export default {
     getters: {
         getCartUUID(state){
             return (state.cartUUID == undefined) ? null : state.cartUUID;
+        },
+        getCartProducts(state){
+            return state.cartProducts;
+        },
+        getCartFull(state){
+            return (state.cartProducts.length > 0) ? true : false;
         }
     }
 }

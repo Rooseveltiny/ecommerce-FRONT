@@ -151,6 +151,7 @@ export default {
 .search {
   display: flex;
   justify-content: flex-end;
+  width: 100%;
 }
 
 .search_icon {

@@ -44,6 +44,12 @@
           </div>
           <div class="bottom_header_right">
             <Search />
+            <div
+              class="cart_icon"
+              :class="{'cart_icon-empty': !getCartProducts.length, 'cart_icon-full': getCartProducts.length}"
+            >
+            <span class="cart_quantity" :class="{'cart_quantity-not_null': getCartProducts.length}">{{getCartProducts.length}}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -53,11 +59,11 @@
 
 <script>
 import { mapMutations, mapGetters } from "vuex";
-import Search from '../Generals/Search'
+import Search from "../Generals/Search";
 
 export default {
   components: {
-    Search
+    Search,
   },
   methods: {
     ...mapMutations(["openCloseCatalogStructureGeneral"]),
@@ -66,7 +72,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["getCatalogStructureVision"]),
+    ...mapGetters(["getCatalogStructureVision", "getCartProducts"]),
   },
 };
 </script>
@@ -138,7 +144,7 @@ export default {
 }
 
 .catalog_inner::after,
-.catalog_inner::before{
+.catalog_inner::before {
   content: "";
   width: 16px;
   border-top: 2px solid #333;
@@ -148,11 +154,10 @@ export default {
   top: 42%;
   right: 11px;
   height: 6px;
-  transition: transform .5s;
+  transition: transform 0.5s;
 }
 
-
-.catalog_inner::before{
+.catalog_inner::before {
   top: 49%;
   border-top: none;
   border-bottom: 3px solid #333;
@@ -160,31 +165,29 @@ export default {
 }
 
 .catalog_inner.active::before,
-.catalog_inner.active::after{
+.catalog_inner.active::after {
   width: 20px;
 }
 
-.catalog_inner.active::before{
+.catalog_inner.active::before {
   border-top: none;
   border-bottom: 3px solid rgb(252, 102, 102);
   transform: rotate(-45deg);
   top: 42%;
 }
 
-.catalog_inner.active::after{
+.catalog_inner.active::after {
   border-bottom: none;
   border-top: 3px solid rgb(252, 102, 102);
   transform: rotate(45deg);
   top: 47%;
 }
 
-
-
 .catalog_inner:hover {
   background-color: #ffe373;
 }
 
-.catalog_inner.active{
+.catalog_inner.active {
   background-color: #fff;
   border: 2px solid rgb(252, 102, 102);
   color: rgb(252, 102, 102);
@@ -193,28 +196,71 @@ export default {
 .bottom_header_right {
   width: 45%;
   text-align: right;
+  display: flex;
+  align-items: center;
+}
+
+/* CART */
+
+.cart_icon-empty {
+  background: url(https://e-commerce-vdk.s3.eu-central-1.amazonaws.com/pics/cart_empty.svg)
+    no-repeat;
+  background-size: 70%;
+}
+.cart_icon-full {
+  background: url(https://e-commerce-vdk.s3.eu-central-1.amazonaws.com/pics/cart_full.svg)
+    no-repeat;
+  background-size: 90%;
+}
+
+.cart_icon {
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  background-position-y: center;
+  transition-duration: .5s;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.cart_quantity{
+  position: absolute;
+  font-size: 10px;
+  background-color: rgb(240,240,240);
+  padding: 3px;
+  border-radius: 30px;
+  transition-duration: .5s;
+  right: -1px;
+  top: 25px;
+  font-weight: bold;
+}
+
+.cart_quantity-not_null{
+  position: absolute;
+  background-color: #fc0;
+  right: -16px;
+  font-size: 10px;
 }
 
 .logo {
   padding: 15px 0 10px 0;
 }
 
-
-@media (max-width: 990px){
-  .nav_inner{
+@media (max-width: 990px) {
+  .nav_inner {
     font-size: 13px;
   }
 }
 
-@media (max-width: 575px){
-  .nav_inner{
+@media (max-width: 575px) {
+  .nav_inner {
     font-size: 11px;
   }
 
-  .catalog{
+  .catalog {
     z-index: 100;
   }
-
 }
-
 </style>
