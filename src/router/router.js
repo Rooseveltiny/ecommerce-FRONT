@@ -10,6 +10,7 @@ import ProductPage from "../components/Product/ProductPage";
 import Categories from "../components/CatalogStructure/Categories";
 import FeedBack from "../components/Generals/FeedBack";
 import FAQ from "../components/Generals/FAQ";
+import Cart from "../components/Cart/Cart"
 
 Vue.use(Router)
 
@@ -48,6 +49,11 @@ let router = new Router({
             path: '/catalog/product/:uuid',
             name: 'Product',
             component: ProductPage
+        },
+        {
+            path: '/cart',
+            name: 'Cart',
+            component: Cart
         },
         {
             path: '/catalog/categories',

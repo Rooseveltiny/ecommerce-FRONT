@@ -44,12 +44,14 @@
           </div>
           <div class="bottom_header_right">
             <Search />
+            <router-link :to="{name: 'Cart'}">
             <div
               class="cart_icon"
               :class="{'cart_icon-empty': !getCartProducts.length, 'cart_icon-full': getCartProducts.length}"
             >
             <span class="cart_quantity" :class="{'cart_quantity-not_null': getCartProducts.length}">{{getCartProducts.length}}</span>
             </div>
+            </router-link>
           </div>
         </div>
       </div>

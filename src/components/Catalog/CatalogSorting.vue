@@ -93,6 +93,7 @@ export default {
   position: relative;
   justify-content: space-between;
   display: flex;
+  z-index: 1000;
 }
 
 .currentSorting {

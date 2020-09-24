@@ -36,7 +36,6 @@
               <!-- <hint-component :hintContent="balanceHint" iconWidthHeight="15px"/> -->
             </div>
             <addToCartBtn :productLink="product.link" />
-            <!-- <button class="buy_btn" @click="addToCart(product.link)">В корзину</button> -->
           </div>
         </div>
       </div>

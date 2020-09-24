@@ -14,6 +14,7 @@
         <Footer />
       </div>
     </div>
+    <notifications group="notifications" position="bottom right" :max="4" />
   </div>
 </template>
 
@@ -21,6 +22,7 @@
 import Header from "./components/Header/Header.vue";
 import Footer from "./components/Footer/Footer";
 import CatalogStructure from "./components/CatalogStructure/CatalogStructure";
+import { mapActions, mapMutations } from 'vuex';
 
 export default {
   name: "App",
@@ -30,12 +32,23 @@ export default {
     CatalogStructure
   },
   computed: {},
-  methods: {},
-  created() {},
+  methods: {
+    ...mapActions(['fetchCart']),
+    ...mapMutations(['updateCartUUID'])
+  },
+  async created() {
+    this.updateCartUUID({cart_uuid: localStorage.cart_uuid});
+    await this.fetchCart();
+  }
 };
 </script>
 
 <style>
+
+.disabled{
+    pointer-events: none;
+    opacity: 0.4;
+}
 
 /* slider settings */
 .slider:hover .slider-btn {
