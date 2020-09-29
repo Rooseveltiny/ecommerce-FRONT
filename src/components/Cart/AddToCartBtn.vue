@@ -2,7 +2,7 @@
   <div class="button_main">
     <div class="button_inner" :class="{disabled: showLoading}">
       <div class="button_input">
-        <input class="input_class" type="number" min="1" value="1" v-model="productQuantity" />
+        <input v-on:keyup.enter="()=>{addToCartFunc({productLink, productQuantity}); productQuantity = 1}" class="input_class" type="number" min="1" value="1" v-model="productQuantity" />
       </div>
       <div
         @click="addToCartFunc({productLink, productQuantity}); productQuantity = 1"

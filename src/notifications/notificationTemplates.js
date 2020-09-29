@@ -27,6 +27,13 @@ const notify = {
             title: 'Товар удалён из корзины',
             type: 'warn'
         }) 
+    },
+    changeInCart(){
+        Vue.notify({
+            group: 'notifications',
+            title: 'Товар в корзине изменён',
+            type: 'success'
+        })
     }
 }
 

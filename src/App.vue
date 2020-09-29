@@ -15,6 +15,8 @@
       </div>
     </div>
     <notifications group="notifications" position="bottom right" :max="4" />
+    <simplert :useRadius="false" />
+
   </div>
 </template>
 
@@ -45,6 +47,11 @@ export default {
 
 <style>
 
+/* CUSTOM CLASS FOR SIMPLERT */
+.simplert{
+  z-index: 10000 !important;
+}
+
 .disabled{
     pointer-events: none;
     opacity: 0.4;
@@ -67,10 +74,12 @@ export default {
 .img_wrapper {
   display: flex;
   position: relative;
+  height: 100%;
 }
 
 .img_wrapper img {
   width: 100%;
+  height: 100%;
   visibility: hidden;
 }
 

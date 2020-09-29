@@ -1,4 +1,3 @@
-// import router from '../../router/router'
 import ApiSettings from '../ApiSettings'
 import notify from '../../notifications/notificationTemplates'
 
@@ -12,6 +11,23 @@ export default {
                     commit('updateClientCart', json_data);
                 }
             }
+        },
+        async onProductChange({dispatch}, inputData){
+            let request_obj = {
+                body: JSON.stringify(inputData),
+                method: 'PUT',
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+            }
+            await fetch(`${ApiSettings.BASE_ROUTE}/cart_product`, request_obj).then(async (response)=>{
+                if (response.status != 500){
+                    dispatch('fetchCart');
+                    notify.changeInCart();
+                }
+            }).catch(()=>{
+                notify.internetConnectionErrorNotification();
+            })
         },
         async addToCart({ commit, getters, dispatch }, inputData) {
             let data = {

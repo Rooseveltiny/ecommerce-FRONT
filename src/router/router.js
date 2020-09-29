@@ -10,7 +10,7 @@ import ProductPage from "../components/Product/ProductPage";
 import Categories from "../components/CatalogStructure/Categories";
 import FeedBack from "../components/Generals/FeedBack";
 import FAQ from "../components/Generals/FAQ";
-import Cart from "../components/Cart/Cart"
+import CartPage from "../components/Cart/CartPage"
 
 Vue.use(Router)
 
@@ -53,7 +53,7 @@ let router = new Router({
         {
             path: '/cart',
             name: 'Cart',
-            component: Cart
+            component: CartPage
         },
         {
             path: '/catalog/categories',

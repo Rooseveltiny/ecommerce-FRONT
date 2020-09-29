@@ -20,7 +20,7 @@ props: {
     },
     marginLeft:{
         type: String,
-        default: '0'
+        default: '5px'
     }
 
 }
@@ -58,6 +58,8 @@ props: {
     display: flex;
     width: max-content;
     max-width: 20rem;
+    font-size: 13px;
+    color: #333;
 }
 
 .hint_content::before{

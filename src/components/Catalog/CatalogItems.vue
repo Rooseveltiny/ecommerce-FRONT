@@ -33,7 +33,7 @@
                 <div class="product_balance">{{product.balance}}</div>
                 <div class="product_unit">{{product.unit_of_measurement}}</div>
               </div>
-              <!-- <hint-component :hintContent="balanceHint" iconWidthHeight="15px"/> -->
+              <hint-component :hintContent="balanceHint" iconWidthHeight="15px"/>
             </div>
             <addToCartBtn :productLink="product.link" />
           </div>
